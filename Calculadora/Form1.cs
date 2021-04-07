@@ -12,6 +12,14 @@ namespace Calculadora
 {
     public partial class formCalculadora : Form
     {
+        /*
+         * La estrategia es directa:
+         * PrimerNumero funciona a manera "global".
+         * Operacion también
+         * Se va armando un string con el display (tanto para el 1er número como para el segundo)
+         * El igual evalua ese string (1ro operación 2do) con conversiones:
+         * 1er (convertido) y operación (comando) y 2do (convertido)
+         */
         double PrimerNumero;
         string Operacion;
         public formCalculadora()
@@ -19,16 +27,20 @@ namespace Calculadora
             InitializeComponent();
         }
 
-        private void boton0_Click(object sender, EventArgs e)
+        // EVENTO REINICIAR
+        private void EventoBorrar(object sender, EventArgs e)
         {
-            textoDisplay.Text += "0";
+            textoDisplay.Text = "0";
         }
 
+        // EL PROBLEMA DEL PUNTO
+        // Ya he visto esto antes. Para que funcione localmente, el punto debe ser coma.
         private void botonPunto_Click(object sender, EventArgs e)
         {
-            textoDisplay.Text += ".";
+            textoDisplay.Text += ",";
         }
 
+        // TOTALES
         private void botonIgual_Click(object sender, EventArgs e)
         {
             double SegundoNumero;
@@ -70,13 +82,37 @@ namespace Calculadora
             }
         }
 
+        // BOTONES OPERACIONES
+        private void botonSuma_Click(object sender, EventArgs e)
+        {
+            PrimerNumero = Convert.ToDouble(textoDisplay.Text);
+            textoDisplay.Text = "0";
+            Operacion = "+";
+        }
         private void botonResta_Click(object sender, EventArgs e)
         {
             PrimerNumero = Convert.ToDouble(textoDisplay.Text);
             textoDisplay.Text = "0";
             Operacion = "-";
         }
+        private void botonMultiplicacion_Click(object sender, EventArgs e)
+        {
+            PrimerNumero = Convert.ToDouble(textoDisplay.Text);
+            textoDisplay.Text = "0";
+            Operacion = "*";
+        }
+        private void botonDivision_Click(object sender, EventArgs e)
+        {
+            PrimerNumero = Convert.ToDouble(textoDisplay.Text);
+            textoDisplay.Text = "0";
+            Operacion = "/";
+        }
 
+        // BOTONES NUMÉRICOS
+        private void boton0_Click(object sender, EventArgs e)
+        {
+            textoDisplay.Text += "0";
+        }
         private void boton1_Click(object sender, EventArgs e)
         {
             if (textoDisplay.Text == "0" && textoDisplay.Text != null)
@@ -85,10 +121,9 @@ namespace Calculadora
             }
             else
             {
-                textoDisplay.Text = textoDisplay.Text + "1";
+                textoDisplay.Text += "1";
             }
         }
-
         private void boton2_Click(object sender, EventArgs e)
         {
             if (textoDisplay.Text == "0" && textoDisplay.Text != null)
@@ -97,10 +132,9 @@ namespace Calculadora
             }
             else
             {
-                textoDisplay.Text = textoDisplay.Text + "2";
+                textoDisplay.Text += "2";
             }
         }
-
         private void boton3_Click(object sender, EventArgs e)
         {
             if (textoDisplay.Text == "0" && textoDisplay.Text != null)
@@ -109,10 +143,9 @@ namespace Calculadora
             }
             else
             {
-                textoDisplay.Text = textoDisplay.Text + "3";
+                textoDisplay.Text += "3";
             }
         }
-
         private void boton4_Click(object sender, EventArgs e)
         {
             if (textoDisplay.Text == "0" && textoDisplay.Text != null)
@@ -121,10 +154,9 @@ namespace Calculadora
             }
             else
             {
-                textoDisplay.Text = textoDisplay.Text + "4";
+                textoDisplay.Text += "4";
             }
         }
-
         private void boton5_Click(object sender, EventArgs e)
         {
             if (textoDisplay.Text == "0" && textoDisplay.Text != null)
@@ -133,10 +165,9 @@ namespace Calculadora
             }
             else
             {
-                textoDisplay.Text = textoDisplay.Text + "5";
+                textoDisplay.Text += "5";
             }
         }
-
         private void boton6_Click(object sender, EventArgs e)
         {
             if (textoDisplay.Text == "0" && textoDisplay.Text != null)
@@ -145,10 +176,9 @@ namespace Calculadora
             }
             else
             {
-                textoDisplay.Text = textoDisplay.Text + "6";
+                textoDisplay.Text += "6";
             }
         }
-
         private void boton7_Click(object sender, EventArgs e)
         {
             if (textoDisplay.Text == "0" && textoDisplay.Text != null)
@@ -157,10 +187,9 @@ namespace Calculadora
             }
             else
             {
-                textoDisplay.Text = textoDisplay.Text + "7";
+                textoDisplay.Text += "7";
             }
         }
-
         private void boton8_Click(object sender, EventArgs e)
         {
             if (textoDisplay.Text == "0" && textoDisplay.Text != null)
@@ -169,10 +198,9 @@ namespace Calculadora
             }
             else
             {
-                textoDisplay.Text = textoDisplay.Text + "8";
+                textoDisplay.Text += "8";
             }
         }
-
         private void boton9_Click(object sender, EventArgs e)
         {
             if (textoDisplay.Text == "0" && textoDisplay.Text != null)
@@ -181,29 +209,8 @@ namespace Calculadora
             }
             else
             {
-                textoDisplay.Text = textoDisplay.Text + "9";
+                textoDisplay.Text += "9";
             }
-        }
-
-        private void botonSuma_Click(object sender, EventArgs e)
-        {
-            PrimerNumero = Convert.ToDouble(textoDisplay.Text);
-            textoDisplay.Text = "0";
-            Operacion = "-";
-        }
-
-        private void botonMultiplicacion_Click(object sender, EventArgs e)
-        {
-            PrimerNumero = Convert.ToDouble(textoDisplay.Text);
-            textoDisplay.Text = "0";
-            Operacion = "*";
-        }
-
-        private void botonDivision_Click(object sender, EventArgs e)
-        {
-            PrimerNumero = Convert.ToDouble(textoDisplay.Text);
-            textoDisplay.Text = "0";
-            Operacion = "/";
         }
     }
 }

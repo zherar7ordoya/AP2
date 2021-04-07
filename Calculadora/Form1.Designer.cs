@@ -29,6 +29,7 @@ namespace Calculadora
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(formCalculadora));
             this.textoDisplay = new System.Windows.Forms.TextBox();
             this.boton7 = new System.Windows.Forms.Button();
             this.boton8 = new System.Windows.Forms.Button();
@@ -55,9 +56,12 @@ namespace Calculadora
             this.textoDisplay.Name = "textoDisplay";
             this.textoDisplay.Size = new System.Drawing.Size(178, 39);
             this.textoDisplay.TabIndex = 0;
+            this.textoDisplay.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.textoDisplay.Click += new System.EventHandler(this.EventoBorrar);
             // 
             // boton7
             // 
+            this.boton7.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.boton7.Location = new System.Drawing.Point(12, 66);
             this.boton7.Name = "boton7";
             this.boton7.Size = new System.Drawing.Size(40, 40);
@@ -68,6 +72,7 @@ namespace Calculadora
             // 
             // boton8
             // 
+            this.boton8.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.boton8.Location = new System.Drawing.Point(58, 66);
             this.boton8.Name = "boton8";
             this.boton8.Size = new System.Drawing.Size(40, 40);
@@ -78,6 +83,7 @@ namespace Calculadora
             // 
             // boton9
             // 
+            this.boton9.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.boton9.Location = new System.Drawing.Point(104, 66);
             this.boton9.Name = "boton9";
             this.boton9.Size = new System.Drawing.Size(40, 40);
@@ -88,6 +94,7 @@ namespace Calculadora
             // 
             // botonDivision
             // 
+            this.botonDivision.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.botonDivision.Location = new System.Drawing.Point(150, 66);
             this.botonDivision.Name = "botonDivision";
             this.botonDivision.Size = new System.Drawing.Size(40, 40);
@@ -98,6 +105,7 @@ namespace Calculadora
             // 
             // botonMultiplicacion
             // 
+            this.botonMultiplicacion.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.botonMultiplicacion.Location = new System.Drawing.Point(150, 112);
             this.botonMultiplicacion.Name = "botonMultiplicacion";
             this.botonMultiplicacion.Size = new System.Drawing.Size(40, 40);
@@ -108,6 +116,7 @@ namespace Calculadora
             // 
             // boton6
             // 
+            this.boton6.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.boton6.Location = new System.Drawing.Point(104, 112);
             this.boton6.Name = "boton6";
             this.boton6.Size = new System.Drawing.Size(40, 40);
@@ -118,6 +127,7 @@ namespace Calculadora
             // 
             // boton5
             // 
+            this.boton5.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.boton5.Location = new System.Drawing.Point(58, 112);
             this.boton5.Name = "boton5";
             this.boton5.Size = new System.Drawing.Size(40, 40);
@@ -128,6 +138,7 @@ namespace Calculadora
             // 
             // boton4
             // 
+            this.boton4.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.boton4.Location = new System.Drawing.Point(12, 112);
             this.boton4.Name = "boton4";
             this.boton4.Size = new System.Drawing.Size(40, 40);
@@ -138,6 +149,7 @@ namespace Calculadora
             // 
             // botonResta
             // 
+            this.botonResta.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.botonResta.Location = new System.Drawing.Point(150, 204);
             this.botonResta.Name = "botonResta";
             this.botonResta.Size = new System.Drawing.Size(40, 40);
@@ -148,6 +160,7 @@ namespace Calculadora
             // 
             // botonIgual
             // 
+            this.botonIgual.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.botonIgual.Location = new System.Drawing.Point(104, 204);
             this.botonIgual.Name = "botonIgual";
             this.botonIgual.Size = new System.Drawing.Size(40, 40);
@@ -158,6 +171,7 @@ namespace Calculadora
             // 
             // botonPunto
             // 
+            this.botonPunto.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.botonPunto.Location = new System.Drawing.Point(58, 204);
             this.botonPunto.Name = "botonPunto";
             this.botonPunto.Size = new System.Drawing.Size(40, 40);
@@ -168,6 +182,7 @@ namespace Calculadora
             // 
             // boton0
             // 
+            this.boton0.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.boton0.Location = new System.Drawing.Point(12, 204);
             this.boton0.Name = "boton0";
             this.boton0.Size = new System.Drawing.Size(40, 40);
@@ -178,6 +193,7 @@ namespace Calculadora
             // 
             // botonSuma
             // 
+            this.botonSuma.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.botonSuma.Location = new System.Drawing.Point(150, 158);
             this.botonSuma.Name = "botonSuma";
             this.botonSuma.Size = new System.Drawing.Size(40, 40);
@@ -188,6 +204,7 @@ namespace Calculadora
             // 
             // boton3
             // 
+            this.boton3.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.boton3.Location = new System.Drawing.Point(104, 158);
             this.boton3.Name = "boton3";
             this.boton3.Size = new System.Drawing.Size(40, 40);
@@ -198,6 +215,7 @@ namespace Calculadora
             // 
             // boton2
             // 
+            this.boton2.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.boton2.Location = new System.Drawing.Point(58, 158);
             this.boton2.Name = "boton2";
             this.boton2.Size = new System.Drawing.Size(40, 40);
@@ -208,6 +226,7 @@ namespace Calculadora
             // 
             // boton1
             // 
+            this.boton1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.boton1.Location = new System.Drawing.Point(12, 158);
             this.boton1.Name = "boton1";
             this.boton1.Size = new System.Drawing.Size(40, 40);
@@ -238,6 +257,10 @@ namespace Calculadora
             this.Controls.Add(this.boton8);
             this.Controls.Add(this.boton7);
             this.Controls.Add(this.textoDisplay);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "formCalculadora";
             this.Text = "Calculadora";
             this.ResumeLayout(false);
