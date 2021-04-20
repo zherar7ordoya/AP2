@@ -1,0 +1,9 @@
+source ~octtools/lib/misII/lib/script
+set OCT-CELL-VIEW physical
+set OCT-CELL-PATH $OCTTOOLS/tech/scmos/msu/dlm
+set OCT-TECHNOLOGY scmos
+set OCT-EDITSTYLE SYMBOLIC
+set OCT-VIEWTYPE SYMBOLIC
+read_library msu.genlib
+map
+phase -g

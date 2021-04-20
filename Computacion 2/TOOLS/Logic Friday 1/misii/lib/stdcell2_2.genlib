@@ -1,0 +1,101 @@
+# GATE	"buff101:physical"	16	O=A1; 
+# PIN	* NONINV 1 999 1 .2 1 .2
+
+GATE	"invf101:physical"	16	O=!A1; 
+PIN	* INV 1 999 1 .2 1 .2
+
+GATE	"invf103:physical"	32	O=!A1; 
+PIN	* INV 3 999 1 .1 1 .1
+
+GATE	"invf104:physical"	40	O=!A1; 
+PIN	* INV 4 999 1 .05 1 .05
+
+GATE	"norf201:physical"	24	O=!(A1+B1);
+PIN	* INV 1 999 1 .2 1 .2
+
+GATE	"norf301:physical"	32	O=!(A1+B1+C1);
+PIN	* INV 1 999 1 .2 1 .2
+
+GATE	"norf401:physical"	40	O=!(A1+B1+C1+D1);
+PIN	* INV 1 999 1 .2 1 .2
+
+GATE	"nanf201:physical"	24	O=!(A1*B1);
+PIN	* INV 1 999 1 .2 1 .2
+
+GATE	"nanf301:physical"	32	O=!(A1*B1*C1);
+PIN	* INV 1 999 1 .2 1 .2
+
+GATE	"nanf401:physical"	40	O=!(A1*B1*C1*D1);
+PIN	* INV 1 999 1 .2 1 .2
+
+GATE	"nanf211:physical"	32	O2=A1*B1;
+PIN	* NONINV 1 999 1 .2 1 .2
+
+GATE	"nanf311:physical"	40	O2=A1*B1*C1;
+PIN	* NONINV 1 999 1 .2 1 .2
+
+GATE	"nanf411:physical"	48	O2=A1*B1*C1*D1;	 
+PIN	* NONINV 1 999 1 .2 1 .2
+
+GATE	"norf211:physical"	32	O1=A1+B1;
+PIN	* NONINV 1 999 1 .2 1 .2
+
+GATE	"norf311:physical"	40	O1=A1+B1+C1;
+PIN	* NONINV 1 999 1 .2 1 .2
+
+GATE	"orf401:physical"	48	O=A1+B1+C1+D1;
+PIN	* NONINV 1 999 1 .2 1 .2
+
+GATE	"aoif2201:physical"	40	O=!(A1*B1+C2*D2);
+PIN	* INV 1 999 1 .2 1 .2
+
+GATE	"blf00001:physical"	32	O=!(A1+B2*C2);
+PIN	* INV 1 999 1 .2 1 .2
+
+GATE	"oaif2201:physical"	40	O=!((A1+B1)*(C2+D2));
+PIN	* INV 1 999 1 .2 1 .2
+
+GATE	"blf00101:physical"	32	O=!(A1*(B2+C2));
+PIN	* INV 1 999 1 .2 1 .2
+
+GATE	"aof2201:physical"	56	O=A1*B1+C2*D2;
+PIN	* NONINV 1 999 1 .2 1 .2
+
+GATE	"aof3201:physical"	72	O=A1*B1+C2*D2+E3*F3;
+PIN	* NONINV 1 999 1 .2 1 .2
+
+GATE	"aof4201:physical"	96	O=A1*B1+C2*D2+E3*F3+G4*H4; 
+PIN	* NONINV 1 999 1 .2 1 .2
+
+GATE	"aof2301:physical"	64	O=A1*B1*C1+D2*E2*F2;
+PIN	* NONINV 1 999 1 .2 1 .2
+
+GATE	"xorf201:physical"	40	O=A1*!B1+!A1*B1;
+PIN	* UNKNOWN 1 999 1 .2 1 .2
+
+GATE	"xorf201:physical"	40	O=!(A1*B1+!A1*!B1);
+PIN	* UNKNOWN 1 999 1 .2 1 .2
+
+GATE	"xnof201:physical"	48	O=A1*B1+!A1*!B1;
+PIN	* UNKNOWN 1 999 1 .2 1 .2
+
+GATE	"xnof201:physical"	48	O=!(A1*!B1+!A1*B1);
+PIN	* UNKNOWN 1 999 1 .2 1 .2
+
+GATE	"norf251:physical"	32	O=!A1*B2;			
+PIN	A1 INV 1 999 1 .2 1 .2
+PIN	B2 NONINV 1 999 1 .2 1 .2
+
+GATE	"nanf251:physical"	32	O=A1+!B2;
+PIN	A1 NONINV 1 999 1 .2 1 .2
+PIN	B2 INV 1 999 1 .2 1 .2
+
+GATE	"muxf201:physical"	48	O=A1*SEL3+B2*!SEL3;		
+PIN	A1 NONINV 1 999 1 .2 1 .2
+PIN	B2 NONINV 1 999 1 .2 1 .2
+PIN	SEL3 UNKNOWN 1 999 1 .2 1 .2
+
+GATE 	"puuf000:physical"	8	O=CONST1;
+GATE 	"pudf000:physical"	8	O=CONST0;
+
+

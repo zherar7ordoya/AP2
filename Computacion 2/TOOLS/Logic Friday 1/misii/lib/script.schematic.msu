@@ -1,0 +1,9 @@
+source $OCTTOOLS/lib/misII/lib/script
+set OCT-CELL-VIEW schematic
+set OCT-CELL-PATH $OCTTOOLS/tech/scmos/msu/stdcell2_2
+set OCT-TECHNOLOGY scmos
+set OCT-EDITSTYLE SCHEMATIC
+set OCT-VIEWTYPE SCHEMATIC
+read_library stdcell2_2.schematic.genlib
+map
+phase -g
