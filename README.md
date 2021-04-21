@@ -1,9 +1,4 @@
-# Prácticas Programación I
+# 2do Cuatrimestre
 
-# UAI (Universidad Abierta Interamericana)
-
-_Algo de texto:_ (Pendiente...)
-
-- Item...
-- Item...
-- Item...
+* Material de cursada.
+* Repositorio de ejercicios en C#.
