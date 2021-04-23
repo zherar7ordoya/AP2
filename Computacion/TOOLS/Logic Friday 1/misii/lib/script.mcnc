@@ -1,4 +1,0 @@
-source $OCTTOOLS/lib/misII/lib/script
-read_library mcnc.genlib
-map
-phase -g
