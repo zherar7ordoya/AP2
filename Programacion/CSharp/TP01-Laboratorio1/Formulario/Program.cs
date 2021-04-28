@@ -16,7 +16,7 @@ namespace Formulario
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmGroupboxes());
+            Application.Run(new frmMain());
         }
     }
 }

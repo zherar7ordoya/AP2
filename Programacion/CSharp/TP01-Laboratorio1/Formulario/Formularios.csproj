@@ -46,17 +46,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Calculadora2.cs">
+    <Compile Include="Boxes.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Calculadora2.Designer.cs">
-      <DependentUpon>Calculadora2.cs</DependentUpon>
+    <Compile Include="Boxes.Designer.cs">
+      <DependentUpon>Boxes.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form1.cs">
+    <Compile Include="Checkboxes.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Checkboxes.Designer.cs">
+      <DependentUpon>Checkboxes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Calculadora.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Calculadora.Designer.cs">
+      <DependentUpon>Calculadora.cs</DependentUpon>
     </Compile>
     <Compile Include="Groupboxes.cs">
       <SubType>Form</SubType>
@@ -64,16 +70,28 @@
     <Compile Include="Groupboxes.Designer.cs">
       <DependentUpon>Groupboxes.cs</DependentUpon>
     </Compile>
+    <Compile Include="Main.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Main.Designer.cs">
+      <DependentUpon>Main.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Calculadora2.resx">
-      <DependentUpon>Calculadora2.cs</DependentUpon>
+    <EmbeddedResource Include="Boxes.resx">
+      <DependentUpon>Boxes.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="Checkboxes.resx">
+      <DependentUpon>Checkboxes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Calculadora.resx">
+      <DependentUpon>Calculadora.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Groupboxes.resx">
       <DependentUpon>Groupboxes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Main.resx">
+      <DependentUpon>Main.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

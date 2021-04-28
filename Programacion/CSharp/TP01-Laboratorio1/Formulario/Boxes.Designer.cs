@@ -1,5 +1,5 @@
 ﻿namespace Formulario {
-  partial class frmCalculadora2 {
+  partial class frmBoxes {
     /// <summary>
     /// Required designer variable.
     /// </summary>
@@ -187,7 +187,7 @@
       this.optSuma.Text = "Suma";
       this.optSuma.UseVisualStyleBackColor = true;
       // 
-      // frmCalculadora2
+      // frmBoxes
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -203,7 +203,7 @@
       this.Controls.Add(this.btnSwitch);
       this.Controls.Add(this.btnIf);
       this.Controls.Add(this.btnLimpiar);
-      this.Name = "frmCalculadora2";
+      this.Name = "frmBoxes";
       this.Text = "Calculadora con Radio-Botón";
       this.Load += new System.EventHandler(this.Calculadora2_Load);
       this.groupBox1.ResumeLayout(false);

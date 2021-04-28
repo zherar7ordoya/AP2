@@ -20,9 +20,9 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Formulario {
-  public partial class frmCalculadora2 : Form {
+  public partial class frmBoxes : Form {
     // *----------------------------------------------------------=> FORMULARIO
-    public frmCalculadora2() {
+    public frmBoxes() {
       InitializeComponent();
     }
     private void Calculadora2_Load(object sender, EventArgs e) {

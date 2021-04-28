@@ -28,8 +28,8 @@
       this.txt1 = new System.Windows.Forms.TextBox();
       this.txt2 = new System.Windows.Forms.TextBox();
       this.groupBox1 = new System.Windows.Forms.GroupBox();
-      this.groupBox2 = new System.Windows.Forms.GroupBox();
       this.opt1 = new System.Windows.Forms.RadioButton();
+      this.groupBox2 = new System.Windows.Forms.GroupBox();
       this.opt2 = new System.Windows.Forms.RadioButton();
       this.btn1 = new System.Windows.Forms.Button();
       this.btn2 = new System.Windows.Forms.Button();
@@ -80,16 +80,6 @@
       this.groupBox1.TabStop = false;
       this.groupBox1.Text = "1ra selección";
       // 
-      // groupBox2
-      // 
-      this.groupBox2.Controls.Add(this.opt2);
-      this.groupBox2.Location = new System.Drawing.Point(12, 109);
-      this.groupBox2.Name = "groupBox2";
-      this.groupBox2.Size = new System.Drawing.Size(154, 47);
-      this.groupBox2.TabIndex = 5;
-      this.groupBox2.TabStop = false;
-      this.groupBox2.Text = "2da selección";
-      // 
       // opt1
       // 
       this.opt1.AutoSize = true;
@@ -100,6 +90,16 @@
       this.opt1.TabStop = true;
       this.opt1.Text = "1er valor";
       this.opt1.UseVisualStyleBackColor = true;
+      // 
+      // groupBox2
+      // 
+      this.groupBox2.Controls.Add(this.opt2);
+      this.groupBox2.Location = new System.Drawing.Point(12, 109);
+      this.groupBox2.Name = "groupBox2";
+      this.groupBox2.Size = new System.Drawing.Size(154, 47);
+      this.groupBox2.TabIndex = 5;
+      this.groupBox2.TabStop = false;
+      this.groupBox2.Text = "2da selección";
       // 
       // opt2
       // 
@@ -155,6 +155,7 @@
       this.Controls.Add(this.lbl2);
       this.Controls.Add(this.lbl1);
       this.Name = "frmGroupboxes";
+      this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
       this.Text = "Groupboxes";
       this.Load += new System.EventHandler(this.Groupboxes_Load);
       this.groupBox1.ResumeLayout(false);

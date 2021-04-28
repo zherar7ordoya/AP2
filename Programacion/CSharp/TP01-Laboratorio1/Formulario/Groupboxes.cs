@@ -30,7 +30,7 @@ namespace Formulario {
     }
 
 
-    // *----------------------------------------------------------=> FORMULA???
+    // *---------------------------------------------------------=> OPERACIONES
 
     private void btn1_Click(object sender, EventArgs e) {
       if (opt1.Checked == true) {
