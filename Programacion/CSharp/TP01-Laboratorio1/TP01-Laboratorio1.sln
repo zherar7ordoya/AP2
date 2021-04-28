@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.1500
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TP01-Laboratorio1", "TP01-Laboratorio1.csproj", "{7D7C055C-5E76-4B50-AA5E-4771474C1A40}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Consola", "Consola.csproj", "{7D7C055C-5E76-4B50-AA5E-4771474C1A40}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Formularios", "Formulario\Formularios.csproj", "{0C90578C-13A1-42B6-B8C3-64E23B222842}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{7D7C055C-5E76-4B50-AA5E-4771474C1A40}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7D7C055C-5E76-4B50-AA5E-4771474C1A40}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7D7C055C-5E76-4B50-AA5E-4771474C1A40}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0C90578C-13A1-42B6-B8C3-64E23B222842}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0C90578C-13A1-42B6-B8C3-64E23B222842}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0C90578C-13A1-42B6-B8C3-64E23B222842}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0C90578C-13A1-42B6-B8C3-64E23B222842}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
