@@ -16,7 +16,9 @@ namespace TP01_Laboratorio2 {
     int hora = 0, min = 0, seg = 0;
 
     private void frmCronometro_Load(object sender, EventArgs e) {
-
+      this.MaximizeBox = false;
+      this.MinimizeBox = false;
+      System.Console.WriteLine("No te preocupes por mí. Solo ignórame...");
     }
 
 

@@ -49,17 +49,71 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Cadenas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Cadenas.Designer.cs">
+      <DependentUpon>Cadenas.cs</DependentUpon>
+    </Compile>
     <Compile Include="Cronometro.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Cronometro.Designer.cs">
       <DependentUpon>Cronometro.cs</DependentUpon>
     </Compile>
+    <Compile Include="DateTimePicker1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DateTimePicker1.Designer.cs">
+      <DependentUpon>DateTimePicker1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DateTimePicker2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DateTimePicker2.Designer.cs">
+      <DependentUpon>DateTimePicker2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DateTimePicker3.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DateTimePicker3.Designer.cs">
+      <DependentUpon>DateTimePicker3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Desplazamiento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Desplazamiento.Designer.cs">
+      <DependentUpon>Desplazamiento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormatoFechas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormatoFechas.Designer.cs">
+      <DependentUpon>FormatoFechas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormatoNumeros.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormatoNumeros.Designer.cs">
+      <DependentUpon>FormatoNumeros.cs</DependentUpon>
+    </Compile>
     <Compile Include="MatricesCarga.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="MatricesCarga.Designer.cs">
       <DependentUpon>MatricesCarga.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mensajes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Mensajes.Designer.cs">
+      <DependentUpon>Mensajes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Progreso.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Progreso.Designer.cs">
+      <DependentUpon>Progreso.cs</DependentUpon>
     </Compile>
     <Compile Include="VectoresCarga.cs">
       <SubType>Form</SubType>
@@ -75,8 +129,35 @@
     <Compile Include="VectoresOperaciones.Designer.cs">
       <DependentUpon>VectoresOperaciones.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Cadenas.resx">
+      <DependentUpon>Cadenas.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Cronometro.resx">
       <DependentUpon>Cronometro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DateTimePicker1.resx">
+      <DependentUpon>DateTimePicker1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DateTimePicker2.resx">
+      <DependentUpon>DateTimePicker2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DateTimePicker3.resx">
+      <DependentUpon>DateTimePicker3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Desplazamiento.resx">
+      <DependentUpon>Desplazamiento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormatoFechas.resx">
+      <DependentUpon>FormatoFechas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormatoNumeros.resx">
+      <DependentUpon>FormatoNumeros.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mensajes.resx">
+      <DependentUpon>Mensajes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Progreso.resx">
+      <DependentUpon>Progreso.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
