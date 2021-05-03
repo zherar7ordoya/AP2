@@ -8,11 +8,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Enunciado01 {
+namespace Enunciado02 {
   public partial class Form1 : Form {
     public Form1() {
       InitializeComponent();
     }
+
     private void Form1_Load(object sender, EventArgs e) {
       // *-----------------------------------------------------------------=> *
       label0.Text = "Gerardo Tordoya" + Environment.NewLine +
@@ -26,28 +27,26 @@ namespace Enunciado01 {
       this.MaximizeBox = false;
       this.MinimizeBox = false;
       // *-----------------------------------------------------------------=> *
-      string texto1 = Microsoft.VisualBasic.Interaction.InputBox(
-        "Ingrese 1er número",
-        "InputBox",
-        "(Aceptar para continuar, Cancelar para salir)");
-      string texto2 = Microsoft.VisualBasic.Interaction.InputBox(
-        "Ingrese 2do número",
-        "InputBox",
-        "(Aceptar para continuar, Cancelar para salir)");
-      int numero1, numero2;
 
+    }
+
+    private void sumador() {
+      string texto1 = textBox1.Text;
+      string texto2 = textBox2.Text;
+      int numero1, numero2;
       bool correcto1 = Int32.TryParse(texto1, out numero1);
       bool correcto2 = Int32.TryParse(texto2, out numero2);
       if (correcto1 && correcto2) {
         int resultado = numero1 + numero2;
-        MessageBox.Show(resultado.ToString(), "Resultado");
-      }
-      else {
-        MessageBox.Show("Uno de los valores ingresados no es correcto", "Error");
+        label1.Text = resultado.ToString();
       }
     }
 
-    private void button1_Click(object sender, EventArgs e) {
+    private void textBox1_TextChanged(object sender, EventArgs e) {
+      sumador();
+    }
+    private void textBox2_TextChanged(object sender, EventArgs e) {
+      sumador();
     }
   }
 }
