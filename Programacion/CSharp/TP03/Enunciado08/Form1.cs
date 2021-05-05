@@ -33,7 +33,7 @@ namespace Enunciado08 {
 
     private void button1_Click(object sender, EventArgs e) {
       Random aleatorio = new Random();
-      int dado = aleatorio.Next(1, 6);
+      int dado = aleatorio.Next(1, 7);
       label1.Text = dado.ToString();
 
       switch (dado) {
