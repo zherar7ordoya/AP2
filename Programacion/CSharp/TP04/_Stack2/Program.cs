@@ -4,6 +4,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+///////////////////////////////////////////////////////////////////////// ABOUT
+/**
+ * Esto es lo primero y más básico que habría que responder:
+ * Esta estructura de datos, ¿para qué sirve, para qué se usa?
+ * USOS:
+ * -) funcionalidad deshacer/rehacer
+ * -) inversión de palabras
+ * -) en los navegadores: avanzar/retroceder
+ * -) algoritmos de retroceso (¿y esto qué es?)
+ * -) verificación de soporte (¿y esto qué es?)
+ * */
+
 namespace _Stack2 {
   class Program {
     static void Main(string[] args) {
@@ -40,7 +52,8 @@ namespace _Stack2 {
       Console.WriteLine("\nContenido de la copia (con duplicados y nulls):");
       foreach (string numero in copia) Console.WriteLine(numero);
 
-      Console.WriteLine("\npila.Contains(\"four\") = {0}", pila.Contains("four"));
+      Console.WriteLine("pila.Contains(\"Cuatro\") = {0}", pila.Contains("Cuatro"));
+      Console.WriteLine("pila.Contains(\"Tres\") = {0}", pila.Contains("Tres"));
       Console.WriteLine("pila.Clear()"); pila.Clear();
       Console.WriteLine("pila.Count = {0}", pila.Count);
 
