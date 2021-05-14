@@ -1,3 +1,14 @@
+﻿///////////////////////////////////////////////////////////////////////// ABOUT
+/**
+ * Esto es lo primero y más básico que habría que responder:
+ * Esta estructura de datos, ¿para qué sirve, para qué se usa?
+ * USOS:
+ * -) se utiliza en la búsqueda rápida de datos: tabla de símbolos del compilador
+ * -) indexar la base de datos
+ * -) cachés
+ * -) representación única de datos
+ * */
+
 using System;
 using System.Collections.Generic;
 
