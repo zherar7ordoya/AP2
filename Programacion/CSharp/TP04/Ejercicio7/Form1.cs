@@ -55,7 +55,7 @@ namespace Listas2017 {
     }
 
     private void listaNodos_SelectedIndexChanged(object sender, EventArgs e) {
-      nodoSeleccionado = (NodoSimple)this.listaNodos.SelectedItem;
+        nodoSeleccionado = (NodoSimple)this.listaNodos.SelectedItem;
     }
 
     private void btnQuitarSeleccionado_Click(object sender, EventArgs e) {
@@ -68,7 +68,21 @@ namespace Listas2017 {
     }
 
     private void btnIntercambiarDerecha_Click(object sender, EventArgs e) {
+      // MessageBox.Show(listaNodos.SelectedItem.ToString());
+      //List<string> Listado = new List<string>();
+      List<string> Listado = listaNodos.Items.Cast<object>().Select(o => o.ToString()).ToList();
 
+      //LinkedListNode<string> NodoSeleccionado = listaNodos.SelectedItem.ToString();
+
+      string ItemSeleccionado = listaNodos.SelectedItem.ToString();
+      
+
+      Listado.Add("3 Gerardo");
+      Listado.Add("4 Tordoya");
+      Listado.Add(ItemSeleccionado);
+
+      listaNodos.Items.Clear();
+      listaNodos.Items.AddRange(Listado.ToArray());
     }
 
     private void btnIntercambiarIzquierda_Click(object sender, EventArgs e) {
