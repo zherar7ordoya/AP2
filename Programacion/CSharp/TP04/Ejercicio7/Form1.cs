@@ -70,16 +70,31 @@ namespace Listas2017 {
     private void btnIntercambiarDerecha_Click(object sender, EventArgs e) {
       // MessageBox.Show(listaNodos.SelectedItem.ToString());
       //List<string> Listado = new List<string>();
-      List<string> Listado = listaNodos.Items.Cast<object>().Select(o => o.ToString()).ToList();
+
+      
+      string[] items = new string[listaNodos.Items.Count];
+      for (int i = 0; i < listaNodos.Items.Count; i++) {
+        items[i] = listaNodos.Items[i].ToString();
+      }
+      
+      //string[] items = listaNodos.Items.OfType<string>().ToArray();
+      LinkedList<string> Listado = new LinkedList<string>(items);
+
+
+
+      // List<string> Listado = listaNodos.Items.Cast<object>().Select(o => o.ToString()).ToList();
 
       //LinkedListNode<string> NodoSeleccionado = listaNodos.SelectedItem.ToString();
 
       string ItemSeleccionado = listaNodos.SelectedItem.ToString();
-      
 
-      Listado.Add("3 Gerardo");
-      Listado.Add("4 Tordoya");
-      Listado.Add(ItemSeleccionado);
+      LinkedListNode<string> Actual = Listado.Find(ItemSeleccionado);
+      LinkedListNode<string> Anterior = Actual.Previous;
+
+      Listado.Remove(Anterior);
+
+      Listado.AddAfter(Actual, Anterior);
+      
 
       listaNodos.Items.Clear();
       listaNodos.Items.AddRange(Listado.ToArray());
