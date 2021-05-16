@@ -75,25 +75,46 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
     <wire from="(250,110)" to="(270,110)"/>
     <wire from="(250,90)" to="(250,110)"/>
     <wire from="(250,150)" to="(250,170)"/>
-    <comp lib="4" loc="(240,410)" name="D Flip-Flop"/>
+    <comp lib="6" loc="(252,197)" name="Text"/>
+    <comp lib="6" loc="(361,138)" name="Text">
+      <a name="text" val="q=0/1"/>
+    </comp>
+    <comp lib="6" loc="(152,103)" name="Text">
+      <a name="text" val="c=1"/>
+    </comp>
+    <comp lib="1" loc="(230,90)" name="AND Gate">
+      <a name="inputs" val="2"/>
+      <a name="label" val="*---*"/>
+    </comp>
+    <comp lib="6" loc="(207,165)" name="Text"/>
+    <comp lib="6" loc="(174,275)" name="Text"/>
+    <comp lib="1" loc="(320,130)" name="OR Gate">
+      <a name="inputs" val="2"/>
+      <a name="label" val="*---*"/>
+    </comp>
+    <comp lib="6" loc="(201,169)" name="Text"/>
+    <comp lib="0" loc="(120,110)" name="Clock">
+      <a name="label" val="CK"/>
+      <a name="labelfont" val="SansSerif bold 16"/>
+    </comp>
+    <comp lib="6" loc="(250,77)" name="Text">
+      <a name="text" val="z0=0/1"/>
+    </comp>
+    <comp lib="1" loc="(230,170)" name="AND Gate">
+      <a name="inputs" val="2"/>
+      <a name="label" val="* / *"/>
+      <a name="negate0" val="true"/>
+    </comp>
+    <comp lib="6" loc="(152,63)" name="Text">
+      <a name="text" val="d=0/1"/>
+    </comp>
     <comp lib="0" loc="(120,70)" name="Pin">
       <a name="tristate" val="false"/>
       <a name="label" val="D"/>
       <a name="labelfont" val="SansSerif bold 16"/>
     </comp>
-    <comp lib="1" loc="(230,170)" name="AND Gate">
-      <a name="inputs" val="2"/>
-      <a name="negate0" val="true"/>
-    </comp>
-    <comp lib="1" loc="(230,90)" name="AND Gate">
-      <a name="inputs" val="2"/>
-    </comp>
-    <comp lib="1" loc="(320,130)" name="OR Gate">
-      <a name="inputs" val="2"/>
-    </comp>
-    <comp lib="0" loc="(120,110)" name="Clock">
-      <a name="label" val="CK"/>
-      <a name="labelfont" val="SansSerif bold 16"/>
+    <comp lib="6" loc="(249,191)" name="Text">
+      <a name="text" val="z1=0"/>
     </comp>
   </circuit>
 </project>
