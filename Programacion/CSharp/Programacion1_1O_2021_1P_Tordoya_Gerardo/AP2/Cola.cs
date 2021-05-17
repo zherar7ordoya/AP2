@@ -12,12 +12,14 @@ namespace AP2 {
     public void Encolar(Nodo unNodo) {
       if (_inicio == null) { _inicio = unNodo; }
       else {
-
+        Nodo auxiliar = BuscarUltimo(_inicio);
+        auxiliar.Siguiente = unNodo;
       }
     }
 
     private Nodo BuscarUltimo(Nodo unNodo) {
-
+      if (unNodo.Siguiente == null) { return unNodo; }
+      else { return BuscarUltimo(unNodo.Siguiente); }
     }
 
     public void Desencolar() { _inicio = _inicio.Siguiente; }
@@ -25,5 +27,7 @@ namespace AP2 {
     public Nodo Inicio {
       get { return _inicio; }
     }
+
+    public bool Vacia() { return (_inicio == null); }
   }
 }
