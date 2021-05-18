@@ -1,37 +1,19 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Listas2017 {
   public partial class Form1 : Form {
+
+    // *------------------------------------------------------=> INICIALIZACIÓN
     ListaEnlazadaSimple miListaEnlazadaSimple = new ListaEnlazadaSimple();
     NodoSimple nodoSeleccionado;
+    public Form1() { InitializeComponent(); }
+    private void Form1_Load(object sender, EventArgs e) {  GenerarLista(); }
 
-    public Form1() {
-      InitializeComponent();
-    }
+    // *-----------------------------------------------------------=> CONTROLES
 
-    private void Form1_Load(object sender, EventArgs e) {
-      GenerarLista();
-    }
-
-    private void GenerarLista() {
-      this.listaNodos.Items.Clear();
-      Listar(miListaEnlazadaSimple.NodoInicial);
-    }
-
-    private void Listar(NodoSimple nodo) {
-      if (nodo != null) {
-        listaNodos.Items.Add(nodo);
-        if (nodo.Siguiente != null)
-          Listar(nodo.Siguiente);
-      }
+    private void listaNodos_SelectedIndexChanged(object sender, EventArgs e) {
+      nodoSeleccionado = (NodoSimple)this.listaNodos.SelectedItem;
     }
 
     private void cmdAgregarAlPrincipio_Click(object sender, EventArgs e) {
@@ -44,6 +26,14 @@ namespace Listas2017 {
       GenerarLista();
     }
 
+    private void btnQuitarSeleccionado_Click(object sender, EventArgs e) {
+      if (nodoSeleccionado != null) {
+        miListaEnlazadaSimple.QuitarPosicion(nodoSeleccionado.Numero);
+        GenerarLista();
+      }
+      else { MessageBox.Show("debe seleccionar un nodo."); }
+    }
+
     private void btnQuitarPrimero_Click(object sender, EventArgs e) {
       miListaEnlazadaSimple.QuitarPrimero();
       GenerarLista();
@@ -54,58 +44,47 @@ namespace Listas2017 {
       GenerarLista();
     }
 
-    private void listaNodos_SelectedIndexChanged(object sender, EventArgs e) {
-        nodoSeleccionado = (NodoSimple)this.listaNodos.SelectedItem;
-    }
-
-    private void btnQuitarSeleccionado_Click(object sender, EventArgs e) {
-      if (nodoSeleccionado != null) {
-        miListaEnlazadaSimple.QuitarPosicion(nodoSeleccionado.Numero);
-        GenerarLista();
-      }
-      else
-        MessageBox.Show("debe seleccionar un nodo.");
-    }
+    ////////////////////////////////////////////////////////////// USER STORIES
 
     private void btnIntercambiarDerecha_Click(object sender, EventArgs e) {
-      // MessageBox.Show(listaNodos.SelectedItem.ToString());
-      //List<string> Listado = new List<string>();
-
-      
-      string[] items = new string[listaNodos.Items.Count];
-      for (int i = 0; i < listaNodos.Items.Count; i++) {
-        items[i] = listaNodos.Items[i].ToString();
-      }
-      
-      //string[] items = listaNodos.Items.OfType<string>().ToArray();
-      LinkedList<string> Listado = new LinkedList<string>(items);
-
-
-
-      // List<string> Listado = listaNodos.Items.Cast<object>().Select(o => o.ToString()).ToList();
-
-      //LinkedListNode<string> NodoSeleccionado = listaNodos.SelectedItem.ToString();
-
-      string ItemSeleccionado = listaNodos.SelectedItem.ToString();
-
-      LinkedListNode<string> Actual = Listado.Find(ItemSeleccionado);
-      LinkedListNode<string> Anterior = Actual.Previous;
-
-      Listado.Remove(Anterior);
-
-      Listado.AddAfter(Actual, Anterior);
-      
-
-      listaNodos.Items.Clear();
-      listaNodos.Items.AddRange(Listado.ToArray());
+      miListaEnlazadaSimple.IntercambiarDerecha(nodoSeleccionado.Numero);
+      GenerarLista();
     }
 
     private void btnIntercambiarIzquierda_Click(object sender, EventArgs e) {
-
+      miListaEnlazadaSimple.IntercambiarIzquierda(nodoSeleccionado.Numero);
+      GenerarLista();
     }
 
     private void btnIntercambiar_Click(object sender, EventArgs e) {
+      int numero1 = 0, numero2 = 0, contador = 0;
 
+      if (listaNodos.SelectedItems.Count >= 0) {
+        for (int i = 0; i < listaNodos.SelectedItems.Count; i++) {
+          contador++;
+          if (contador == 1) { numero1 = listaNodos.SelectedIndices[i] + 1; }
+          if (contador == 2) { numero2 = listaNodos.SelectedIndices[i] + 1; }
+        }
+      }
+
+      miListaEnlazadaSimple.Intercambiar(numero1, numero2);
+      GenerarLista();
     }
+
+    ///////////////////////////////////////////////////////////////// FUNCIONES
+
+    private void GenerarLista() {
+      this.listaNodos.Items.Clear();
+      Listar(miListaEnlazadaSimple.NodoInicial);
+    }
+
+    // *----------------------------------------------=> FUNCIONES DE FUNCIONES
+    private void Listar(NodoSimple nodo) {
+      if (nodo != null) {
+        listaNodos.Items.Add(nodo);
+        if (nodo.Siguiente != null) { Listar(nodo.Siguiente); }
+      }
+    }
+    ///////////////////////////////////////////////////////////////////////////
   }
 }

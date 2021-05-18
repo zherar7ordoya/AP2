@@ -30,10 +30,17 @@ namespace AP2 {
         MostrarCola();
       }
     }
+
+    private void btnUltimo_Click(object sender, EventArgs e) {
+      Nodo auxiliar = miCola.BuscarUltimo(miCola.Inicio);
+      MessageBox.Show(auxiliar.Nombre, "Último nombre ingresado");
+    }
     ///////////////////////////////////////////////////////////////// FUNCIONES
     private void MostrarCola() {
       lstCola.Items.Clear();
       MostrarNodo(miCola.Inicio);
+      int contador = lstCola.Items.Count;
+      lblContador.Text = contador.ToString();
     }
 
     /* Función de función */

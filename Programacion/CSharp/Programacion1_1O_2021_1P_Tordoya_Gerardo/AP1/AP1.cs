@@ -18,6 +18,7 @@ namespace AP1 {
       this.MinimizeBox = false;
     }
 
+    ///////////////////////////////////////////////////////////////// PRINCIPAL
     private void btnResultado_Click(object sender, EventArgs e) {
       if(
         txtNombre.Text.Length > 0 &&

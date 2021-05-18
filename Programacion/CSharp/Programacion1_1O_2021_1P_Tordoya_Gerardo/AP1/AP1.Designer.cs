@@ -29,8 +29,8 @@
       this.nmbNumero = new System.Windows.Forms.NumericUpDown();
       this.lblNumero = new System.Windows.Forms.Label();
       this.grpColores = new System.Windows.Forms.GroupBox();
-      this.optAzul = new System.Windows.Forms.RadioButton();
       this.optRojo = new System.Windows.Forms.RadioButton();
+      this.optAzul = new System.Windows.Forms.RadioButton();
       this.btnResultado = new System.Windows.Forms.Button();
       this.lblResultado = new System.Windows.Forms.Label();
       ((System.ComponentModel.ISupportInitialize)(this.nmbNumero)).BeginInit();
@@ -43,10 +43,10 @@
       this.Portada.BorderStyle = System.Windows.Forms.BorderStyle.None;
       this.Portada.Enabled = false;
       this.Portada.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.Portada.Location = new System.Drawing.Point(15, 123);
+      this.Portada.Location = new System.Drawing.Point(10, 121);
       this.Portada.Name = "Portada";
       this.Portada.ReadOnly = true;
-      this.Portada.Size = new System.Drawing.Size(349, 13);
+      this.Portada.Size = new System.Drawing.Size(354, 13);
       this.Portada.TabIndex = 5;
       this.Portada.Text = "Gerardo Tordoya";
       this.Portada.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -84,11 +84,6 @@
       this.nmbNumero.Name = "nmbNumero";
       this.nmbNumero.Size = new System.Drawing.Size(40, 20);
       this.nmbNumero.TabIndex = 8;
-      this.nmbNumero.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
       // 
       // lblNumero
       // 
@@ -111,17 +106,6 @@
       this.grpColores.TabStop = false;
       this.grpColores.Text = "Colores";
       // 
-      // optAzul
-      // 
-      this.optAzul.AutoSize = true;
-      this.optAzul.Location = new System.Drawing.Point(103, 19);
-      this.optAzul.Name = "optAzul";
-      this.optAzul.Size = new System.Drawing.Size(45, 17);
-      this.optAzul.TabIndex = 0;
-      this.optAzul.TabStop = true;
-      this.optAzul.Text = "Azul";
-      this.optAzul.UseVisualStyleBackColor = true;
-      // 
       // optRojo
       // 
       this.optRojo.AutoSize = true;
@@ -132,6 +116,17 @@
       this.optRojo.TabStop = true;
       this.optRojo.Text = "Rojo";
       this.optRojo.UseVisualStyleBackColor = true;
+      // 
+      // optAzul
+      // 
+      this.optAzul.AutoSize = true;
+      this.optAzul.Location = new System.Drawing.Point(103, 19);
+      this.optAzul.Name = "optAzul";
+      this.optAzul.Size = new System.Drawing.Size(45, 17);
+      this.optAzul.TabIndex = 0;
+      this.optAzul.TabStop = true;
+      this.optAzul.Text = "Azul";
+      this.optAzul.UseVisualStyleBackColor = true;
       // 
       // btnResultado
       // 
@@ -145,14 +140,14 @@
       // 
       // lblResultado
       // 
-      this.lblResultado.AutoSize = true;
+      this.lblResultado.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
       this.lblResultado.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.lblResultado.Location = new System.Drawing.Point(10, 86);
       this.lblResultado.Name = "lblResultado";
-      this.lblResultado.Size = new System.Drawing.Size(110, 26);
+      this.lblResultado.Size = new System.Drawing.Size(273, 32);
       this.lblResultado.TabIndex = 12;
       this.lblResultado.Text = "Resultado";
-      this.lblResultado.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+      this.lblResultado.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
       // 
       // AP1
       // 

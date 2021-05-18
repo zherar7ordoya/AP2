@@ -11,10 +11,6 @@ namespace Listas2017
         public int Numero;
         public string Nombre;
         public NodoSimple Siguiente;
-
-        public override string ToString()
-        {
-            return string.Format("{0} {1}", Numero, Nombre);
-        }
+        public override string ToString() { return string.Format("{0} {1}", Numero, Nombre); }
     }
 }
