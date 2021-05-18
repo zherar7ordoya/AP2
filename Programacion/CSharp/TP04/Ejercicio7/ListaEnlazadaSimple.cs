@@ -72,7 +72,10 @@
     }
 
     public void Intercambiar(int numero1, int numero2) {
+      string auxiliar;
+      for(int i = 1; i==numero1; i++) {
 
+      }
     }
 
     ////////////////////////////////////////////////////////////// HERRAMIENTAS
