@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Enunciado1 {
   class Program {
@@ -13,7 +10,7 @@ namespace Enunciado1 {
       bool correcto = Int32.TryParse(texto, out numero);
       Console.Write("\nCuenta regresiva:\t");
       Regresiva(numero);
-      Console.ReadKey();
+      MessageBox.Show("¿Te gustó?");
     }
     private static void Regresiva(int numero) {
       if (numero == 0) return;

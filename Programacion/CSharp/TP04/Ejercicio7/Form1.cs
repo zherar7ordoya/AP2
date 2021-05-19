@@ -6,7 +6,7 @@ namespace Listas2017 {
 
     // *------------------------------------------------------=> INICIALIZACIÓN
     ListaEnlazadaSimple miListaEnlazadaSimple = new ListaEnlazadaSimple();
-    NodoSimple nodoSeleccionado;
+    NodoSimple nodoSeleccionado, nodo1, nodo2;
     public Form1() { InitializeComponent(); }
     private void Form1_Load(object sender, EventArgs e) {  GenerarLista(); }
 
@@ -14,6 +14,12 @@ namespace Listas2017 {
 
     private void listaNodos_SelectedIndexChanged(object sender, EventArgs e) {
       nodoSeleccionado = (NodoSimple)this.listaNodos.SelectedItem;
+
+      if (listaNodos.SelectedItems.Count == 2) {
+        nodo1 = (NodoSimple)listaNodos.SelectedItems[0];
+        nodo2 = (NodoSimple)listaNodos.SelectedItems[1];
+      }
+
     }
 
     private void cmdAgregarAlPrincipio_Click(object sender, EventArgs e) {
@@ -57,17 +63,7 @@ namespace Listas2017 {
     }
 
     private void btnIntercambiar_Click(object sender, EventArgs e) {
-      int numero1 = 0, numero2 = 0, contador = 0;
-
-      if (listaNodos.SelectedItems.Count >= 0) {
-        for (int i = 0; i < listaNodos.SelectedItems.Count; i++) {
-          contador++;
-          if (contador == 1) { numero1 = listaNodos.SelectedIndices[i] + 1; }
-          if (contador == 2) { numero2 = listaNodos.SelectedIndices[i] + 1; }
-        }
-      }
-
-      miListaEnlazadaSimple.Intercambiar(numero1, numero2);
+      miListaEnlazadaSimple.Intercambiar(nodo1.Numero, nodo2.Numero);
       GenerarLista();
     }
 

@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Enunciado3 {
   class Program {
@@ -19,7 +16,7 @@ namespace Enunciado3 {
       Console.Write("\nVector luego de ordenarlo:\t");
       for (int i = 0; i < vector.Length; i++) Console.Write(vector[i] + " ");
 
-      Console.ReadKey();
+      MessageBox.Show("¿Te gustó?");
     }
 
     /* Uf! Está un poco desordenado...

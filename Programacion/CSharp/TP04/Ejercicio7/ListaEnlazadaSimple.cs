@@ -1,16 +1,18 @@
 ﻿namespace Listas2017 {
   class ListaEnlazadaSimple {
+
+    // *----------------------------------------------------=> INICIALIZACIONES
     public NodoSimple NodoInicial = null;
 
+    /////////////////////////////////////////////////////////////////// MÉTODOS
     public void AgregarAlPrincipio(string nombre) {
       NodoSimple nodo = new NodoSimple();
       nodo.Numero = ProximoNumero();
       nodo.Nombre = nombre;
 
-      if (NodoInicial == null)
-        NodoInicial = nodo;
+      if (NodoInicial == null) { NodoInicial = nodo; }
+      //si hay elementos en la lista, tenemos que agregarlo entre el inicial y el siguiente
       else {
-        //si hay elementos en la lista, tenemos que agregarlo entre el inicial y el siguiente
         NodoSimple aux = NodoInicial;
         NodoInicial = nodo;
         NodoInicial.Siguiente = aux;
@@ -21,25 +23,23 @@
       NodoSimple nodo = new NodoSimple();
       nodo.Numero = ProximoNumero();
       nodo.Nombre = nombre;
-
-      //necesito buscar el último para agregarlo al final
-      NodoSimple ultimo = BuscarUltimo(NodoInicial);
+      NodoSimple ultimo = BuscarUltimo(NodoInicial); //necesito buscar el último para agregarlo al final
       ultimo.Siguiente = nodo;
     }
 
     public void QuitarPosicion(int numero) {
       if (NodoInicial != null) {
         //si el primero es el que se quiere borrar
-        if (NodoInicial.Numero == numero) {
-          QuitarPrimero();
-        }
+        if (NodoInicial.Numero == numero) { QuitarPrimero(); }
+        // si el ultimo es elq ue se quiere borrar
         else {
-          // si el ultimo es elq ue se quiere borrar
           NodoSimple ultimo = BuscarUltimo(NodoInicial);
-          if (ultimo != null && ultimo.Numero == numero)
-            QuitarUltimo();
-          else { //si se quiere borrar un nodo intermedio
+
+          if (ultimo != null && ultimo.Numero == numero) { QuitarUltimo(); }
+          //si se quiere borrar un nodo intermedio            
+          else { 
             NodoSimple nodoAnteriorAlElegido = BuscarAnterior(NodoInicial, numero);
+
             if (nodoAnteriorAlElegido != null)
               nodoAnteriorAlElegido.Siguiente = nodoAnteriorAlElegido.Siguiente.Siguiente;
           }
@@ -77,7 +77,7 @@
        */
     }
 
-    ////////////////////////////////////////////////////////////// HERRAMIENTAS
+    ///////////////////////////////////////////////////////////////// FUNCIONES
     private int BuscarMaximo(NodoSimple nodo, int numero) {
       int max = nodo.Numero > numero ? nodo.Numero : numero;
 

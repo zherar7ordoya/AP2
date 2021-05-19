@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Enunciado2 {
   class Program {
@@ -11,7 +8,7 @@ namespace Enunciado2 {
       int numero = Convert.ToInt32(Console.ReadLine());
       double factorial = Factorial(numero);
       Console.WriteLine("El factorial de " + numero + " es " + factorial.ToString());
-      Console.ReadKey();
+      MessageBox.Show("¿Te gustó?");
     }
     private static double Factorial(int numero) {
       if (numero == 0) return 1;
