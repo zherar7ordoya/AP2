@@ -63,7 +63,9 @@ namespace Listas2017 {
     }
 
     private void btnIntercambiar_Click(object sender, EventArgs e) {
-      miListaEnlazadaSimple.Intercambiar(nodo1.Numero, nodo2.Numero);
+      // miListaEnlazadaSimple.Intercambiar(nodo1.Numero, nodo2.Numero);
+      miListaEnlazadaSimple[0] = "Gerardo";
+      miListaEnlazadaSimple[2] = "Tordoya";
       GenerarLista();
     }
 

@@ -1,8 +1,35 @@
-﻿namespace Listas2017 {
+﻿
+namespace Listas2017 {
   class ListaEnlazadaSimple {
 
     // *----------------------------------------------------=> INICIALIZACIONES
     public NodoSimple NodoInicial = null;
+    public NodoSimple Trabajo = null;
+
+    public string this[int Index] {
+      get {
+        Trabajo = ObtenerPorIndice(Index);
+        return Trabajo.Nombre;
+      }
+      set {
+        Trabajo = ObtenerPorIndice(Index);
+        if (Trabajo != null) { Trabajo.Nombre = value;  }
+      }
+    }
+
+    public NodoSimple ObtenerPorIndice(int Index) {
+      NodoSimple Auxiliar = null;
+      int indice = 0;
+      Trabajo = NodoInicial;
+
+      while(Trabajo.Siguiente != null) {
+        Trabajo = Trabajo.Siguiente;
+        indice++;
+        if(indice == Index) { Auxiliar = Trabajo; }
+      }
+
+      return Auxiliar;
+    }
 
     /////////////////////////////////////////////////////////////////// MÉTODOS
     public void AgregarAlPrincipio(string nombre) {
@@ -72,9 +99,10 @@
     }
 
     public void Intercambiar(int numero1, int numero2) {
-      /**
-       * Me tomo un agaromba...
-       */
+      //NodoSimple auxiliar = BuscarNodo();
+
+      
+
     }
 
     ///////////////////////////////////////////////////////////////// FUNCIONES
@@ -122,5 +150,11 @@
         return BuscarAnterior(nodo.Siguiente, numero);
       return null; //es el ultimo...
     }
+
+    private NodoSimple BuscarNodo(NodoSimple nodo, int numero) {
+
+      return nodo;
+    }
+
   }
 }
