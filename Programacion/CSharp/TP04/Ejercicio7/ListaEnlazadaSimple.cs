@@ -3,30 +3,29 @@ namespace Listas2017 {
   class ListaEnlazadaSimple {
 
     // *----------------------------------------------------=> INICIALIZACIONES
-    public NodoSimple NodoInicial = null;
-    public NodoSimple Trabajo = null;
+    public NodoSimple NodoInicial = null, Activo = null;
 
     public string this[int Index] {
       get {
-        Trabajo = ObtenerPorIndice(Index);
-        return Trabajo.Nombre;
+        Activo = Indexado(Index);
+        return Activo.Nombre;
       }
       set {
-        Trabajo = ObtenerPorIndice(Index);
-        if (Trabajo != null) { Trabajo.Nombre = value;  }
+        Activo = Indexado(Index);
+        if (Activo != null) { Activo.Nombre = value; }
       }
     }
 
-    public NodoSimple ObtenerPorIndice(int Index) {
+    private NodoSimple Indexado(int Index) {
       NodoSimple Auxiliar = null;
       int indice = 0;
-      Trabajo = NodoInicial;
+      Activo = NodoInicial;
 
-      while(Trabajo.Siguiente != null) {
-        Trabajo = Trabajo.Siguiente;
+      do {
         indice++;
-        if(indice == Index) { Auxiliar = Trabajo; }
-      }
+        if (indice == Index) { Auxiliar = Activo; }
+        if (Activo.Siguiente != null) { Activo = Activo.Siguiente; }
+      } while (indice != Index);
 
       return Auxiliar;
     }

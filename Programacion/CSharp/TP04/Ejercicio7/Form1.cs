@@ -16,6 +16,8 @@ namespace Listas2017 {
       nodoSeleccionado = (NodoSimple)this.listaNodos.SelectedItem;
 
       if (listaNodos.SelectedItems.Count == 2) {
+        nodo1 = null;
+        nodo2 = null;
         nodo1 = (NodoSimple)listaNodos.SelectedItems[0];
         nodo2 = (NodoSimple)listaNodos.SelectedItems[1];
       }
@@ -63,10 +65,17 @@ namespace Listas2017 {
     }
 
     private void btnIntercambiar_Click(object sender, EventArgs e) {
-      // miListaEnlazadaSimple.Intercambiar(nodo1.Numero, nodo2.Numero);
-      miListaEnlazadaSimple[0] = "Gerardo";
-      miListaEnlazadaSimple[2] = "Tordoya";
-      GenerarLista();
+      if (listaNodos.SelectedItems.Count == 2) {
+        DialogResult respuesta = MessageBox.Show("¿Usar indexado?", "Espero respuesta...", MessageBoxButtons.YesNo);
+        if (respuesta == DialogResult.Yes) {
+          string auxiliar1 = nodo1.Nombre;
+          string auxiliar2 = nodo2.Nombre;
+          miListaEnlazadaSimple[nodo1.Numero] = auxiliar2;
+          miListaEnlazadaSimple[nodo2.Numero] = auxiliar1;
+        }
+        else { miListaEnlazadaSimple.Intercambiar(nodo1.Numero, nodo2.Numero); }
+        GenerarLista();
+      } else { MessageBox.Show("Seleccione 2 (dos) ítems de la lista para realizar esta operación", "Caramba..."); }
     }
 
     ///////////////////////////////////////////////////////////////// FUNCIONES
