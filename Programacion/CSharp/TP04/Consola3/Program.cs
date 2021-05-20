@@ -16,7 +16,7 @@ namespace Enunciado3 {
       Console.Write("\nVector luego de ordenarlo:\t");
       for (int i = 0; i < vector.Length; i++) Console.Write(vector[i] + " ");
 
-      MessageBox.Show("¿Te gustó?");
+      MessageBox.Show("¿Te gustó?"); // Do some magic!
     }
 
     /* Uf! Está un poco desordenado...

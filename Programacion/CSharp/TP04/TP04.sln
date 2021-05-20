@@ -5,11 +5,13 @@ VisualStudioVersion = 15.0.28307.1500
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ejercicio7", "Ejercicio7\Ejercicio7.csproj", "{468D7FE3-FADA-4A51-8084-46B12381F48C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Consola1", "Enunciado1\Consola1.csproj", "{983B3867-EA22-48DB-8D9B-FAB9F0C07F71}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Consola1", "Consola1\Consola1.csproj", "{983B3867-EA22-48DB-8D9B-FAB9F0C07F71}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Consola2", "Enunciado2\Consola2.csproj", "{9373C548-F7B5-4EA8-986E-4B3D19045DAA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Consola2", "Consola2\Consola2.csproj", "{9373C548-F7B5-4EA8-986E-4B3D19045DAA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Consola3", "Enunciado3\Consola3.csproj", "{7D89A77E-DA00-4A4A-8A6A-820B5865FF71}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Consola3", "Consola3\Consola3.csproj", "{7D89A77E-DA00-4A4A-8A6A-820B5865FF71}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ejercicio1", "Ejercicio1\Ejercicio1.csproj", "{3C5D4CA2-7C54-4928-8CEB-5685253FC135}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{7D89A77E-DA00-4A4A-8A6A-820B5865FF71}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7D89A77E-DA00-4A4A-8A6A-820B5865FF71}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7D89A77E-DA00-4A4A-8A6A-820B5865FF71}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3C5D4CA2-7C54-4928-8CEB-5685253FC135}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3C5D4CA2-7C54-4928-8CEB-5685253FC135}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3C5D4CA2-7C54-4928-8CEB-5685253FC135}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3C5D4CA2-7C54-4928-8CEB-5685253FC135}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -8,7 +8,7 @@ namespace Enunciado2 {
       int numero = Convert.ToInt32(Console.ReadLine());
       double factorial = Factorial(numero);
       Console.WriteLine("El factorial de " + numero + " es " + factorial.ToString());
-      MessageBox.Show("¿Te gustó?");
+      MessageBox.Show("¿Te gustó?"); // Do some magic!
     }
     private static double Factorial(int numero) {
       if (numero == 0) return 1;

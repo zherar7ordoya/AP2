@@ -55,18 +55,20 @@ namespace Listas2017 {
     ////////////////////////////////////////////////////////////// USER STORIES
 
     private void btnIntercambiarDerecha_Click(object sender, EventArgs e) {
+      MessageBox.Show("Intercambiar con el siguiente (el de la derecha).", "Interpretación");
       miListaEnlazadaSimple.IntercambiarDerecha(nodoSeleccionado.Numero);
       GenerarLista();
     }
 
     private void btnIntercambiarIzquierda_Click(object sender, EventArgs e) {
+      MessageBox.Show("Intercambiar con el anterior (el de la izquierda).", "Interpretación");
       miListaEnlazadaSimple.IntercambiarIzquierda(nodoSeleccionado.Numero);
       GenerarLista();
     }
 
     private void btnIntercambiar_Click(object sender, EventArgs e) {
       if (listaNodos.SelectedItems.Count == 2) {
-        DialogResult respuesta = MessageBox.Show("¿Usar indexado?", "Espero respuesta...", MessageBoxButtons.YesNo);
+        DialogResult respuesta = MessageBox.Show("¿Usar indexer?", "Espero respuesta...", MessageBoxButtons.YesNo);
         if (respuesta == DialogResult.Yes) {
           string auxiliar1 = nodo1.Nombre;
           string auxiliar2 = nodo2.Nombre;

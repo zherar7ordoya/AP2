@@ -1,8 +1,9 @@
-﻿
+﻿using System.Windows.Forms;
+
 namespace Listas2017 {
   class ListaEnlazadaSimple {
 
-    // *----------------------------------------------------=> INICIALIZACIONES
+    ////////////////////////////////////////////////////////// INICIALIZACIONES
     public NodoSimple NodoInicial = null, Activo = null;
 
     public string this[int Index] {
@@ -15,7 +16,7 @@ namespace Listas2017 {
         if (Activo != null) { Activo.Nombre = value; }
       }
     }
-
+    // [🠕] Indexer [🠕] <=-------------------------------=>  [🠗] Indexado [🠗] \\
     private NodoSimple Indexado(int Index) {
       NodoSimple Auxiliar = null;
       int indice = 0;
@@ -90,18 +91,44 @@ namespace Listas2017 {
     }
 
     public void IntercambiarDerecha(int numero) {
-
+      // Interpretación: Intercambiar con el siguiente (el de la derecha).
+      NodoSimple nodo1 = Indexado(numero);
+      if(nodo1.Siguiente != null) {
+        NodoSimple nodo2 = Indexado(numero + 1);
+        string auxiliar1 = nodo1.Nombre;
+        string auxiliar2 = nodo2.Nombre;
+        nodo1.Nombre = auxiliar2;
+        nodo2.Nombre = auxiliar1;
+      } else {
+        // Do some magic!
+        MessageBox.Show("Debe elegir un ítem intercambiable.", "Caray...");
+      }
     }
 
     public void IntercambiarIzquierda(int numero) {
-
+      // Interpretación: Intercambiar con el anterior (el de la izquierda).
+      NodoSimple nodo1 = Indexado(numero);
+      if (NodoInicial.Numero != nodo1.Numero) {
+        // NodoSimple nodo2 = BuscarAnterior(nodo1, numero);
+        NodoSimple nodo2 = Indexado(numero - 1);
+        string auxiliar1 = nodo1.Nombre;
+        string auxiliar2 = nodo2.Nombre;
+        nodo1.Nombre = auxiliar2;
+        nodo2.Nombre = auxiliar1;
+      }
+      else {
+        // Do some magic!
+        MessageBox.Show("Debe elegir un ítem intercambiable.", "Caray...");
+      }
     }
 
     public void Intercambiar(int numero1, int numero2) {
-      //NodoSimple auxiliar = BuscarNodo();
-
-      
-
+      NodoSimple nodo1 = Indexado(numero1);
+      NodoSimple nodo2 = Indexado(numero2);
+      string auxiliar1 = nodo1.Nombre;
+      string auxiliar2 = nodo2.Nombre;
+      nodo1.Nombre = auxiliar2;
+      nodo2.Nombre = auxiliar1;
     }
 
     ///////////////////////////////////////////////////////////////// FUNCIONES
@@ -148,11 +175,6 @@ namespace Listas2017 {
       if (nodo.Siguiente != null)
         return BuscarAnterior(nodo.Siguiente, numero);
       return null; //es el ultimo...
-    }
-
-    private NodoSimple BuscarNodo(NodoSimple nodo, int numero) {
-
-      return nodo;
     }
 
   }

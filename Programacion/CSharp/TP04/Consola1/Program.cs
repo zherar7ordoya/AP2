@@ -10,7 +10,7 @@ namespace Enunciado1 {
       bool correcto = Int32.TryParse(texto, out numero);
       Console.Write("\nCuenta regresiva:\t");
       Regresiva(numero);
-      MessageBox.Show("¿Te gustó?");
+      MessageBox.Show("¿Te gustó?"); // Do some magic!
     }
     private static void Regresiva(int numero) {
       if (numero == 0) return;
