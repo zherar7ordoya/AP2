@@ -1,5 +1,5 @@
 ﻿namespace Ejercicio1 {
-  partial class Form1 {
+  partial class Pacientes {
     /// <summary>
     /// Required designer variable.
     /// </summary>

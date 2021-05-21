@@ -1,25 +1,25 @@
-    public NodoSimple Activo = null;
+    public NodoSimple NodoInicial = null, NodoActivo = null;
 
-    public string this[int Index] {
+    public string this[int _id] {
       get {
-        Activo = ObtenerPorIndice(Index);
-        return Activo.Nombre;
+        NodoActivo = Indexado(Index);
+        return NodoActivo.Codigo;
       }
       set {
-        Activo = ObtenerPorIndice(Index);
-        if (Activo != null) { Activo.Nombre = value;  }
+        NodoActivo = Indexado(Index);
+        if (NodoActivo != null) { NodoActivo.Codigo = value; }
       }
     }
-
-    private NodoSimple ObtenerPorIndice(int Index) {
+    // [🠕] Indexer [🠕] <=-------------------------------=>  [🠗] Indexado [🠗] \\
+    private NodoSimple Indexado(int Index) {
       NodoSimple Auxiliar = null;
       int indice = 0;
-      Activo = NodoInicial;
+      NodoActivo = NodoInicial;
 
-       do {
+      do {
         indice++;
-        if (indice == Index) { Auxiliar = Activo; }
-        if (Activo.Siguiente != null) { Activo = Activo.Siguiente; }
+        if (indice == Index) { Auxiliar = NodoActivo; }
+        if (NodoActivo.Siguiente != null) { NodoActivo = NodoActivo.Siguiente; }
       } while (indice != Index);
 
       return Auxiliar;
