@@ -47,6 +47,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Emp.cs" />
+    <Compile Include="LESExperimental.cs" />
+    <Compile Include="MyLinkedList.cs" />
+    <Compile Include="Node.cs" />
+    <Compile Include="NodeExperimental.cs" />
     <Compile Include="Pacientes.cs">
       <SubType>Form</SubType>
     </Compile>

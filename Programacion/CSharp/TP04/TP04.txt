@@ -1,0 +1,3 @@
+https://www.c-sharpcorner.com/UploadFile/deveshomar/ways-to-bind-datagridview-in-window-forms-C-Sharp/
+
+https://stackoverflow.com/questions/30573677/how-to-convert-a-linkedlist-to-an-array-in-c

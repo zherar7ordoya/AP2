@@ -35,14 +35,15 @@
       this.dataGridView1.Size = new System.Drawing.Size(400, 200);
       this.dataGridView1.TabIndex = 0;
       // 
-      // Form1
+      // Pacientes
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.ClientSize = new System.Drawing.Size(427, 229);
       this.Controls.Add(this.dataGridView1);
-      this.Name = "Form1";
+      this.Name = "Pacientes";
       this.Text = "Form1";
+      this.Load += new System.EventHandler(this.Pacientes_Load);
       ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
       this.ResumeLayout(false);
 

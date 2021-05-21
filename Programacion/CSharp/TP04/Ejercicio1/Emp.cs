@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Ejercicio1 {
+﻿namespace Ejercicio1 {
   public class Emp {
     public int ID { get; set; }
     public string Nombre { get; set; }

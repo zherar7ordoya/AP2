@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Ejercicio1 {
+﻿namespace Ejercicio1 {
   class ListaEnlazadaSimple {
 
     ////////////////////////////////////////////////////////// INICIALIZACIONES
-    public NodoSimple NodoInicial = null, NodoActivo = null;
+    public NodoSimple NodoInicio = null, NodoActivo = null;
+    private int contador = 0;
 
-    public string this[int _id] {
+    public int this[int _id] {
       get {
         NodoActivo = Indexado(_id);
         return NodoActivo.Codigo;
@@ -22,20 +17,28 @@ namespace Ejercicio1 {
     }
     // [🠕] Indexer [🠕] <=-------------------------------=>  [🠗] Indexado [🠗] \\
     private NodoSimple Indexado(int _id) {
-      NodoSimple Auxiliar = null;
+      NodoSimple NodoAuxiliar = null;
       int indice = 0;
-      NodoActivo = NodoInicial;
+      NodoActivo = NodoInicio;
 
       do {
         indice++;
-        if (indice == _id) { Auxiliar = NodoActivo; }
+        if (indice == _id) { NodoAuxiliar = NodoActivo; }
         if (NodoActivo.Siguiente != null) { NodoActivo = NodoActivo.Siguiente; }
       } while (indice != _id);
 
-      return Auxiliar;
+      return NodoAuxiliar;
     }
 
+
     /////////////////////////////////////////////////////////////////// MÉTODOS
+
+
+    public void Inicializar() {
+      contador++;
+      NodoInicio = new NodoSimple(contador, "Gerardo", "Tordoya", "Pachi Gorriti 1310", "3885843652");
+    }
+      
 
     /* Battaglia
     public void AgregarAlPrincipio(string nombre) {
