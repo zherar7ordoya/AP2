@@ -46,20 +46,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Alumno.cs" />
-    <Compile Include="Emp.cs" />
-    <Compile Include="LESExperimental.cs" />
-    <Compile Include="MyLinkedList.cs" />
-    <Compile Include="Node.cs" />
-    <Compile Include="NodeExperimental.cs" />
     <Compile Include="Pacientes.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Pacientes.Designer.cs">
       <DependentUpon>Pacientes.cs</DependentUpon>
     </Compile>
-    <Compile Include="ListaEnlazadaSimple.cs" />
-    <Compile Include="NodoSimple.cs" />
+    <Compile Include="PayoffNode.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Pacientes.resx">
