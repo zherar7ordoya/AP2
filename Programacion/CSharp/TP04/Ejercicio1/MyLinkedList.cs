@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Ejercicio1 {
-  public class MyLinkedList : IEnumerable<int> {
+  public class MyLinkedList : IEnumerable<string> {
   
 
     private Node headNode;
@@ -22,28 +22,35 @@ namespace Ejercicio1 {
       return count;
     }
 
-    public void Add(int i) {
+    
+    public void Add(string i, string s) {
       if (headNode == null) {
-        headNode = new Node(i);
+        headNode = new Node(i, s);
       }
       else {
-        headNode.Add(i);
+        headNode.Add(i, s);
       }
       count++;
     }
-
+    
     
     // *---------------------------------=> *
-    public IEnumerator<int> GetEnumerator() {
+    
+
+    public IEnumerator<string> GetEnumerator() {
       Node current = headNode;
       while (current != null) {
         yield return current.data;
+        yield return current.dato;
         current = current.next;
       }
     }
-    IEnumerator IEnumerable.GetEnumerator() { return GetEnumerator(); }
+
+    IEnumerator IEnumerable.GetEnumerator() {
+      return GetEnumerator();
+    }
     // *-----------------------------------------------------------=> *
-    
+
   }
 }
 

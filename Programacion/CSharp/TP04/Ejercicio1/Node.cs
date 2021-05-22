@@ -7,30 +7,28 @@ using System.Threading.Tasks;
 namespace Ejercicio1 {
   class Node {
 
-
-    public int data;
+    public string data { get; set; }
+    public string dato { get; set; }
     public Node next;
-
-    /*
-    public Node(int i) {
+    
+    
+    public Node(string i, string s) {
       data = i;
+      dato = s;
       next = null;
     }
-    */
-    public Node(int i) {
-      this.data = i;
-      this.next = null;
-    }
+    
 
-    public void Add(int i) {
+      
+    public void Add(string i, string s) {
       if (next == null) {
-        next = new Node(i);
+        next = new Node(i, s);
       }
       else {
-        next.Add(i);
+        next.Add(i, s);
       }
     }
-
+    
 
   }
 }
