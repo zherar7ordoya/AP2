@@ -23,34 +23,34 @@
     /// the contents of this method with the code editor.
     /// </summary>
     private void InitializeComponent() {
-      this.PayoffTable = new System.Windows.Forms.DataGridView();
-      ((System.ComponentModel.ISupportInitialize)(this.PayoffTable)).BeginInit();
+      this.dgvPacientes = new System.Windows.Forms.DataGridView();
+      ((System.ComponentModel.ISupportInitialize)(this.dgvPacientes)).BeginInit();
       this.SuspendLayout();
       // 
-      // PayoffTable
+      // dgvPacientes
       // 
-      this.PayoffTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-      this.PayoffTable.Location = new System.Drawing.Point(12, 12);
-      this.PayoffTable.Name = "PayoffTable";
-      this.PayoffTable.Size = new System.Drawing.Size(400, 200);
-      this.PayoffTable.TabIndex = 1;
+      this.dgvPacientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+      this.dgvPacientes.Location = new System.Drawing.Point(12, 12);
+      this.dgvPacientes.Name = "dgvPacientes";
+      this.dgvPacientes.Size = new System.Drawing.Size(543, 243);
+      this.dgvPacientes.TabIndex = 1;
       // 
       // Pacientes
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-      this.ClientSize = new System.Drawing.Size(424, 233);
-      this.Controls.Add(this.PayoffTable);
+      this.ClientSize = new System.Drawing.Size(569, 270);
+      this.Controls.Add(this.dgvPacientes);
       this.Name = "Pacientes";
       this.Text = "Form1";
       this.Load += new System.EventHandler(this.Pacientes_Load);
-      ((System.ComponentModel.ISupportInitialize)(this.PayoffTable)).EndInit();
+      ((System.ComponentModel.ISupportInitialize)(this.dgvPacientes)).EndInit();
       this.ResumeLayout(false);
 
     }
 
     #endregion
-    private System.Windows.Forms.DataGridView PayoffTable;
+    private System.Windows.Forms.DataGridView dgvPacientes;
   }
 }
 

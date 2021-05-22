@@ -7,3 +7,5 @@ https://stackoverflow.com/questions/18820151/how-to-populate-a-datagridview-with
 https://stackoverflow.com/questions/3823848/creating-a-very-simple-linked-list
 
 https://stackoverflow.com/questions/40208846/bind-a-linkedlist-to-a-datagridview
+
+https://stackoverflow.com/questions/6487839/reading-data-from-datagridview-in-c-sharp

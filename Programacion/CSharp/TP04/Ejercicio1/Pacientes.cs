@@ -7,35 +7,39 @@ using System.Windows.Forms;
 namespace Ejercicio1 {
   public partial class Pacientes : Form {
     //////////////////////////////////////////////////////////// INICIALIZACIÓN
+    /** Referencia
+     *  NS: Nodo Simple
+     *  LES: Lista Enlazada Simple
+     *  FD: Fuente de Datos */
     public Pacientes() { InitializeComponent(); }
-
     private void Pacientes_Load(object sender, EventArgs e) {
-      LinkedList<PayoffNode> PayLL = new LinkedList<PayoffNode>();
-      Random Rnd = new Random();
-      for (int K = 1; K <= 10; K++) {
-        var T = new Ejercicio1.PayoffNode();
-        T.Category = "Account==" + K;
-        T.GreekType = "Greek==" + K;
-        T.DealNo = K;
-        T.Strategy = "Strategy==" + K;
-        for (int DP = 1; DP <= 21; DP++) {
-          T.Data[DP] = Rnd.Next(10, 99);
-        }
-        PayLL.AddLast(T);
+      LinkedList<PacientesNS> PacientesLES = new LinkedList<PacientesNS>();
+      for (int i = 1; i <= 5; i++) {
+        var nodo = new PacientesNS {
+          Codigo = i,
+          Nombres = "Nombre " + i,
+          Apellido = "Apellido " + i,
+          Direccion = "Dirección" + i,
+          Telefono = "+54..." + i
+        };
+        PacientesLES.AddLast(nodo);
       }
-      List<PayoffNode> qP = (from P in PayLL
-                             // where P.Category == "Account==4" && P.DealNo == 4 && P.GreekType == "Greek==4" && P.Strategy == "Strategy==4"
-                             select new PayoffNode() {
-                               Category = P.Category,
-                               DealNo = P.DealNo,
-                               GreekType = P.GreekType,
-                               Strategy = P.Strategy,
-                               Data1 = P.Data[1],
-                               Data2 = P.Data[2],
-                               Data3 = P.Data[3],
-                             }).ToList();
+      List<PacientesNS> PacientesFD = (from item in PacientesLES
+                                       select new PacientesNS() {
+                                         Codigo = item.Codigo,
+                                         Nombres = item.Nombres,
+                                         Apellido = item.Apellido,
+                                         Direccion = item.Direccion,
+                                         Telefono = item.Telefono,
+                                       }).ToList();
+      dgvPacientes.DataSource = PacientesFD;
+      // *----------------------------------------------------------=> TEMPORAL
 
-      PayoffTable.DataSource = qP;
+      string texto = "Bueno, estoy siendo referenciado...";
+      string respuesta = Utilities.InputBox("AVISO", "Asunto", ref texto).ToString();
+      MessageBox.Show(respuesta);
+
+
     }
     ///////////////////////////////////////////////////////////////// CONTROLES
 
