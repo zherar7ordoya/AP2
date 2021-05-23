@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Windows.Forms;
 using System.Drawing;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Ejercicio1 {
-  public class Utilities {
+  public class Herramientas {
+
     public static DialogResult InputBox(string title, string promptText, ref string value) {
       Form form = new Form();
       Label label = new Label();

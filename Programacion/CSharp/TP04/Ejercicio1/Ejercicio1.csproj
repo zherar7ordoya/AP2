@@ -46,6 +46,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="LES.cs" />
+    <Compile Include="NS.cs" />
     <Compile Include="PacientesNS.cs" />
     <Compile Include="Pacientes.cs">
       <SubType>Form</SubType>
@@ -55,7 +57,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Utilities.cs" />
+    <Compile Include="Herramientas.cs" />
     <EmbeddedResource Include="Pacientes.resx">
       <DependentUpon>Pacientes.cs</DependentUpon>
     </EmbeddedResource>

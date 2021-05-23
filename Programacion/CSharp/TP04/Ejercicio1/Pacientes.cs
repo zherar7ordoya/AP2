@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Diagnostics;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -23,6 +24,7 @@ namespace Ejercicio1 {
           Telefono = "+54..." + i
         };
         PacientesLES.AddLast(nodo);
+        Debug.WriteLine(nodo.Codigo);
       }
       List<PacientesNS> PacientesFD = (from item in PacientesLES
                                        select new PacientesNS() {
@@ -34,11 +36,11 @@ namespace Ejercicio1 {
                                        }).ToList();
       dgvPacientes.DataSource = PacientesFD;
       // *----------------------------------------------------------=> TEMPORAL
-
+      /*
       string texto = "Bueno, estoy siendo referenciado...";
-      string respuesta = Utilities.InputBox("AVISO", "Asunto", ref texto).ToString();
-      MessageBox.Show(respuesta);
-
+      string respuesta = Herramientas.InputBox("AVISO", "Asunto", ref texto).ToString();
+      MessageBox.Show(texto);
+      */
 
     }
     ///////////////////////////////////////////////////////////////// CONTROLES
