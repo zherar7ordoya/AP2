@@ -24,7 +24,6 @@ namespace Ejercicio1 {
           Telefono = "+54..." + i
         };
         PacientesLES.AddLast(nodo);
-        Debug.WriteLine(nodo.Codigo);
       }
       List<PacientesNS> PacientesFD = (from item in PacientesLES
                                        select new PacientesNS() {
@@ -41,7 +40,29 @@ namespace Ejercicio1 {
       string respuesta = Herramientas.InputBox("AVISO", "Asunto", ref texto).ToString();
       MessageBox.Show(texto);
       */
+      LES miLista = new LES();
+      miLista.AgregarNodo(3);
+      miLista.AgregarNodo(5);
+      miLista.AgregarNodo(7);
+      miLista.AgregarNodo(9);
+      miLista.AgregarNodo(11);
+      miLista.AgregarNodo(15);
 
+      miLista.Transversar();
+      // Debug.WriteLine(miLista.EstaVacia());
+      // miLista.Vaciar();
+      // Debug.WriteLine(miLista.EstaVacia());
+      //int encontrado = miLista.IndiceDeDato(11);
+      //Debug.WriteLine(encontrado);
+      //Debug.WriteLine(miLista.DatoEnIndice(6));
+      //Debug.WriteLine(miLista.Largo());
+      //Debug.WriteLine(miLista.BuscarNodoAnterior(7));
+
+      //miLista.BorrarNodoPorDato(25);
+      //miLista.InsertarNodoEnIndice(1, 20);
+      Debug.WriteLine(miLista.NodoEnIndice(4));
+      miLista[4] = 25;
+      miLista.Transversar();
     }
     ///////////////////////////////////////////////////////////////// CONTROLES
 
