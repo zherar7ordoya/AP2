@@ -8,12 +8,15 @@ using System.Windows.Forms;
 namespace Ejercicio1 {
   public partial class Pacientes : Form {
     //////////////////////////////////////////////////////////// INICIALIZACIÓN
-    /** Referencia
-     *  NS: Nodo Simple
-     *  LES: Lista Enlazada Simple
-     *  FD: Fuente de Datos */
+    /** 
+     * Referencia
+     *  NS:   Nodo Simple
+     *  LES:  Lista Enlazada Simple
+     *  FD:   Fuente de Datos 
+     */
     public Pacientes() { InitializeComponent(); }
     private void Pacientes_Load(object sender, EventArgs e) {
+
       LinkedList<PacientesNS> PacientesLES = new LinkedList<PacientesNS>();
       for (int i = 1; i <= 5; i++) {
         var nodo = new PacientesNS {
@@ -41,14 +44,16 @@ namespace Ejercicio1 {
       MessageBox.Show(texto);
       */
       LES miLista = new LES();
-      miLista.AgregarNodo(3);
+      miLista.AgregarNodo(3, "Tres");
       miLista.AgregarNodo(5);
       miLista.AgregarNodo(7);
       miLista.AgregarNodo(9);
       miLista.AgregarNodo(11);
       miLista.AgregarNodo(15);
 
-      miLista.Transversar();
+      
+
+  miLista.Transversar();
       // Debug.WriteLine(miLista.EstaVacia());
       // miLista.Vaciar();
       // Debug.WriteLine(miLista.EstaVacia());
@@ -63,6 +68,11 @@ namespace Ejercicio1 {
       Debug.WriteLine(miLista.NodoEnIndice(4));
       miLista[4] = 25;
       miLista.Transversar();
+
+
+      
+      
+
     }
     ///////////////////////////////////////////////////////////////// CONTROLES
 
