@@ -51,8 +51,19 @@ namespace Ejercicio1 {
       miLista.AgregarNodo(11);
       miLista.AgregarNodo(15);
 
-      
+      myLinkedList<ListNode> SimpleLista = new myLinkedList<int>();
+      SimpleLista.addBack<int>(5);
+      SimpleLista.AgregarNodo<int>(5);
+      SimpleLista.AgregarNodo(7);
+      SimpleLista.AgregarNodo(9);
+      SimpleLista.AgregarNodo(11);
+      SimpleLista.AgregarNodo(15);
 
+      SimpleLinkedList<int> SimpleListado = (from item in SimpleLista
+                            select new NS() {
+                              Dato = item.Dato
+                            }).ToList();
+                            
   miLista.Transversar();
       // Debug.WriteLine(miLista.EstaVacia());
       // miLista.Vaciar();

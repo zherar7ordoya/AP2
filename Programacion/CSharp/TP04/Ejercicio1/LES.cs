@@ -8,17 +8,18 @@ using System.Collections.Generic;
 using System.Diagnostics;
 
 class LES {
-  ////////////////////////////////////////////////////////// INICIALIZACIONES
+  //////////////////////////////////////////////////////////// INICIALIZACIONES
   private NS NodoInicio = null, NodoAuxiliar = null;
   private int conteo = 0;
-
-  // *---------------------------------------------------------=> Constructor
+  private int[] valores = new int[10];
+  // *-----------------------------------------------------------=> Constructor
   public LES() {
     NodoInicio = new NS();
     NodoInicio.Siguiente = null;
   }
+  
   public int Conteo() { return conteo; }
-  // *-------------------------------------------------------------=> Indexer
+  // *---------------------------------------------------------------=> Indexer
   public int this[int indice] {
     get {
       NodoAuxiliar = NodoEnIndice(indice);
@@ -29,7 +30,7 @@ class LES {
       if (NodoAuxiliar != null) { NodoAuxiliar.Dato = value; }
     }
   }
-  /////////////////////////////////////////////////////////////////// MÉTODOS
+  ///////////////////////////////////////////////////////////////////// MÉTODOS
   public void AgregarNodo(int dato, string observaciones = "S/O") {
     NodoAuxiliar = NodoInicio;
     while (NodoAuxiliar.Siguiente != null) {
@@ -122,6 +123,4 @@ class LES {
     temporal.Siguiente = NodoAuxiliar.Siguiente;
     NodoAuxiliar.Siguiente = temporal;
   }
-
-
 }
