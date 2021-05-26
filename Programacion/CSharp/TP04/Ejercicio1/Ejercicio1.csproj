@@ -47,8 +47,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="LES.cs" />
-    <Compile Include="ListNode.cs" />
-    <Compile Include="myLinkedList.cs" />
     <Compile Include="NS.cs" />
     <Compile Include="PacientesNS.cs" />
     <Compile Include="Pacientes.cs">
