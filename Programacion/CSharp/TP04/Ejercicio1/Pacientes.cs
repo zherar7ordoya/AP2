@@ -1,41 +1,32 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
-using System.Diagnostics;
-using System.Linq;
 using System.Windows.Forms;
 
 namespace Ejercicio1 {
   public partial class Pacientes : Form {
     //////////////////////////////////////////////////////////// INICIALIZACIÓN
-    /** 
-     * Referencia
-     *  NS:   Nodo Simple
-     *  LES:  Lista Enlazada Simple
-     *  FD:   Fuente de Datos 
-     */
     public Pacientes() { InitializeComponent(); }
     private void Pacientes_Load(object sender, EventArgs e) {
 
-      
       /*
-      string texto = "Bueno, estoy siendo referenciado...";
-      string respuesta = Herramientas.InputBox("AVISO", "Asunto", ref texto).ToString();
-      MessageBox.Show(texto);
+      string respuesta = "Escriba su respuesta aquí";
+      string status = Herramientas.InputBox("Título", "Asunto", ref respuesta).ToString();
+      MessageBox.Show(status);
+      MessageBox.Show(respuesta);
       */
 
-      LES miLista = new LES();
-      miLista.AgregarNodo("Gerardo", "Tordoya", "Pachi Gorriti", "3885843652");
-      miLista.AgregarNodo("5");
-      miLista.AgregarNodo("7");
-      miLista.AgregarNodo("9");
-      miLista.AgregarNodo("11");
-      miLista.AgregarNodo("15");
+      LES lesPacientes = new LES();
+      lesPacientes.AgregarNodo("Gerardo", "Tordoya", "Pachi Gorriti", "3885843652");
+      lesPacientes.AgregarNodo("5");
+      lesPacientes.AgregarNodo("7");
+      lesPacientes.AgregarNodo("9");
+      lesPacientes.AgregarNodo("11");
+      lesPacientes.AgregarNodo("15");
 
-      var registro = miLista.NodoEnIndice(1);
-      List<NS> list = new List<NS>();
+      var registro = lesPacientes.NodoEnIndice(1);
+      List<NS> listPacientes = new List<NS>();
 
-      list.Add(new NS {
+      listPacientes.Add(new NS {
         Codigo = registro.Codigo,
         Nombres = registro.Nombres,
         Apellido = registro.Apellido,
@@ -43,9 +34,9 @@ namespace Ejercicio1 {
         Telefono = registro.Telefono
       });
 
-      registro = miLista.NodoEnIndice(2);
+      registro = lesPacientes.NodoEnIndice(2);
 
-      list.Add(new NS {
+      listPacientes.Add(new NS {
         Codigo = registro.Codigo,
         Nombres = registro.Nombres,
         Apellido = registro.Apellido,
@@ -53,11 +44,9 @@ namespace Ejercicio1 {
         Telefono = registro.Telefono
       });
 
-      dgvPacientes.DataSource = new BindingSource(list, null);
+      dgvPacientes.DataSource = new BindingSource(listPacientes, null);
 
-
-
-
+      ////////////////////////////////////////////////////////////////// TESTEO
       /*
       Debug.WriteLine(registro.Codigo.ToString());
       Debug.WriteLine(registro.Nombres);
@@ -84,13 +73,9 @@ namespace Ejercicio1 {
       miLista[4] = 25;
       miLista.Transversar();
       */
-
-
-
-
     }
 
-    
+
     ///////////////////////////////////////////////////////////////// CONTROLES
 
     ///////////////////////////////////////////////////////////////// FUNCIONES
