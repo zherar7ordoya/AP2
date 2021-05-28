@@ -3,55 +3,71 @@
  * 2021-05-24
  */
 
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using System.Diagnostics;
 
-class LES {
-  ////////////////////////////////////////////////////////// INICIALIZACIONES
+class LES  {
+  //////////////////////////////////////////////////////////// INICIALIZACIONES
   private NS NodoInicio = null, NodoAuxiliar = null;
   private int conteo = 0;
-
-  // *---------------------------------------------------------=> Constructor
+  // *-----------------------------------------------------------=> Constructor
   public LES() {
     NodoInicio = new NS();
     NodoInicio.Siguiente = null;
   }
+  // *------------------------------------------------------=> ¿Qué es esto...?
   public int Conteo() { return conteo; }
-  // *-------------------------------------------------------------=> Indexer
-  public int this[int indice] {
+  // *---------------------------------------------------------------=> Indexer
+  public string[] this[int _id] {
     get {
-      NodoAuxiliar = NodoEnIndice(indice);
-      return NodoAuxiliar.Dato;
+      NodoAuxiliar = NodoEnIndice(_id);
+      return new[] {
+        NodoAuxiliar.Codigo.ToString(),
+        NodoAuxiliar.Nombres,
+        NodoAuxiliar.Apellido,
+        NodoAuxiliar.Direccion,
+        NodoAuxiliar.Telefono
+      };
     }
     set {
-      NodoAuxiliar = NodoEnIndice(indice);
-      if (NodoAuxiliar != null) { NodoAuxiliar.Dato = value; }
+      NodoAuxiliar = NodoEnIndice(_id);
+      if (NodoAuxiliar != null) {
+        NodoAuxiliar.Nombres = value[0];
+        NodoAuxiliar.Apellido = value[1];
+        NodoAuxiliar.Direccion = value[2];
+        NodoAuxiliar.Telefono = value[3];
+      }
     }
   }
-  /////////////////////////////////////////////////////////////////// MÉTODOS
-  public void AgregarNodo(int dato, string observaciones = "S/O") {
+  ///////////////////////////////////////////////////////////////////// MÉTODOS
+  public void AgregarNodo(
+    string nombres = "(sin dato)",
+    string apellido = "(sin dato)",
+    string direccion = "(sin dato)",
+    string telefono = "(sin dato)"
+    ) {
     NodoAuxiliar = NodoInicio;
     while (NodoAuxiliar.Siguiente != null) {
       NodoAuxiliar = NodoAuxiliar.Siguiente;
     }
-    NS temporal = new NS();
-    temporal.Dato = dato;
-    temporal.Observaciones = observaciones;
-    temporal.Siguiente = null;
-    NodoAuxiliar.Siguiente = temporal;
     conteo++;
+    NS Nodo = new NS();
+    Nodo.Codigo = conteo;
+    Nodo.Nombres = nombres;
+    Nodo.Apellido = apellido;
+    Nodo.Direccion = direccion;
+    Nodo.Telefono = telefono;
+    Nodo.Siguiente = null;
+    NodoAuxiliar.Siguiente = Nodo;
   }
 
   public void Transversar() {
     NodoAuxiliar = NodoInicio;
     while (NodoAuxiliar.Siguiente != null) {
       NodoAuxiliar = NodoAuxiliar.Siguiente;
-      int dato = NodoAuxiliar.Dato;
-      string observaciones = NodoAuxiliar.Observaciones;
-      Debug.Write(dato + ", ");
+      int codigo = NodoAuxiliar.Codigo;
+      Debug.WriteLine(codigo);
     }
-    Debug.WriteLine("");
   }
 
   public void Vaciar() { NodoInicio.Siguiente = null; }
@@ -71,14 +87,14 @@ class LES {
     return largo;
   }
 
-  public int IndiceDeDato(int dato) {
+  public int IndiceDeCodigo(int codigo) {
     if (ListaVacia() == true) { return 0; }
     NodoAuxiliar = NodoInicio;
     int indice = 0;
     while (NodoAuxiliar.Siguiente != null) {
       NodoAuxiliar = NodoAuxiliar.Siguiente;
       indice++;
-      if (NodoAuxiliar.Dato == dato) { return indice; }
+      if (NodoAuxiliar.Codigo == codigo) { return indice; }
     }
     return 0;
   }
@@ -97,16 +113,16 @@ class LES {
     return nodo;
   }
 
-  public NS BuscarNodoAnterior(int dato) {
+  public NS BuscarNodoAnterior(int codigo) {
     NodoAuxiliar = NodoInicio;
-    while (NodoAuxiliar.Siguiente != null && NodoAuxiliar.Siguiente.Dato != dato) { NodoAuxiliar = NodoAuxiliar.Siguiente; }
+    while (NodoAuxiliar.Siguiente != null && NodoAuxiliar.Siguiente.Codigo != codigo) { NodoAuxiliar = NodoAuxiliar.Siguiente; }
     return NodoAuxiliar;
   }
 
-  public void BorrarNodoPorDato(int dato) {
+  public void BorrarNodoPorDato(int codigo) {
     if (ListaVacia() == true) { return; }
-    NS anterior = BuscarNodoAnterior(dato);
-    int indice = IndiceDeDato(dato);
+    NS anterior = BuscarNodoAnterior(codigo);
+    int indice = IndiceDeCodigo(codigo);
     if (indice == 0) { return; }
     NS encontrado = NodoEnIndice(indice);
     if (encontrado == null) { return; }
@@ -114,14 +130,12 @@ class LES {
     encontrado.Siguiente = null;
   }
 
-  public void InsertarNodoEnIndice(int indice, int dato) {
+  public void InsertarNodoEnIndice(int indice, int codigo) {
     NodoAuxiliar = NodoEnIndice(indice);
     if (NodoAuxiliar == null) { return; }
-    NS temporal = new NS();
-    temporal.Dato = dato;
-    temporal.Siguiente = NodoAuxiliar.Siguiente;
-    NodoAuxiliar.Siguiente = temporal;
+    NS Nodo = new NS();
+    Nodo.Codigo = codigo;
+    Nodo.Siguiente = NodoAuxiliar.Siguiente;
+    NodoAuxiliar.Siguiente = Nodo;
   }
-
-
 }

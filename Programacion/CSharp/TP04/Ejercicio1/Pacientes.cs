@@ -1,82 +1,88 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
-using System.Diagnostics;
-using System.Linq;
 using System.Windows.Forms;
 
 namespace Ejercicio1 {
   public partial class Pacientes : Form {
     //////////////////////////////////////////////////////////// INICIALIZACIÓN
-    /** 
-     * Referencia
-     *  NS:   Nodo Simple
-     *  LES:  Lista Enlazada Simple
-     *  FD:   Fuente de Datos 
-     */
     public Pacientes() { InitializeComponent(); }
     private void Pacientes_Load(object sender, EventArgs e) {
 
-      LinkedList<PacientesNS> PacientesLES = new LinkedList<PacientesNS>();
-      for (int i = 1; i <= 5; i++) {
-        var nodo = new PacientesNS {
-          Codigo = i,
-          Nombres = "Nombre " + i,
-          Apellido = "Apellido " + i,
-          Direccion = "Dirección" + i,
-          Telefono = "+54..." + i
-        };
-        PacientesLES.AddLast(nodo);
-      }
-      List<PacientesNS> PacientesFD = (from item in PacientesLES
-                                       select new PacientesNS() {
-                                         Codigo = item.Codigo,
-                                         Nombres = item.Nombres,
-                                         Apellido = item.Apellido,
-                                         Direccion = item.Direccion,
-                                         Telefono = item.Telefono,
-                                       }).ToList();
-      dgvPacientes.DataSource = PacientesFD;
-      // *----------------------------------------------------------=> TEMPORAL
       /*
-      string texto = "Bueno, estoy siendo referenciado...";
-      string respuesta = Herramientas.InputBox("AVISO", "Asunto", ref texto).ToString();
-      MessageBox.Show(texto);
+      string respuesta = "Escriba su respuesta aquí";
+      string status = Herramientas.InputBox("Título", "Asunto", ref respuesta).ToString();
+      MessageBox.Show(status);
+      MessageBox.Show(respuesta);
       */
-      LES miLista = new LES();
-      miLista.AgregarNodo(3, "Tres");
-      miLista.AgregarNodo(5);
-      miLista.AgregarNodo(7);
-      miLista.AgregarNodo(9);
-      miLista.AgregarNodo(11);
-      miLista.AgregarNodo(15);
 
-      
+      LES lesPacientes = new LES();
+      lesPacientes.AgregarNodo("Gerardo", "Tordoya", "Pachi Gorriti", "3885843652");
+      lesPacientes.AgregarNodo("5");
+      lesPacientes.AgregarNodo("7");
+      lesPacientes.AgregarNodo("9");
+      lesPacientes.AgregarNodo("11");
+      lesPacientes.AgregarNodo("15");
 
-  miLista.Transversar();
-      // Debug.WriteLine(miLista.EstaVacia());
-      // miLista.Vaciar();
-      // Debug.WriteLine(miLista.EstaVacia());
-      //int encontrado = miLista.IndiceDeDato(11);
-      //Debug.WriteLine(encontrado);
-      //Debug.WriteLine(miLista.DatoEnIndice(6));
-      //Debug.WriteLine(miLista.Largo());
-      //Debug.WriteLine(miLista.BuscarNodoAnterior(7));
+      var registro = lesPacientes.NodoEnIndice(1);
+      List<NS> listPacientes = new List<NS>();
 
-      //miLista.BorrarNodoPorDato(25);
-      //miLista.InsertarNodoEnIndice(1, 20);
+      listPacientes.Add(new NS {
+        Codigo = registro.Codigo,
+        Nombres = registro.Nombres,
+        Apellido = registro.Apellido,
+        Direccion = registro.Direccion,
+        Telefono = registro.Telefono
+      });
+
+      registro = lesPacientes.NodoEnIndice(2);
+
+      listPacientes.Add(new NS {
+        Codigo = registro.Codigo,
+        Nombres = registro.Nombres,
+        Apellido = registro.Apellido,
+        Direccion = registro.Direccion,
+        Telefono = registro.Telefono
+      });
+
+      dgvPacientes.DataSource = new BindingSource(listPacientes, null);
+
+      ////////////////////////////////////////////////////////////////// TESTEO
+      /*
+      Debug.WriteLine(registro.Codigo.ToString());
+      Debug.WriteLine(registro.Nombres);
+      Debug.WriteLine(registro.Apellido);
+      Debug.WriteLine(registro.Direccion);
+      Debug.WriteLine(registro.Telefono);
+      */
+      /*
+      miLista.Transversar();
+      Debug.WriteLine(miLista.Conteo());
+      Debug.WriteLine(miLista.ListaVacia());
+      miLista.Vaciar();
+      Debug.WriteLine(miLista.ListaVacia());
+      */
+      /*
+      int encontrado = miLista.IndiceDeDato(11);
+      Debug.WriteLine(encontrado);
+      Debug.WriteLine(miLista.DatoEnIndice(6));
+      Debug.WriteLine(miLista.Largo());
+      Debug.WriteLine(miLista.BuscarNodoAnterior(7));
+      miLista.BorrarNodoPorDato(25);
+      miLista.InsertarNodoEnIndice(1, 20);
       Debug.WriteLine(miLista.NodoEnIndice(4));
       miLista[4] = 25;
       miLista.Transversar();
-
-
-      
-      
-
+      */
     }
+
+
     ///////////////////////////////////////////////////////////////// CONTROLES
 
     ///////////////////////////////////////////////////////////////// FUNCIONES
+
+
+
+
 
   }
 }
