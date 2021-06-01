@@ -5,9 +5,11 @@
 
 ---
 
-Hay valores que hablan de un intento (cuando lo valioso radica en la búsqueda): la creatividad, el amor, la felicidad. Otros que implican (simplemente) hacer lo que sabemos es correcto. Esto, inevitablemente, me obliga a preguntarme: ¿por qué quiero hacer esta carrera? Ya que de esa respuesta, puedo sacar en claro los valores que me motivan.
+Mucho hablarán de valores vinculados al ejercicio de la profesión, y seguramente, estarán en lo cierto: valores comunitarios como la honestidad, la disciplina y el compromiso son siempre bienvenidos. No obstante, la lista no es exhaustiva. Hay más por explorar. Mucho más. Hay valores que hablan de un intento (cuando lo valioso radica en la búsqueda): la creatividad, el amor, la felicidad. Otros que implican (simplemente) hacer lo que sabemos es correcto.
 
-¿Lo hago por el dinero? ¿Por el reconocimiento? A fin de cuentas, ¿quién no quisiera cosas así? Y sí, quién no. Pero hay un extra, una motivación que encuentro en esta elección y no en otra.
+Esto bien podría preguntarnos sobre el por qué deseamos hacer la carrera que elegimos. Ya que de esa respuesta podemos poner sobre la mesa, claros y definidos, los valores que en el fondo nos motivan.
+
+Empiezo yo: ¿lo hago por el dinero?, ¿por el reconocimiento? A fin de cuentas, ¿quién no anhela cosas así? Y sí, seamos honestos: quién no... Pero hay un extra, una motivación que encuentro en esta elección y que no en otra.
 
 Lo hago por amor. Sí, amor. Una palabra tan bastardeada. ¿Cuántas veces hemos oído que se le llama amor a lo que definitivamente no lo es? Pero a lo largo del camino recorrido, he aprendido a reconocerlo. El amor a mi hija, una niñita de ojos oscuros e inteligentes. Lo hago para poder acompañar su intelecto un poco más de todo el trayecto que recorrerá.
 
