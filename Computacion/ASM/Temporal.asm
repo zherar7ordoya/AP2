@@ -1,5 +1,5 @@
 ; @author:  Gerardo Tordoya
-; @date:    2021-06-11
+; @date:    2021-06-10
 
 INCLUDE 'emu8086.inc'
 ; Biblioteca de funciones comunes (por ejemplo: PRINT).
@@ -17,14 +17,14 @@ resto    DB ?           ; Signo de interrogacion: variable no inicializada.
 
 ; ///////////////////////////////////////////////////////////////////// PROGRAMA
 
-LEA     si, pedido1
+LEA     si, pedido1     ;
 ; Pedir primer numero. (LEA) Load Effective Address: store effective address for
 ; pedido1 in register si (source index): LEA loads a pointer to the item you're
 ; addressing.
 
 CALL    print_string
 ; recibe la direccion en el registro si para imprimirla, es decir, imprime el
-; pedido1 (es un puntero, bah!)
+; pedido1
 
 CALL    scan_num        ; recibe el numero por teclado y lo aloja en cx
 MOV     dx, cx          ; copia en dx lo guardado en cx (1er numero)
@@ -47,11 +47,11 @@ CALL    scan_num        ; scan aloja (por ej.) un 4 en cx
 MOV     ax, 2           ; copiamos un 2 en ax
 
 CMP     ax, cx          ; en cx esta el nro de operacion (4 en nuestro ejemplo).
-; Veamos un ejemplo para entender a CMP: "SUB cl, dl" resta de cl el valor de dl
-; y almacena el resultado en cl.
+; Veamos un ejemplo para entender a CMP:
+;       SUB cl, dl > resta de cl el valor de dl y almacena el resultado en cl.
 ; CMP tiene el mismo formato que SUB (por ejemplo: CMP ax, bx > es decir: ax-bx)
-; tan solo que ninguno de los registros es alterado. Si por ejemplo son iguales,
-; el flag de cero se pondra en uno.
+; tan sólo que ninguno de los registros es alterado. Si por ejemplo son iguales,
+; el flag de cero se pondrá en uno.
 ; En realidad, CMP es un SUB que no almacena el resultado.
 
 JE      restar          ; Jump if Equal (=)
@@ -60,7 +60,7 @@ JG      sumar           ; Jump if Greater (>)
 ; Los saltos (jump), en este caso, actuan como si se tratasen de un switch. La
 ; pregunta seria como lo hacen. En ensamblador, los CMP están ligados a los
 ; JUMP para hacer justamente eso:
-; CMP hizo una comparacion. Esa comparacion, realizada en el procesador, alineo
+; CMP hizo una comparación. Esa comparacion, realizada en el procesador, alineo
 ; los flags. Y los JUMP leen justamente eso para realizar los saltos: los flags.
 ; Entonces:
 ;       JE: cuando ZF = 1
@@ -81,7 +81,7 @@ CALL    pthis           ; LLamado a libreria (procedimiento de emu8086.inc)
 DB      13, 10, 'Suma(+): ', 0
 MOV     ax, dx          ; print_num imprime lo que hay en ax (no en dx)
 CALL    print_num       ; LLamado a libreria (procedimiento de emu8086.inc)
-RET                     ; salida del programa
+RET                     ;
 
 restar: ; //----------------------------------------------------------------=> *
 
@@ -99,7 +99,7 @@ RET                     ; regreso a DOS
 multiplicar: ; //-----------------------------------------------------------=> *
 
 ; 1er numero en dx y 2do en bx.
-MOV     ax, 3           ; con este 3 se decidira si es MUL o DIV
+MOV     ax, 3           ;
 CMP     ax, cx          ; en cx esta el nro de operacion (4 en nuestro ejemplo).
 
 JNE     dividir
@@ -119,12 +119,12 @@ MUL     bx
 ;       resultado se almacena en AX o en el par DX-AX respectivamente, si el
 ;       operando es de 8 bits o 16 bits.
 ; Visto esto, podremos decir que "MUL Byte Ptr [CX]" va a multiplicar el byte
-; que hay en la direccion que marca CX por el contenido que hay en AL, y una vez
-; hecho esto, va a almacenarlo en AX. "MUL SI" multiplicara SI por el contenido
-; de AX, almacenandose en el par AX-DX (la palabra superior, de mas valor, se
-; devolvera en DX, y la inferior en AX.
-; En resumen, por eso se guardo en AX el primer numero pues la multiplicacion va
-; a ser procesada alli (y alli tambien se almacenara el resultado).
+; que hay en la dirección que marca CX por el contenido que hay en AL, y una vez
+; hecho esto, va a almacenarlo en AX. "MUL SI" Multiplicaría SI por el contenido
+; de AX, almacenándose en el par AX-DX (la palabra superior, de más valor, se
+; devolvería en DX, y la inferior en AX.
+; En resumen, por eso se guardo en ax el primer numero pues va la multiplicacion
+; va a ser procesada alli y alli tambien almacenado el resultado.
 
 CALL    pthis           ; A ver, lo aclaremos: imprime la siguiente cadena...
 DB      13, 10, 'Multiplicacion(*): ', 0                    ; ...esta cadena
@@ -135,43 +135,53 @@ dividir: ; //---------------------------------------------------------------=> *
 
 ; 1er numero en dx y 2do en bx.
 MOV     ax, dx          ; copia en ax el 1er numero.
+MOV     bl, 5           ; pone en bl un 5. ***************
 
 DIV     bl
-; Para la division, el dividendo ha de estar en AX, y ser de 16 bits. El divisor
-; se indica en el operando, por ejemplo: "DIV BL". Este divisor estaria en BL.
-; Se dividira AX entre BL y el cociente quedara en AL y el resto en AH.
+
+; Para la división, el dividendo ha de estar en AX, y ser 16 bits por tanto. El
+; divisor se indica en el operando, por ejemplo en DIV BL; este divisor estaría
+; en BL. Se dividiría AX entre BL y el resultado quedaría en AL, quedando el
+; resto en AH.
 MOV     cociente, al    ; segun lo explicado: en "cociente" el cociente.
 MOV     resto, ah       ; segun lo explicado: en "resto" el resto.
 
-; * <=----------------------------------------------------------------------=> *
-; IMPRIMIR UNA DIVISION. Todo un tema. Al quedar "divido" el resultado (en AL el
-; cociente y en AH el resto), el print_num no funcionar�. As� que hay que operar
+; LA IMPRESION SE HACE USANDO OTRA TECNICA, ESO ES TODO.------------------------
+
+; PRUEBA DE ESCRITORIO: 44 / 5
+;       En bl: 5
+;       En al: 8
+;       En ah: 4
 
 MOV     dl, cociente    ; copia el valor "real" de cociente
 ADD     dl, 48          ; 48 es el cero en la tabla ASCII
 MOV     ah, 2           ; este 2 sera el codigo de operacion para INT 21h
 
+; PRUEBA DE ESCRITORIO: 44 / 5
+;       En bl: 5
+;       En al: 8
+;       En ah: 2
+;       En dl: 56 (8 en ASCII)
+
 CALL    pthis           ; imprime lo que viene a continuacion
 DB      10, 13, 0       ; salto de linea
-PRINT   'Division(/): '
+PRINT   "El cociente es "
 
 INT     21h
 ; En ah tenemos 2 (02h). "INT 21h" es una interrupcion del DOS (es decir, se 
 ; interrumpe para dejar que el dos haga algo). Lo que "INT 21h" hace es una
 ; operacion cuyo codigo esta en ah. Y actualmente, ah=02h.
-; Codigo de que es la operacion "02h"?:
+; Codigo de que es la operacion 02h?:
 ;   AH = 02h > WRITE CHARACTER TO STANDARD OUTPUT
-; >>>>>>>>>> Es decir: imprime el equivalente ASCII del codigo en DL <<<<<<<<<<<
+; ...que escribe el codigo ASCII en dl a enviar al dispositivo de salida.
 
-; ************ A PARTIR DE AQUI, PARA EL COCIENTE, SE REPITE EL PROCESO ANTERIOR 
 MOV     dl, resto       ; copia el valor "real" de resto
 ADD     dl, 48          ; suma 48 (0 en ASCII) a dl
 MOV     ah, 2           ; la funcion 02h escribe al dispositivo de salida
-PRINT   " [Resto: "
-INT     21h             ; imprime DL (en nuestro ejemplo, 52 ASCII = 4)
-PRINT   "]"
-; ******************************************************************************
+PRINT   " y el resto es "
+INT     21h             ; escribe el dl (en nuestro ejemplo, 52 ASCII = 4)
 RET                     ; regresa al DOS
+; //------------------------------------------------------------------------=> *
 
 pedido1 DB 'Ingrese el 1er numero: ', 0
 pedido2 DB 'Ingrese el 2do numero: ', 0          
