@@ -1,55 +1,50 @@
 include 'emu8086.inc'
-
 org 100h 
-.data
 
-array  db 9,6,5,4,3,2,1
-count  dw 7
+.data
+array   db 4, 3, 2, 1, 9, 8, 7
+count   dw 7
 
 .code
+MOV     cx, count      
+DEC     cx               ; outer loop iteration count
 
-    mov cx,count      
-    dec cx               ; outer loop iteration count
+explorar:                ; do {    // outer loop
+MOV     bx, cx
+MOV     si, 0 
 
-nextscan:                ; do {    // outer loop
-    mov bx,cx
-    mov si,0 
+comparar:
+MOV     al, array[si]
+MOV     dl, array[si+1]
+CMP     al, dl
 
-nextcomp:
+JNC     continuar           ; Short Jump if Carry flag is set to 0. 
 
-    mov al,array[si]
-    mov dl,array[si+1]
-    cmp al,dl
+MOV     array[si], dl
+MOV     array[si+1], al
 
-    jnc noswap 
+continuar: 
+INC     si
+DEC     bx                  ; Incide en los flags (al llegar a 0, se cumple la condición)
+JNZ     comparar            ; Short Jump if Not Zero (not equal).
 
-    mov array[si],dl
-    mov array[si+1],al
+LOOP    explorar       ; } while(--cx);
 
-noswap: 
-    inc si
-    dec bx
-    jnz nextcomp
+; MOSTRAR EN CONSOLA
+MOV     cx, 7
+MOV     si, 0
 
-    loop nextscan       ; } while(--cx);
+imprimir:
+MOV     al, array[si]  
+ADD     al, 30h
+MOV     ah, 0eh
+INT     10h
+; INT 10h / AH = 0Eh: this functions displays a character on the screen. input: AL = character to write.
+MOV     ah, 2
+MOV     dl, ' '
+INT     21h
+; INT 21h / AH=2: write character to standard output. Entry: DL = character to write, after execution AL = DL.
+INC     si
+LOOP    imprimir
 
-
-
-;;; this  loop to display  elements on the screen
-
-    mov cx,7
-    mov si,0
-
-print:
-
-    Mov al,array[si]  
-    Add al,30h
-    Mov ah,0eh
-    Int  10h 
-    MOV AH,2
-    Mov DL , ' '
-    INT 21H
-    inc si
-    Loop print
-
-    ret 
+RET
