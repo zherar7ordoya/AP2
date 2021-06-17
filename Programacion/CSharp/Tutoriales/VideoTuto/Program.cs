@@ -189,16 +189,8 @@ namespace VideoTuto {
       catch (FileNotFoundException fe) { Console.WriteLine("ERROR " + fe.Message); }
       catch (Exception e) { Console.WriteLine("ERROR " + e.Message); }
 
-
-
-
-
-
-
-
       //////////////////////
       Console.ReadKey(true);
-//////////////////////
 }
 }
 }

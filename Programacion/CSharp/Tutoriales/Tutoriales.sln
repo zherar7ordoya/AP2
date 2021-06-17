@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.28307.1525
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VideoTuto", "VideoTuto\VideoTuto.csproj", "{14D4B119-17BB-4971-BA62-70A58D3F1BB6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ABM", "ABM\ABM.csproj", "{D99D3F87-E60D-49F5-A2A4-857C7A048EDB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{14D4B119-17BB-4971-BA62-70A58D3F1BB6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{14D4B119-17BB-4971-BA62-70A58D3F1BB6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{14D4B119-17BB-4971-BA62-70A58D3F1BB6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D99D3F87-E60D-49F5-A2A4-857C7A048EDB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D99D3F87-E60D-49F5-A2A4-857C7A048EDB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D99D3F87-E60D-49F5-A2A4-857C7A048EDB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D99D3F87-E60D-49F5-A2A4-857C7A048EDB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
