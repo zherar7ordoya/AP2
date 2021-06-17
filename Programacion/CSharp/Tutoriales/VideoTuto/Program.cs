@@ -1,16 +1,22 @@
 ﻿using System;
 using System.IO;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace VideoTuto {
   class Program {
     static void Main() {
-      /* VIDEO 64
+      /* VIDEO 64: 
+       * CREAR/ESCRIBIR ARCHIVO DE TEXTO
+       * 
       StreamWriter escritura = File.CreateText("ejemplo.txt");
       escritura.WriteLine("Bienvenido a la Pachangona");
       escritura.Close();
       */
 
-      /* VIDEO 65
+      /* VIDEO 65:
+       * ESCRIBIR CONSERVANDO DATOS
+       * 
       string respuesta, cadena;
       respuesta = "";
       cadena = "";
@@ -26,7 +32,9 @@ namespace VideoTuto {
       escribir.Close();
       */
 
-      /* VIDEO 66
+      /* VIDEO 66:
+       * LECTURA DE ARCHIVO
+       * 
       StreamReader lectura;
       string cadena;
       try {
@@ -42,6 +50,9 @@ namespace VideoTuto {
       }
       */
 
+      /* VIDEO 67:
+       * BUSCAR DATOS EN ARCHIVO
+       * 
       StreamReader lectura;
       string cadena, empleado;
       bool encontrado = false;
@@ -76,11 +87,118 @@ namespace VideoTuto {
       catch (Exception e) {
         Console.WriteLine("ERROR " + e.Message);
       }
+      */
+
+      /* VIDEO 68:
+       * ELIMINACION DE REGISTROS
+       * 
+      StreamReader lectura;
+      StreamWriter escribir;
+      string cadena, empleado;
+      string[] campos = new string[4];
+      char[] separador = { ',' };
+      bool encontrado = false;
+
+      try {
+        lectura = File.OpenText("sueldos.txt");
+        escribir = File.CreateText("tmp.txt");
+        Console.Write("Nombre a eliminar: ");
+        empleado = Console.ReadLine();
+        cadena = lectura.ReadLine();
+        while (cadena != null) {
+          campos = cadena.Split(separador);
+          if (campos[0].Trim().Equals(empleado)) {
+            encontrado = true;
+          }
+          else {
+            escribir.WriteLine(cadena);
+          }
+          cadena = lectura.ReadLine();
+        }
+        if (encontrado == false) {
+          Console.WriteLine("El empleado " + empleado + " no existe.");
+        } else {
+          Console.WriteLine("Registro eliminado.");
+        }
+        lectura.Close();
+        escribir.Close();
+        File.Delete("sueldos.txt");
+        File.Move("tmp.txt", "sueldos.txt");
+      }
+      catch (FileNotFoundException fe) {
+        Console.WriteLine("ERROR " + fe.Message);
+      }
+      catch (Exception e) {
+        Console.WriteLine("ERROR " + e.Message);
+      }
+      */
+
+      /* VIDEO 69:
+      * REEMPLAZO DE REGISTROS
+      * 
+      */
+      StreamReader lectura;
+      StreamWriter escribir;
+      string cadena, empleado, nuevoNombre, respuesta;
+      string[] campos = new string[4];
+      char[] separador = { ',' };
+      bool encontrado = false;
+
+      try {
+        lectura = File.OpenText("sueldos.txt");
+        escribir = File.CreateText("tmp.txt");
+        Console.Write("Nombre a modificar: ");
+        empleado = Console.ReadLine();
+        cadena = lectura.ReadLine();
+
+        while (cadena != null) {
+          campos = cadena.Split(separador);
+
+          if (campos[0].Trim().Equals(empleado)) {
+            encontrado = true;
+            Console.WriteLine();
+            Console.WriteLine("Nombre:    " + campos[0].Trim());
+            Console.WriteLine("Dirección: " + campos[1].Trim());
+            Console.WriteLine("Edad:      " + campos[2].Trim());
+            Console.WriteLine("Sueldo:    " + campos[3].Trim());
+            Console.WriteLine();
+            Console.Write("Editar?: ");
+            respuesta = Console.ReadLine();
+            respuesta = respuesta.ToUpper();
+
+            if(respuesta.Equals("SI")) {
+              Console.Write("Nuevo nombre: ");
+              nuevoNombre = Console.ReadLine();
+              escribir.WriteLine(nuevoNombre + "," + campos[1] + "," + campos[2] + "," + campos[3]);
+              Console.WriteLine("Registro modificado.");
+            }
+            else { escribir.WriteLine(cadena); }
+          }
+          else { escribir.WriteLine(cadena); }
+
+          cadena = lectura.ReadLine();
+        }
+
+        if (encontrado == false) Console.WriteLine("El empleado " + empleado + " no existe.");
+
+        lectura.Close();
+        escribir.Close();
+        File.Delete("sueldos.txt");
+        File.Move("tmp.txt", "sueldos.txt");
+      }
+      catch (FileNotFoundException fe) { Console.WriteLine("ERROR " + fe.Message); }
+      catch (Exception e) { Console.WriteLine("ERROR " + e.Message); }
 
 
-        // *******************
-        Console.ReadKey(true);
-      // *******************
-    }
-  }
+
+
+
+
+
+
+      //////////////////////
+      Console.ReadKey(true);
+//////////////////////
+}
+}
 }
