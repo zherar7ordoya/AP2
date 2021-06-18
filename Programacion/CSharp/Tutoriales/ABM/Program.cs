@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.IO;
 
 namespace ABM {
@@ -19,7 +15,7 @@ namespace ABM {
 
     static void Main(string[] args) {
 
-      menu();
+      Menu();
 
       //////////////////////
       Console.ReadKey(true);
@@ -27,7 +23,7 @@ namespace ABM {
 
 
     // MÉTODO MENÚ
-    static void menu() {
+    private static void Menu() {
       byte opcion;
       opcion = 0;
 
@@ -46,6 +42,8 @@ namespace ABM {
 
           switch (opcion) {
             case 1:
+              crearArchivo();
+              Altas();
               break;
             case 2:
               break;
@@ -66,6 +64,80 @@ namespace ABM {
         catch(FormatException fe) { Console.WriteLine("Error: " + fe.Message); }
         catch (Exception e) { Console.WriteLine("Error: " + e.Message); }
       } while (opcion != 6);
+    }
+
+    // CREAR ARCHIVO
+    static void crearArchivo() {
+      Escritura = File.AppendText("autos.txt");
+      Escritura.Close();
+    }
+
+    // ALTAS
+    static void Altas() {
+      encontrado = false;
+      try {
+        Lectura = File.OpenText("autos.txt");
+        Console.Write("Nro de serie: ");
+        noSerie = Console.ReadLine();
+        noSerie = noSerie.ToUpper();
+        cadena = Lectura.ReadLine();
+
+        // Validación (auto serie repetido)
+        while(cadena!=null) {
+
+          campos = cadena.Split(',');
+
+          if(campos[0].Trim().Equals(noSerie)) {
+            encontrado = true;
+            break;
+          }
+
+          cadena = Lectura.ReadLine();
+        }
+
+        Lectura.Close();
+
+        Escritura = File.AppendText("autos.txt");
+
+        if(encontrado==false) {
+          Console.Write("Modelo: ");
+          modelo = Console.ReadLine();
+          modelo = modelo.ToUpper();
+
+          Console.Write("Año: ");
+          anio = Convert.ToInt16(Console.ReadLine());
+
+          Console.Write("Fabricante: ");
+          fabricante = Console.ReadLine();
+          fabricante = fabricante.ToUpper();
+
+          Console.Write("Color: ");
+          color = Console.ReadLine();
+          color = color.ToUpper();
+
+          Console.Write("Precio: ");
+          precio = Convert.ToDouble(Console.ReadLine());
+
+          // Al archivo
+          Escritura.WriteLine(
+            noSerie     + ", " +
+            modelo      + ", " +
+            anio        + ", " +
+            fabricante  + ", " +
+            color       + ", " +
+            precio
+            );
+          Console.WriteLine("Registro agregado correctamente.");
+        }
+        else { Console.WriteLine("Ya existe nro de serie.");  }
+        Escritura.Close();
+      } 
+      catch(FileNotFoundException fn) { Console.WriteLine("Error: " + fn.Message); }
+      catch(Exception e) { Console.WriteLine("Error: " + e.Message); }
+      finally {
+        Lectura.Close();
+        Escritura.Close();
+      }
     }
   }
 }
