@@ -16,6 +16,7 @@ namespace TP10
     {
         public Form1()
         {
+
             InitializeComponent();
         }
 
@@ -151,25 +152,23 @@ namespace TP10
             lstlistado.Columns.Add("Legajo");
             lstlistado.Columns.Add("Nombre y Apellido");
             lstlistado.Columns.Add("Categoría");
-
+            Ordenar();
             listar();
         }
 
 
         private void Ordenar()
         {
-            string contents = File.ReadAllText("archivo.txt");
-            var lines = contents.Split(Environment.NewLine.ToCharArray()).ToList();
-            var sorted = lines.OrderBy(line => line.Split(';')[0]).ToList();
+            string contenido = File.ReadAllText("archivo.txt");
+            var lineas = contenido.Split(Environment.NewLine.ToCharArray()).ToList();
+            var ordenado = lineas.OrderBy(linea => linea.Split(';')[0]).ToList();
+            int inicio = 0, final = ordenado.Count - 1;
 
-            int start = 0, end = sorted.Count - 1;
+            while (inicio < final && String.IsNullOrWhiteSpace(ordenado[inicio])) inicio++;
+            while (final >= inicio && String.IsNullOrWhiteSpace(ordenado[final])) final--;
 
-            while (start < end && String.IsNullOrWhiteSpace(sorted[start])) start++;
-            while (end >= start && String.IsNullOrWhiteSpace(sorted[end])) end--;
-
-            var cleaned = sorted.Skip(start).Take(end - start + 1);
-
-            File.WriteAllText("archivo.txt", string.Join(Environment.NewLine, cleaned));
+            var limpiado = ordenado.Skip(inicio).Take(final - inicio + 1);
+            File.WriteAllText("archivo.txt", string.Join(Environment.NewLine, limpiado));
         }
 
     }
