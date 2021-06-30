@@ -58,6 +58,7 @@ namespace Apareo
 
                 int contador = 0;
                 int acumulador = 0;
+
                 for(int x=0; x<notas.Length; x++)
                 {
                     if(notas[x].Legajo==alumnos[i].Legajo)

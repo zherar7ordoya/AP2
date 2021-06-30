@@ -127,7 +127,7 @@ namespace Apareo
             // 
             // btnGuardarNota
             // 
-            this.btnGuardarNota.Location = new System.Drawing.Point(69, 429);
+            this.btnGuardarNota.Location = new System.Drawing.Point(69, 293);
             this.btnGuardarNota.Name = "btnGuardarNota";
             this.btnGuardarNota.Size = new System.Drawing.Size(203, 23);
             this.btnGuardarNota.TabIndex = 9;
@@ -157,7 +157,7 @@ namespace Apareo
             // grillaNotas
             // 
             this.grillaNotas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.grillaNotas.Location = new System.Drawing.Point(12, 293);
+            this.grillaNotas.Location = new System.Drawing.Point(12, 322);
             this.grillaNotas.Name = "grillaNotas";
             this.grillaNotas.RowTemplate.Height = 25;
             this.grillaNotas.Size = new System.Drawing.Size(260, 130);
@@ -176,7 +176,7 @@ namespace Apareo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(632, 467);
+            this.ClientSize = new System.Drawing.Size(637, 470);
             this.Controls.Add(this.grillaPromedios);
             this.Controls.Add(this.grillaNotas);
             this.Controls.Add(this.grillaAlumnos);
