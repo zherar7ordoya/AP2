@@ -152,7 +152,7 @@ namespace TP10
             lstlistado.Columns.Add("Legajo");
             lstlistado.Columns.Add("Nombre y Apellido");
             lstlistado.Columns.Add("Categoría");
-            Ordenar();
+            // Ordenar();
             listar();
         }
 
