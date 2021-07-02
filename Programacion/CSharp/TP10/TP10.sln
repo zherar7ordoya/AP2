@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ABM", "ABM\ABM.csproj", "{D
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Archivos", "Archivos\Archivos.csproj", "{FA7F8D93-3CDB-4395-A47C-1DF612F3EC8E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Apareo", "ApareoMS\Apareo.csproj", "{C4326BBE-6CA6-460D-98F6-434D51C6F871}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{FA7F8D93-3CDB-4395-A47C-1DF612F3EC8E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FA7F8D93-3CDB-4395-A47C-1DF612F3EC8E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FA7F8D93-3CDB-4395-A47C-1DF612F3EC8E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C4326BBE-6CA6-460D-98F6-434D51C6F871}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C4326BBE-6CA6-460D-98F6-434D51C6F871}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C4326BBE-6CA6-460D-98F6-434D51C6F871}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C4326BBE-6CA6-460D-98F6-434D51C6F871}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
