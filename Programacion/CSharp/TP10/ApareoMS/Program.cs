@@ -21,8 +21,8 @@ class ApareoMicrosoft
          * La siguiente búsqueda combina las notas con el estudiante usando
          * el ID como clave de coincidencia.
          */
-        string[] alumnos = File.ReadAllLines("alumnos.csv");
-        string[] notas = File.ReadAllLines("notas.csv");
+        string[] alumnos = File.ReadAllLines(@"../../../alumnos.csv");
+        string[] notas = File.ReadAllLines(@"../../../notas.csv");
         /**
          * CÓMO SE COMBINAN LOS ARCHIVOS:
          * 
