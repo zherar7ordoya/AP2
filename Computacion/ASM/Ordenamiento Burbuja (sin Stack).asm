@@ -5,6 +5,7 @@ org 100h
 array   db 4, 3, 2, 1, 9, 8, 7
 count   dw 7
 
+
 .code
 MOV     cx, count      
 DEC     cx               ; outer loop iteration count
