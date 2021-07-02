@@ -3,10 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.IO;
 
-/**
- * El único ejemplo que encontré en la documentación de C#
- * que se parece al concepto del "apareo" de la cátedra.
- */
+/// <summary>
+/// 
+/// El único ejemplo que encontré en la documentación de C#
+/// que se parece al concepto del "apareo" de la cátedra.
+/// 
+/// Autor: Gerardo Tordoya
+/// Fecha: 2021-07(JUL)-01
+/// 
+/// </summary>
 
 class ApareoMicrosoft
 {
@@ -23,19 +28,21 @@ class ApareoMicrosoft
          */
         string[] alumnos = File.ReadAllLines(@"../../../alumnos.csv");
         string[] notas = File.ReadAllLines(@"../../../notas.csv");
-        /**
-         * CÓMO SE COMBINAN LOS ARCHIVOS:
-         * 
-         * Alumno:  Apellido[0],  Nombre[1],  ID[2]
-         *          Omelchenko,   Svetlana,   11
-         * Nota:    AlumnoID[0],  Examen1[1]  Examen2[2],  Examen3[3],  Examen4[4]
-         *          111,          97,         92,          81,          60  
-         */
+        /// <example>
+        /// 
+        /// CÓMO SE COMBINAN LOS ARCHIVOS:
+        /// 
+        /// Alumno:  Apellido[0],  Nombre[1],  ID[2]
+        ///          Omelchenko,   Svetlana,   111
+        /// Nota:    AlumnoID[0],  Examen1[1]  Examen2[2],  Examen3[3],  Examen4[4]
+        ///          111,          97,         92,          81,          60  
+        /// 
+        /// </example>
         #endregion
 
         #region APAREO
         /**
-         * He aquí el horno de la combinación de la mano del LINQ de C#.
+         * He aquí el horno de la combinación de la mano de LINQ de C#.
          * Si alguna vez trabajaron con SQL, las explicaciones sobran.
          * Son vivos estos ñatos de Microsoft, ¿no?
          * Ellos aclaran que, en este ejemplo, usan varias cláusulas FROM
@@ -54,15 +61,19 @@ class ApareoMicrosoft
                     registroNotas[4];
         #endregion
 
-        Imprimir(resultado, "COMBINAR DOS ARCHIVOS DE VALORES SEPARADOS POR COMA (CSV):" + Environment.NewLine);
+        Imprimir(resultado, "Combinar 2 archivos tipo valores separados por coma (CSV):" + Environment.NewLine);
         Console.WriteLine("Eso es todo, ¿te gustó?");
+        Console.ForegroundColor = ConsoleColor.White;
     }
     #region FUNCIONES
     static void Imprimir(IEnumerable<string> resultado, string mensaje)
     {
+        Console.ForegroundColor = ConsoleColor.Cyan;
         Console.WriteLine(mensaje);
+        Console.ForegroundColor = ConsoleColor.Green;
         foreach (string item in resultado) { Console.WriteLine("\t" + item); }
-        Console.WriteLine(Environment.NewLine + "{0} registros." + Environment.NewLine, resultado.Count());
+        Console.WriteLine(Environment.NewLine + "\t" + "{0} registros." + Environment.NewLine, resultado.Count());
+        Console.ForegroundColor = ConsoleColor.Cyan;
     }
     #endregion
 }
