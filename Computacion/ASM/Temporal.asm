@@ -1,0 +1,15 @@
+include 'emu8086.inc'
+
+org 3900
+ 
+
+MOV CL, [3800]
+MOV SI, [3742]
+MOV [6814], DI
+MOV AX, [SI]
+MOV [DI], AX
+ADD SI, 02
+ADD DI, 02
+DEC CL
+JNZ 390C
+INT 21
