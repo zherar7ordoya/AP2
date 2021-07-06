@@ -142,6 +142,7 @@ namespace Archivos
             this.btnModificacion.TabIndex = 9;
             this.btnModificacion.Text = "Modificación";
             this.btnModificacion.UseVisualStyleBackColor = true;
+            this.btnModificacion.Click += new System.EventHandler(this.btnModificacion_Click);
             // 
             // Video09
             // 

@@ -13,7 +13,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ABM", "ABM\ABM.csproj", "{D
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Archivos", "Archivos\Archivos.csproj", "{FA7F8D93-3CDB-4395-A47C-1DF612F3EC8E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Apareo", "ApareoMS\Apareo.csproj", "{C4326BBE-6CA6-460D-98F6-434D51C6F871}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Apareo", "ApareoMS\Apareo.csproj", "{C4326BBE-6CA6-460D-98F6-434D51C6F871}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Video1ArbolesAVL", "Video1ArbolesAVL\Video1ArbolesAVL.csproj", "{82CC0A1E-E731-422E-97E0-0DCC0B84B1C8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArbolBinarioBusqueda", "ArbolBinarioBusqueda\ArbolBinarioBusqueda.csproj", "{77799FAC-97DE-42A7-A2E5-1EE96ECE7694}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TP08", "TP08\TP08.csproj", "{C83EC1C5-74BA-49E7-ACFB-405DBD7DBA38}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +51,18 @@ Global
 		{C4326BBE-6CA6-460D-98F6-434D51C6F871}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C4326BBE-6CA6-460D-98F6-434D51C6F871}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C4326BBE-6CA6-460D-98F6-434D51C6F871}.Release|Any CPU.Build.0 = Release|Any CPU
+		{82CC0A1E-E731-422E-97E0-0DCC0B84B1C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{82CC0A1E-E731-422E-97E0-0DCC0B84B1C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{82CC0A1E-E731-422E-97E0-0DCC0B84B1C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{82CC0A1E-E731-422E-97E0-0DCC0B84B1C8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{77799FAC-97DE-42A7-A2E5-1EE96ECE7694}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77799FAC-97DE-42A7-A2E5-1EE96ECE7694}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77799FAC-97DE-42A7-A2E5-1EE96ECE7694}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77799FAC-97DE-42A7-A2E5-1EE96ECE7694}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C83EC1C5-74BA-49E7-ACFB-405DBD7DBA38}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C83EC1C5-74BA-49E7-ACFB-405DBD7DBA38}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C83EC1C5-74BA-49E7-ACFB-405DBD7DBA38}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C83EC1C5-74BA-49E7-ACFB-405DBD7DBA38}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

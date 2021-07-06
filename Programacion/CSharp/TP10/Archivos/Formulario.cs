@@ -34,5 +34,10 @@ namespace Archivos
                 LlenarGrilla();
             }
         }
+
+        private void btnModificacion_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Se lo debo (se me acabó el tiempo).");
+        }
     }
 }
