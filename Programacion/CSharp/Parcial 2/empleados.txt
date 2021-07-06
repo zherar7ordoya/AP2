@@ -1,0 +1,5 @@
+001,Sergio,Goycochea
+010,Diego Armando,Maradona
+009,Gabriel,Batistuta
+011,Hernan,Crespo
+005,Fabian,Cubero
