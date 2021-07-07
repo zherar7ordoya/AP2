@@ -1,7 +1,7 @@
 ﻿
 namespace Parcial2
 {
-    partial class Form1
+    partial class Parcial2
     {
         /// <summary>
         /// Required designer variable.
@@ -29,13 +29,72 @@ namespace Parcial2
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.grillaAntes = new System.Windows.Forms.DataGridView();
+            this.grillaDespues = new System.Windows.Forms.DataGridView();
+            this.lblAntes = new System.Windows.Forms.Label();
+            this.lblDespues = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.grillaAntes)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grillaDespues)).BeginInit();
+            this.SuspendLayout();
+            // 
+            // grillaAntes
+            // 
+            this.grillaAntes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.grillaAntes.Location = new System.Drawing.Point(12, 25);
+            this.grillaAntes.Name = "grillaAntes";
+            this.grillaAntes.Size = new System.Drawing.Size(326, 150);
+            this.grillaAntes.TabIndex = 0;
+            // 
+            // grillaDespues
+            // 
+            this.grillaDespues.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.grillaDespues.Location = new System.Drawing.Point(12, 232);
+            this.grillaDespues.Name = "grillaDespues";
+            this.grillaDespues.Size = new System.Drawing.Size(326, 150);
+            this.grillaDespues.TabIndex = 1;
+            // 
+            // lblAntes
+            // 
+            this.lblAntes.AutoSize = true;
+            this.lblAntes.Location = new System.Drawing.Point(12, 9);
+            this.lblAntes.Name = "lblAntes";
+            this.lblAntes.Size = new System.Drawing.Size(326, 13);
+            this.lblAntes.TabIndex = 2;
+            this.lblAntes.Text = "Promedio de hora de ingreso de cada empleado antes del mediodía";
+            // 
+            // lblDespues
+            // 
+            this.lblDespues.AutoSize = true;
+            this.lblDespues.Location = new System.Drawing.Point(12, 216);
+            this.lblDespues.Name = "lblDespues";
+            this.lblDespues.Size = new System.Drawing.Size(273, 13);
+            this.lblDespues.TabIndex = 3;
+            this.lblDespues.Text = "Listado de personas que ingresan después del mediodía";
+            // 
+            // Parcial2
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "Form1";
+            this.ClientSize = new System.Drawing.Size(354, 400);
+            this.Controls.Add(this.lblDespues);
+            this.Controls.Add(this.lblAntes);
+            this.Controls.Add(this.grillaDespues);
+            this.Controls.Add(this.grillaAntes);
+            this.Name = "Parcial2";
+            this.Text = "Parcial 2";
+            ((System.ComponentModel.ISupportInitialize)(this.grillaAntes)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grillaDespues)).EndInit();
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
         }
 
         #endregion
+
+        private System.Windows.Forms.DataGridView grillaAntes;
+        private System.Windows.Forms.DataGridView grillaDespues;
+        private System.Windows.Forms.Label lblAntes;
+        private System.Windows.Forms.Label lblDespues;
     }
 }
 
