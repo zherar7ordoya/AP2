@@ -16,6 +16,7 @@ namespace Parcial2
         {
             InitializeComponent();
             Carga();
+            Prueba();
         }
 
         private void Carga()
@@ -33,7 +34,22 @@ namespace Parcial2
                     registroIngreso[0] + "\t" +
                     registroIngreso[1] + "\t" +
                     registroIngreso[2];
-            Console.ReadKey();
+
+        }
+        private void Prueba()
+        {
+            string[] myTable = File.ReadAllLines(@"../../myTable.csv");
+
+            var results = from row in myTable
+                          let registro = row.Split(';')
+                          group registro by registro[0] into registros
+                          select new
+                          {
+                              Id = registros.Key,
+                              AverageScore = registros.Average(registro => Convert.ToInt32(registro[1]))
+                          };
+            
+            MessageBox.Show("");
         }
     }
 }
