@@ -9,6 +9,7 @@ namespace Archivos
         public Video09()
         {
             InitializeComponent();
+            LlenarGrilla();
         }
         private void LlenarGrilla()
         {

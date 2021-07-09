@@ -9,7 +9,7 @@ namespace Archivos
 {
     class GestorAlumnos
     {
-        string archivo = "alumnos.txt";
+        string archivo = "../../alumnos.txt";
 
         public void Alta(Alumno unAlumno)
         {
