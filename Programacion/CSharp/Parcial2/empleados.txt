@@ -1,5 +1,5 @@
 001,Sergio,Goycochea
-010,Diego,Maradona
-009,Gabriel,Batistuta
-011,Hernan,Crespo
 005,Fabian,Cubero
+009,Gabriel,Batistuta
+010,Diego,Maradona
+011,Hernan,Crespo

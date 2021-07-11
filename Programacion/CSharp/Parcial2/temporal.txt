@@ -1,0 +1,7 @@
+001	09	15	00	Sergio	Goycochea
+001	10	00	20	Sergio	Goycochea
+009	08	15	02	Gabriel	Batistuta
+009	09	00	02	Gabriel	Batistuta
+009	09	09	00	Gabriel	Batistuta
+009	09	10	00	Gabriel	Batistuta
+009	09	12	02	Gabriel	Batistuta
