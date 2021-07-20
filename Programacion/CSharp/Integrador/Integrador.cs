@@ -1,12 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Integrador
@@ -14,6 +9,7 @@ namespace Integrador
     public partial class frmCombis : Form
     {
         public static string archivo = "../../Pasajeros.txt";
+        public Queue<string> cola = new Queue<string>();
         public frmCombis() { InitializeComponent(); }
 
         private void frmCombis_Load(object sender, EventArgs e)
@@ -24,6 +20,7 @@ namespace Integrador
             CargarDatosBobos(archivo);
         }
 
+        #region COMUNES
         public static List<string> LeerArchivo()
         {
             string cadena = File.ReadAllText(archivo);
@@ -32,10 +29,24 @@ namespace Integrador
             }, StringSplitOptions.None).ToList();
             return registros;
         }
-        public void GuardarArchivo()
+        public void GuardarArchivo(dynamic contenido)
         {
-
+            File.WriteAllText(archivo, string.Join(Environment.NewLine, contenido));
         }
+        public void ActualizarListado(Queue<string> lista)
+        {
+            lstPasajeros.Clear();
+            lstPasajeros.View = View.Details;
+            lstPasajeros.Columns.Add("PASAJEROS");
+            ListViewItem item;
+            foreach (string pasajero in lista)
+            {
+                item = new ListViewItem(pasajero);
+                lstPasajeros.Items.Add(item);
+            }
+            lstPasajeros.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
+        }
+        #endregion
 
         #region PREPARATORIO
         /* ¿POR QUÉ?
@@ -49,45 +60,41 @@ namespace Integrador
          */
         private void PrepararArchivo(string archivo)
         {
-            /*
-            string cadena = File.ReadAllText(archivo);
-            List<string> registros = cadena.Split(new[] { 
-                Environment.NewLine 
-            }, StringSplitOptions.None).ToList();
-            */
-
             List<string> registros = LeerArchivo();
             int inicio = 0, final = registros.Count - 1;
-
             while (inicio < final && String.IsNullOrWhiteSpace(registros[inicio])) { inicio++; }
             while (final >= inicio && String.IsNullOrWhiteSpace(registros[final])) { final--; }
-
-            // var despejados = registros.Skip(inicio).Take(final - inicio + 1);
             var despejados = registros.Skip(inicio).Take(final - inicio + 1);
-            File.WriteAllText(archivo, string.Join(Environment.NewLine, despejados));
+            GuardarArchivo(despejados);
         }
         #endregion
+
         private void CargarDatosBobos(string archivo)
         {
-            string cadena = File.ReadAllText(archivo);
-            var registros = cadena.Split(new[] {
-                Environment.NewLine
-            }, StringSplitOptions.None).ToList();
-            var cola = new Queue<string>(registros);
-
-            lstPasajeros.View = View.Details;
-            lstPasajeros.Columns.Add("PASAJEROS");
-
-            ListViewItem item;
-            foreach (string pasajero in cola)
-            {
-                item = new ListViewItem(pasajero);
-                lstPasajeros.Items.Add(item);
-            }
-            lstPasajeros.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
+            if (txtPasajero.Text!="") { cola.Enqueue(txtPasajero.Text); }
+            
+            /*
+            var cola = new Queue<string>(LeerArchivo());
+            ActualizarListado(cola);
+            */
         }
 
         private void btnAnotar_Click(object sender, EventArgs e)
+        {
+            if (txtPasajero.Text != "") { cola.Enqueue(txtPasajero.Text); }
+            /*
+            var cola = new Queue<string>(LeerArchivo());
+            cola.Enqueue(txtPasajero.Text);
+            */
+
+        }
+
+        private void btnSubir_Click(object sender, EventArgs e)
+        {
+            cola.Clear();
+        }
+
+        private void btnViajar_Click(object sender, EventArgs e)
         {
 
         }
