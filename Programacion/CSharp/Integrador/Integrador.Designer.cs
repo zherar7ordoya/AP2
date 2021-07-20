@@ -86,6 +86,7 @@ namespace Integrador
             this.btnAnotar.TabIndex = 4;
             this.btnAnotar.Text = "Anotar";
             this.btnAnotar.UseVisualStyleBackColor = true;
+            this.btnAnotar.Click += new System.EventHandler(this.btnAnotar_Click);
             // 
             // lstPasajeros
             // 
