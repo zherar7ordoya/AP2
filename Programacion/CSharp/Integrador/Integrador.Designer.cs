@@ -221,6 +221,7 @@ namespace Integrador
             this.Controls.Add(this.lstPasajeros);
             this.Controls.Add(this.lblTerminal);
             this.Controls.Add(this.picCombi);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "frmCombis";
             this.Text = "Servicio de combis";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmCombis_FormClosing);

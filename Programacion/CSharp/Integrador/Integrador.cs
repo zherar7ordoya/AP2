@@ -17,20 +17,30 @@ namespace Integrador
         private void frmCombis_Load(object sender, EventArgs e)
         {
             Random aleatorio = new Random();
-            var horario = DateTime.Now;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.lblInformacion.Text = "Si no hay pasajeros en espera y la combi está vacía, vaya a la terminal de Puerto Madero.";
             this.lblUnidad.Text = lblUnidad.Text + "1972";
             this.lblChofer.Text = lblChofer.Text + "Gerardo Tordoya";
             this.lblKilometraje.Text = lblKilometraje.Text + aleatorio.Next(50, 500);
-            this.lblArribo.Text = lblArribo.Text + horario.Hour.ToString("00") + ':' + horario.Minute.ToString("00");
+            InicializarSesion();
+        }
+
+        private void InicializarSesion()
+        {
+            var horario = DateTime.Now;
+            this.lblInformacion.Text =  "Si no hay pasajeros en espera" + Environment.NewLine +
+                                        "y la combi está vacía," + Environment.NewLine +
+                                        "vaya a la terminal de Puerto Madero.";
+            this.lblArribo.Text =   "Arribo: " + 
+                                    horario.Hour.ToString("00") + ':' + 
+                                    horario.Minute.ToString("00");
+            this.lblPartida.Text = "Partida: ";
             this.lblEspera.Text = "En espera: " + cola.Count().ToString();
+            this.btnAnotar.Enabled = true;
             this.btnSubir.Enabled = false;
             this.btnViajar.Enabled = false;
+            this.lstPasajeros.Clear();
             this.txtPasajero.Focus();
-            // PrepararArchivo(archivo);
-            // CargarDatosBobos(archivo);
         }
 
         #region COMUNES
@@ -123,7 +133,7 @@ namespace Integrador
         private void btnSubir_Click(object sender, EventArgs e)
         {
             var horario = DateTime.Now;
-            this.lblPartida.Text =  lblPartida.Text + 
+            this.lblPartida.Text =  "Partida: " + 
                                     horario.Hour.ToString("00") + ':' + 
                                     horario.Minute.ToString("00");
             this.btnSubir.Enabled = false;
@@ -138,15 +148,16 @@ namespace Integrador
         private void btnViajar_Click(object sender, EventArgs e)
         {
             this.btnViajar.Enabled = false;
-            this.lblInformacion.Text =  "Archivo de registro generado." + Environment.NewLine +
+            MessageBox.Show("Archivo de registro generado." + Environment.NewLine +
                                         "Se hará un backup del mismo" + Environment.NewLine +
-                                        "cuando cierre esta aplicación.";
+                                        "cuando cierre esta aplicación.", "Ciclo terminado.", MessageBoxButtons.OK, MessageBoxIcon.Information);
             foreach (ListViewItem item in lstPasajeros.Items)
             {
                 cadena += item.Text + Environment.NewLine;
             }
             File.AppendAllText(archivo, string.Join(Environment.NewLine, cadena));
             generado = true;
+            InicializarSesion();
         }
 
         private void frmCombis_FormClosing(object sender, FormClosingEventArgs e)
