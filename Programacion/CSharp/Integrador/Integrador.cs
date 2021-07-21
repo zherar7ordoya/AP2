@@ -72,7 +72,6 @@ namespace Integrador
         private void CargarDatosBobos(string archivo)
         {
             if (txtPasajero.Text!="") { cola.Enqueue(txtPasajero.Text); }
-            
             /*
             var cola = new Queue<string>(LeerArchivo());
             ActualizarListado(cola);
@@ -82,6 +81,7 @@ namespace Integrador
         private void btnAnotar_Click(object sender, EventArgs e)
         {
             if (txtPasajero.Text != "") { cola.Enqueue(txtPasajero.Text); }
+            ActualizarListado(cola);
             /*
             var cola = new Queue<string>(LeerArchivo());
             cola.Enqueue(txtPasajero.Text);
