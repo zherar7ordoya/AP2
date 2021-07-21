@@ -8,16 +8,29 @@ namespace Integrador
 {
     public partial class frmCombis : Form
     {
-        public static string archivo = "../../Pasajeros.txt";
+        public static string archivo = "../../pasajeros.txt";
         public Queue<string> cola = new Queue<string>();
+        string cadena = null;
+        public bool generado = false;
         public frmCombis() { InitializeComponent(); }
 
         private void frmCombis_Load(object sender, EventArgs e)
         {
+            Random aleatorio = new Random();
+            var horario = DateTime.Now;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            PrepararArchivo(archivo);
-            CargarDatosBobos(archivo);
+            this.lblInformacion.Text = "Si no hay pasajeros en espera y la combi está vacía, vaya a la terminal de Puerto Madero.";
+            this.lblUnidad.Text = lblUnidad.Text + "1972";
+            this.lblChofer.Text = lblChofer.Text + "Gerardo Tordoya";
+            this.lblKilometraje.Text = lblKilometraje.Text + aleatorio.Next(50, 500);
+            this.lblArribo.Text = lblArribo.Text + horario.Hour.ToString("00") + ':' + horario.Minute.ToString("00");
+            this.lblEspera.Text = "En espera: " + cola.Count().ToString();
+            this.btnSubir.Enabled = false;
+            this.btnViajar.Enabled = false;
+            this.txtPasajero.Focus();
+            // PrepararArchivo(archivo);
+            // CargarDatosBobos(archivo);
         }
 
         #region COMUNES
@@ -33,18 +46,20 @@ namespace Integrador
         {
             File.WriteAllText(archivo, string.Join(Environment.NewLine, contenido));
         }
-        public void ActualizarListado(Queue<string> lista)
+        public void Imprimir()
         {
             lstPasajeros.Clear();
             lstPasajeros.View = View.Details;
             lstPasajeros.Columns.Add("PASAJEROS");
             ListViewItem item;
-            foreach (string pasajero in lista)
+            foreach (string pasajero in cola)
             {
                 item = new ListViewItem(pasajero);
                 lstPasajeros.Items.Add(item);
             }
             lstPasajeros.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
+            lstPasajeros.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
+            this.lblEspera.Text = "En espera: " + cola.Count().ToString();
         }
         #endregion
 
@@ -80,8 +95,22 @@ namespace Integrador
 
         private void btnAnotar_Click(object sender, EventArgs e)
         {
-            if (txtPasajero.Text != "") { cola.Enqueue(txtPasajero.Text); }
-            ActualizarListado(cola);
+            if (txtPasajero.Text != "") {
+                lblInformacion.Text = null;
+                cola.Enqueue(txtPasajero.Text);
+                txtPasajero.Text = "";
+
+            }
+            Imprimir();
+            if (cola.Count < 19) {
+                txtPasajero.Focus();
+            } else
+            {
+                this.txtPasajero.Enabled = false;
+                this.btnAnotar.Enabled = false;
+                this.btnSubir.Enabled = true;
+                this.btnSubir.Focus();
+            }
             /*
             var cola = new Queue<string>(LeerArchivo());
             cola.Enqueue(txtPasajero.Text);
@@ -91,12 +120,46 @@ namespace Integrador
 
         private void btnSubir_Click(object sender, EventArgs e)
         {
+            var horario = DateTime.Now;
+            this.lblPartida.Text =  lblPartida.Text + 
+                                    horario.Hour.ToString("00") + ':' + 
+                                    horario.Minute.ToString("00");
+            this.btnSubir.Enabled = false;
+            this.btnViajar.Enabled = true;
+            this.btnViajar.Focus();
             cola.Clear();
+            this.lblInformacion.Text =  "Se ha vaciado la estructura" + Environment.NewLine +
+                                        "Los únicos datos que persisten son del control de usuario";
         }
 
         private void btnViajar_Click(object sender, EventArgs e)
         {
+            this.btnViajar.Enabled = false;
+            this.lblInformacion.Text =  "Archivo de registro generado." + Environment.NewLine + 
+                                        "Se hará un backup del archivo cuando cierre aplicación.";
+            
 
+            foreach (ListViewItem item in lstPasajeros.Items)
+            {
+                cadena += item.Text + Environment.NewLine;
+            }
+
+                File.WriteAllText(archivo, string.Join(Environment.NewLine, cadena));
+            generado = true;
+        }
+
+        private void frmCombis_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (generado)
+            {
+                List<string> registros = LeerArchivo();
+                var fecha = DateTime.Now;
+                string respaldo = "../../pasajeros." +
+                                    fecha.Year.ToString() + '_' +
+                                    fecha.Month.ToString("00") + '_' +
+                                    fecha.Day.ToString("00") + ".bak";
+                File.WriteAllText(respaldo, string.Join(Environment.NewLine, registros));
+            }
         }
     }
 }
