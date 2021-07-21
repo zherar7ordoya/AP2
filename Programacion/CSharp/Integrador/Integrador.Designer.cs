@@ -142,7 +142,7 @@ namespace Integrador
             this.lblInformacion.Name = "lblInformacion";
             this.lblInformacion.Size = new System.Drawing.Size(312, 73);
             this.lblInformacion.TabIndex = 9;
-            this.lblInformacion.Text = "Redireccción";
+            this.lblInformacion.Text = "Info";
             this.lblInformacion.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblUnidad

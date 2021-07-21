@@ -110,6 +110,8 @@ namespace Integrador
                 this.btnAnotar.Enabled = false;
                 this.btnSubir.Enabled = true;
                 this.btnSubir.Focus();
+                this.lblInformacion.Text =  "Ha alcancado la capacidad máxima." + Environment.NewLine +
+                                            "Pida a los pasajeros que suban.";
             }
             /*
             var cola = new Queue<string>(LeerArchivo());
@@ -128,23 +130,22 @@ namespace Integrador
             this.btnViajar.Enabled = true;
             this.btnViajar.Focus();
             cola.Clear();
-            this.lblInformacion.Text =  "Se ha vaciado la estructura" + Environment.NewLine +
-                                        "Los únicos datos que persisten son del control de usuario";
+            this.lblInformacion.Text =  "Se ha vaciado la estructura." + Environment.NewLine +
+                                        "Los únicos datos que persisten" + Environment.NewLine +
+                                        "son los del control de usuario.";
         }
 
         private void btnViajar_Click(object sender, EventArgs e)
         {
             this.btnViajar.Enabled = false;
-            this.lblInformacion.Text =  "Archivo de registro generado." + Environment.NewLine + 
-                                        "Se hará un backup del archivo cuando cierre aplicación.";
-            
-
+            this.lblInformacion.Text =  "Archivo de registro generado." + Environment.NewLine +
+                                        "Se hará un backup del mismo" + Environment.NewLine +
+                                        "cuando cierre esta aplicación.";
             foreach (ListViewItem item in lstPasajeros.Items)
             {
                 cadena += item.Text + Environment.NewLine;
             }
-
-                File.WriteAllText(archivo, string.Join(Environment.NewLine, cadena));
+            File.AppendAllText(archivo, string.Join(Environment.NewLine, cadena));
             generado = true;
         }
 
