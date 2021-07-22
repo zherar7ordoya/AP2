@@ -104,6 +104,7 @@ namespace Integrador
             this.lstPasajeros.Size = new System.Drawing.Size(211, 279);
             this.lstPasajeros.TabIndex = 5;
             this.lstPasajeros.UseCompatibleStateImageBehavior = false;
+            this.lstPasajeros.Click += new System.EventHandler(this.lstPasajeros_Click);
             // 
             // btnSubir
             // 

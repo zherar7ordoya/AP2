@@ -8,12 +8,60 @@ namespace Integrador
 {
     public partial class frmCombis : Form
     {
+        /// <summary>
+        /// 
+        /// Trabajo Práctico Integrador pedido por la 
+        /// Cátedra de Programación I (UAI) -2021-
+        /// El trabajo se ha enfocado a una mini-aplicación de escritorio
+        /// que supervisa el ingreso de pasajeros a una combi de transporte.
+        /// 
+        /// Autor: Gerardo Tordoya
+        /// Fecha: 2021-07(JUL)-21
+        /// 
+        /// </summary>
+
+        /**
+         * NOTA:
+         * Profesor, estoy revisando el trabajo (limpiando código y completando
+         * comentarios) y me parece que tuve una confusión con respecto al
+         * punto D de la primera parte del Trabajo Práctico Integrador.
+         * 
+         * En la consigna se lee:
+         *                      «Codificar los botones SUBIR A LA COMBI 
+         *                      para quitar elementos de la estructura.»
+         *                      
+         * ¿Cuál creo fue mi confusión? Que yo interpreté TODOS los elementos y
+         * por ello inyecté una lógica al proyecto que cumplimente con ese 
+         * requisito tal como yo lo había interpretado. 
+         * Pero, volviendo a mirar la consigna, me ha parecido que tal vez el
+         * pedido era UN elemento. 
+         * 
+         * No quise dejar esta otra arista sin solución, y para no tocar lo ya
+         * hecho, agregué una ADENDA que responde a esa solicitud:
+         * Si usted hace click en cualquier pasajero de la lista, se removerá
+         * el elemento del principio de la cola (acorde a la FIFO propia del
+         * concepto de cola).
+         * 
+         * Si eso es lo que debiera hacer el botón ANOTAR, toda la lógica queda
+         * igual pues implicó más planificación hacer lo que yo hice: ejecutar
+         * el vaciamiento de la estructura pero cuidando de tener en algún lado
+         * los datos para los pasos siguientes (grabación en el archivo, etc.).
+         * 
+         * Ahora bien, hay una tercera interpretación: si la idea era subir
+         * lotes de pasajeros (por ejemplo 5 y esperar por otros 7), bueno, la
+         * lógica era completamente diferente y eso (en mi humilde opinión)
+         * podría haber sido aclarado.
+         */
+
+        #region GLOBALES
         public static string archivo = "../../pasajeros.txt";
         public Queue<string> cola = new Queue<string>();
         string cadena = null;
         public bool generado = false;
-        public frmCombis() { InitializeComponent(); }
+        #endregion
 
+        #region BOOT
+        public frmCombis() { InitializeComponent(); }
         private void frmCombis_Load(object sender, EventArgs e)
         {
             Random aleatorio = new Random();
@@ -24,7 +72,9 @@ namespace Integrador
             this.lblKilometraje.Text = lblKilometraje.Text + aleatorio.Next(50, 500);
             InicializarSesion();
         }
+        #endregion
 
+        #region FUNCIONES
         private void InicializarSesion()
         {
             var horario = DateTime.Now;
@@ -36,25 +86,12 @@ namespace Integrador
                                     horario.Minute.ToString("00");
             this.lblPartida.Text = "Partida: ";
             this.lblEspera.Text = "En espera: " + cola.Count().ToString();
+            this.txtPasajero.Enabled = true;
             this.btnAnotar.Enabled = true;
             this.btnSubir.Enabled = false;
             this.btnViajar.Enabled = false;
             this.lstPasajeros.Clear();
             this.txtPasajero.Focus();
-        }
-
-        #region COMUNES
-        public static List<string> LeerArchivo()
-        {
-            string cadena = File.ReadAllText(archivo);
-            List<string> registros = cadena.Split(new[] {
-                Environment.NewLine
-            }, StringSplitOptions.None).ToList();
-            return registros;
-        }
-        public void GuardarArchivo(dynamic contenido)
-        {
-            File.WriteAllText(archivo, string.Join(Environment.NewLine, contenido));
         }
         public void Imprimir()
         {
@@ -71,38 +108,17 @@ namespace Integrador
             lstPasajeros.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
             this.lblEspera.Text = "En espera: " + cola.Count().ToString();
         }
-        #endregion
-
-        #region PREPARATORIO
-        /* ¿POR QUÉ?
-         * En el parcial anterior, el archivo vino con saltos de línea que me
-         * hicieron fallar los primeros intentos hasta que descubrí el origen.
-         * Recupera el archivo en una cadena, que luego, separada en líneas,
-         * se guarda en un array, que luego se cuenta a partir de sus null (que
-         * hacen de saltos de línea), se vuelve a armar el array sin saltos de
-         * línea null, se rearma el string y se reemplaza todo en el archivo
-         * con este nuevo contenido.
-         */
-        private void PrepararArchivo(string archivo)
+        public static List<string> LeerArchivo()
         {
-            List<string> registros = LeerArchivo();
-            int inicio = 0, final = registros.Count - 1;
-            while (inicio < final && String.IsNullOrWhiteSpace(registros[inicio])) { inicio++; }
-            while (final >= inicio && String.IsNullOrWhiteSpace(registros[final])) { final--; }
-            var despejados = registros.Skip(inicio).Take(final - inicio + 1);
-            GuardarArchivo(despejados);
+            string cadena = File.ReadAllText(archivo);
+            List<string> registros = cadena.Split(new[] {
+                Environment.NewLine
+            }, StringSplitOptions.None).ToList();
+            return registros;
         }
         #endregion
 
-        private void CargarDatosBobos(string archivo)
-        {
-            if (txtPasajero.Text!="") { cola.Enqueue(txtPasajero.Text); }
-            /*
-            var cola = new Queue<string>(LeerArchivo());
-            ActualizarListado(cola);
-            */
-        }
-
+        #region BOTONES
         private void btnAnotar_Click(object sender, EventArgs e)
         {
             if (txtPasajero.Text != "") {
@@ -123,13 +139,7 @@ namespace Integrador
                 this.lblInformacion.Text =  "Ha alcancado la capacidad máxima." + Environment.NewLine +
                                             "Pida a los pasajeros que suban.";
             }
-            /*
-            var cola = new Queue<string>(LeerArchivo());
-            cola.Enqueue(txtPasajero.Text);
-            */
-
         }
-
         private void btnSubir_Click(object sender, EventArgs e)
         {
             var horario = DateTime.Now;
@@ -144,13 +154,14 @@ namespace Integrador
                                         "Los únicos datos que persisten" + Environment.NewLine +
                                         "son los del control de usuario.";
         }
-
         private void btnViajar_Click(object sender, EventArgs e)
         {
             this.btnViajar.Enabled = false;
             MessageBox.Show("Archivo de registro generado." + Environment.NewLine +
-                                        "Se hará un backup del mismo" + Environment.NewLine +
-                                        "cuando cierre esta aplicación.", "Ciclo terminado.", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            "Se hará un backup del mismo" + Environment.NewLine +
+                            "cuando cierre esta aplicación.", 
+                            "Información", 
+                            MessageBoxButtons.OK, MessageBoxIcon.Information);
             foreach (ListViewItem item in lstPasajeros.Items)
             {
                 cadena += item.Text + Environment.NewLine;
@@ -159,7 +170,9 @@ namespace Integrador
             generado = true;
             InicializarSesion();
         }
+        #endregion
 
+        #region FINALE
         private void frmCombis_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (generado)
@@ -173,5 +186,14 @@ namespace Integrador
                 File.WriteAllText(respaldo, string.Join(Environment.NewLine, registros));
             }
         }
+        #endregion
+
+        #region ADENDA
+        private void lstPasajeros_Click(object sender, EventArgs e)
+        {
+            cola.Dequeue();
+            Imprimir();
+        }
+        #endregion
     }
 }
