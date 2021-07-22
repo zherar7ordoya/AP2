@@ -46,6 +46,7 @@ namespace Integrador
             this.lblArribo = new System.Windows.Forms.Label();
             this.lblPartida = new System.Windows.Forms.Label();
             this.grpVentanilla = new System.Windows.Forms.GroupBox();
+            this.lblAdenda = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.picCombi)).BeginInit();
             this.grpVentanilla.SuspendLayout();
             this.SuspendLayout();
@@ -193,6 +194,7 @@ namespace Integrador
             // 
             // grpVentanilla
             // 
+            this.grpVentanilla.Controls.Add(this.lblAdenda);
             this.grpVentanilla.Controls.Add(this.lblPasajero);
             this.grpVentanilla.Controls.Add(this.txtPasajero);
             this.grpVentanilla.Controls.Add(this.btnAnotar);
@@ -202,6 +204,17 @@ namespace Integrador
             this.grpVentanilla.TabIndex = 15;
             this.grpVentanilla.TabStop = false;
             this.grpVentanilla.Text = "Ventanilla";
+            // 
+            // lblAdenda
+            // 
+            this.lblAdenda.AutoSize = true;
+            this.lblAdenda.Font = new System.Drawing.Font("Marlett", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAdenda.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.lblAdenda.Location = new System.Drawing.Point(9, 44);
+            this.lblAdenda.Name = "lblAdenda";
+            this.lblAdenda.Size = new System.Drawing.Size(172, 14);
+            this.lblAdenda.TabIndex = 16;
+            this.lblAdenda.Text = "Para eliminar, haga click en la lista.";
             // 
             // frmCombis
             // 
@@ -253,6 +266,7 @@ namespace Integrador
         private System.Windows.Forms.Label lblArribo;
         private System.Windows.Forms.Label lblPartida;
         private System.Windows.Forms.GroupBox grpVentanilla;
+        private System.Windows.Forms.Label lblAdenda;
     }
 }
 
