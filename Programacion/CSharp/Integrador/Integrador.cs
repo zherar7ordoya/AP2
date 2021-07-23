@@ -241,7 +241,14 @@ namespace Integrador
          */
         private void frmCombis_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (generado)
+            if(MessageBox.Show("¿Salir?",
+                               "Pregunta",
+                               MessageBoxButtons.YesNo,
+                               MessageBoxIcon.Question) == DialogResult.No)
+            {
+                e.Cancel = true;
+            }
+            else if (generado)
             {
                 List<string> registros = LeerArchivo();
                 var fecha = DateTime.Now;
