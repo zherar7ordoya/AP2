@@ -16,7 +16,7 @@ namespace Integrador
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmCombis());
+            Application.Run(new Pasajeros());
         }
     }
 }

@@ -1,7 +1,7 @@
 ﻿
 namespace Integrador
 {
-    partial class frmCombis
+    partial class Pasajeros
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@ namespace Integrador
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCombis));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Pasajeros));
             this.picCombi = new System.Windows.Forms.PictureBox();
             this.lblTerminal = new System.Windows.Forms.Label();
             this.lblPasajero = new System.Windows.Forms.Label();
@@ -216,7 +216,7 @@ namespace Integrador
             this.lblAdenda.TabIndex = 16;
             this.lblAdenda.Text = "Para eliminar, haga click en la lista.";
             // 
-            // frmCombis
+            // Pasajeros
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -236,10 +236,10 @@ namespace Integrador
             this.Controls.Add(this.lblTerminal);
             this.Controls.Add(this.picCombi);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Name = "frmCombis";
+            this.Name = "Pasajeros";
             this.Text = "Servicio de combis";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmCombis_FormClosing);
-            this.Load += new System.EventHandler(this.frmCombis_Load);
+            this.Load += new System.EventHandler(this.Pasajeros_Load);
             ((System.ComponentModel.ISupportInitialize)(this.picCombi)).EndInit();
             this.grpVentanilla.ResumeLayout(false);
             this.grpVentanilla.PerformLayout();

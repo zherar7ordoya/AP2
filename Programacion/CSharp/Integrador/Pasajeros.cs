@@ -6,7 +6,7 @@ using System.Windows.Forms;
 
 namespace Integrador
 {
-    public partial class frmCombis : Form
+    public partial class Pasajeros : Form
     {
         #region PORTADA
         /// <summary>
@@ -70,14 +70,14 @@ namespace Integrador
         #endregion
 
         #region BOOT
-        public frmCombis() { InitializeComponent(); }
-        private void frmCombis_Load(object sender, EventArgs e)
+        public Pasajeros() { InitializeComponent(); }
+        private void Pasajeros_Load(object sender, EventArgs e)
         {
-            Random aleatorio         = new Random();
-            this.MaximizeBox         = false;
-            this.MinimizeBox         = false;
-            this.lblUnidad.Text      = lblUnidad.Text + "1972";
-            this.lblChofer.Text      = lblChofer.Text + "Gerardo Tordoya";
+            Random aleatorio = new Random();
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.lblUnidad.Text = lblUnidad.Text + "1972";
+            this.lblChofer.Text = lblChofer.Text + "Gerardo Tordoya";
             this.lblKilometraje.Text = lblKilometraje.Text + aleatorio.Next(50, 500);
             InicializarSesion();    // Ver nota en FUNCIONES.
         }
@@ -91,6 +91,14 @@ namespace Integrador
          * decir, terminadas las operaciones, poder reiniciar la secuencia).
          * Por eso, ahí en el "booteo", se hacen las operaciones que no son ya
          * necesarias de cambiar y aquí las que ante cada ciclo lo necesitan.
+         * 
+         * NOTA: Esto se hizo solo para diferenciar un "booteo" que consta de
+         *       operaciones que deben mantenerse y de otras que no. Es decir,
+         *       es una aplicación que una vez que termina sus operaciones
+         *       reinicia para volver a hacerlas. En una aplicación real, esos
+         *       datos (chofer, unidad, etc.) deberían cambiar porque,
+         *       obviamente, se trata de otra combi para otro viaje con otro
+         *       chofer.
          */
         private void InicializarSesion()
         {
