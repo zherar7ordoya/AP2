@@ -16,7 +16,8 @@ Jennifer Lopez
 Clint Eastwood
 Keanu Reeves
 Micheal Douglas
-Will SmithAlejandro Hunt
+Will Smith
+Alejandro Hunt
 Sergio Capucchio
 Mario Cortés
 Leonel Gómez
@@ -149,3 +150,22 @@ Kelly Clarkson
 Jessie J
 Christina Aguilera
 Alessia Cara
+01
+02
+03
+04
+05
+06
+07
+08
+09
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19

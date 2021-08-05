@@ -1,7 +1,7 @@
 ﻿
 namespace Integrador
 {
-    partial class Pasajeros
+    partial class Combi
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@ namespace Integrador
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Pasajeros));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Combi));
             this.picCombi = new System.Windows.Forms.PictureBox();
             this.lblTerminal = new System.Windows.Forms.Label();
             this.lblPasajero = new System.Windows.Forms.Label();
@@ -46,7 +46,7 @@ namespace Integrador
             this.lblArribo = new System.Windows.Forms.Label();
             this.lblPartida = new System.Windows.Forms.Label();
             this.grpVentanilla = new System.Windows.Forms.GroupBox();
-            this.lblAdenda = new System.Windows.Forms.Label();
+            this.btnEliminar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.picCombi)).BeginInit();
             this.grpVentanilla.SuspendLayout();
             this.SuspendLayout();
@@ -105,7 +105,6 @@ namespace Integrador
             this.lstPasajeros.Size = new System.Drawing.Size(211, 279);
             this.lstPasajeros.TabIndex = 5;
             this.lstPasajeros.UseCompatibleStateImageBehavior = false;
-            this.lstPasajeros.Click += new System.EventHandler(this.lstPasajeros_Click);
             // 
             // btnSubir
             // 
@@ -194,7 +193,7 @@ namespace Integrador
             // 
             // grpVentanilla
             // 
-            this.grpVentanilla.Controls.Add(this.lblAdenda);
+            this.grpVentanilla.Controls.Add(this.btnEliminar);
             this.grpVentanilla.Controls.Add(this.lblPasajero);
             this.grpVentanilla.Controls.Add(this.txtPasajero);
             this.grpVentanilla.Controls.Add(this.btnAnotar);
@@ -205,18 +204,17 @@ namespace Integrador
             this.grpVentanilla.TabStop = false;
             this.grpVentanilla.Text = "Ventanilla";
             // 
-            // lblAdenda
+            // btnEliminar
             // 
-            this.lblAdenda.AutoSize = true;
-            this.lblAdenda.Font = new System.Drawing.Font("Marlett", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAdenda.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.lblAdenda.Location = new System.Drawing.Point(9, 44);
-            this.lblAdenda.Name = "lblAdenda";
-            this.lblAdenda.Size = new System.Drawing.Size(172, 14);
-            this.lblAdenda.TabIndex = 16;
-            this.lblAdenda.Text = "Para eliminar, haga click en la lista.";
+            this.btnEliminar.Location = new System.Drawing.Point(9, 39);
+            this.btnEliminar.Name = "btnEliminar";
+            this.btnEliminar.Size = new System.Drawing.Size(104, 23);
+            this.btnEliminar.TabIndex = 5;
+            this.btnEliminar.Text = "Eliminar";
+            this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
-            // Pasajeros
+            // Combi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -236,7 +234,7 @@ namespace Integrador
             this.Controls.Add(this.lblTerminal);
             this.Controls.Add(this.picCombi);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Name = "Pasajeros";
+            this.Name = "Combi";
             this.Text = "Servicio de combis";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmCombis_FormClosing);
             this.Load += new System.EventHandler(this.Pasajeros_Load);
@@ -266,7 +264,7 @@ namespace Integrador
         private System.Windows.Forms.Label lblArribo;
         private System.Windows.Forms.Label lblPartida;
         private System.Windows.Forms.GroupBox grpVentanilla;
-        private System.Windows.Forms.Label lblAdenda;
+        private System.Windows.Forms.Button btnEliminar;
     }
 }
 

@@ -6,7 +6,7 @@ using System.Windows.Forms;
 
 namespace Integrador
 {
-    public partial class Pasajeros : Form
+    public partial class Combi : Form
     {
         #region PORTADA
         /// <summary>
@@ -22,41 +22,12 @@ namespace Integrador
         /// </summary>
         #endregion
 
-        /**
-         * NOTA:
-         * 
-         * En la consigna D (1ra parte del práctico) se lee:
-         *                      «Codificar los botones SUBIR A LA COMBI 
-         *                      para quitar elementos de la estructura.»
-         *                      
-         * Hay al menos 3 formas de interpretar esto:
-         *      1) Que SUBIR quite TODOS los elementos de la estructura.
-         *      2) Que SUBIR quite UNO A UNO los elementos de la estructura.
-         *      3) Que SUBIR quite LOTES de elementos de la estructura.
-         * 
-         * Para el presente trabajo se eligió la opción 1 para coordinar de una
-         * manera simple y limpia la segunda parte del práctico: las
-         * operaciones de generación de archivos debían encontrar, en ese
-         * punto, una estructura vacía. Para ello, los datos debían permanecer
-         * en algún lado para ser recuperados. Se hizo así. La grabación del
-         * archivo se hace sin recurrir a una estructura vacía y, en cambio, se
-         * hace el recupero (para el grabado) desde el control de usuario.
-         * 
-         * De todas maneras, para patentar de alguna manera el procedimiento de
-         * "eliminar" elementos de la cola, se hizo una ADENDA, la cual
-         * habilita la posibilidad de eliminar un elemento (acorde a las reglas
-         * de FIFO) al hacer click en la lista de pasajeros.
-         * 
-         * Las respuestas a los incisos A y B (de carácter teórico) están en el
-         * archivo MSWord adjunto a este mismo directorio.
-         */
-
         #region GLOBALES
         /**
          * ¿POR QUÉ?
          *  -)  Para archivo, para ubicar un lugar cómodo para definir un 
          *      archivo de salida.
-         *  -)  Para cola, para que esté disponible entre los distintos 
+         *  -)  Para colaFrontend, para que esté disponible entre los distintos 
          *      procedimientos ya que, como se verá, traté de dividir el código
          *      de forma que sea lo más equilibrado y razonable posible.
          *  -)  Finalmente, el booleano es para evitar que el cierre del form
@@ -65,12 +36,13 @@ namespace Integrador
          *      una condición sobre la cual apoyarse.
          */
         public static string archivo = "../../pasajeros.txt";
-        public Queue<string> cola    = new Queue<string>();
+        public Queue<string> colaFrontend    = new Queue<string>();
         public bool generado         = false;
+        Cola colaBackend = new Cola();
         #endregion
 
         #region BOOT
-        public Pasajeros() { InitializeComponent(); }
+        public Combi() { InitializeComponent(); }
         private void Pasajeros_Load(object sender, EventArgs e)
         {
             Random aleatorio = new Random();
@@ -110,7 +82,7 @@ namespace Integrador
                                        horario.Hour.ToString("00") + ':' + 
                                        horario.Minute.ToString("00");
             this.lblPartida.Text     = "Partida: ";
-            this.lblEspera.Text      = "En espera: " + cola.Count().ToString();
+            this.lblEspera.Text      = "En espera: " + colaFrontend.Count().ToString();
             this.txtPasajero.Enabled = true;    // Ver nota en CLEAR.
             this.btnAnotar.Enabled   = true;    // Ver nota en CLEAR.
             this.btnSubir.Enabled    = false;
@@ -129,14 +101,14 @@ namespace Integrador
             lstPasajeros.View = View.Details;
             lstPasajeros.Columns.Add("PASAJEROS");
             ListViewItem item;
-            foreach (string pasajero in cola)
+            foreach (string pasajero in colaFrontend)
             {
                 item = new ListViewItem(pasajero);
                 lstPasajeros.Items.Add(item);
             }
             lstPasajeros.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
             lstPasajeros.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
-            this.lblEspera.Text = "En espera: " + cola.Count().ToString();
+            this.lblEspera.Text = "En espera: " + colaFrontend.Count().ToString();
         }
         
         /**
@@ -156,6 +128,23 @@ namespace Integrador
         #endregion
 
         #region BOTONES
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            if (colaFrontend.Count()!=0)
+            {
+                colaFrontend.Dequeue();
+                colaBackend.Desencolar();
+                Imprimir();
+            }
+            else
+            {
+                MessageBox.Show("Lista vacía.",
+                                "Error",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Error);
+            }
+            
+        }
         /**
          * ¿POR QUÉ NO ANIDAR LOS IF?
          * Porque en el pasado no tuve buena experiencia anidando. Siempre me 
@@ -171,11 +160,28 @@ namespace Integrador
         {
             if (txtPasajero.Text != "") {
                 lblInformacion.Text = null;
-                cola.Enqueue(txtPasajero.Text);
+                colaFrontend.Enqueue(txtPasajero.Text);
+                
+                // TEMPORAL!
+                // No se supone que debo operar sobre el control.
+                // Debo operar sobre el Queue.
+                Nodo   nodoTemporal = new Nodo();
+                nodoTemporal.Nombre = colaFrontend.ElementAt(colaFrontend.Count()-1);
+                colaBackend.Encolar(nodoTemporal);
+                
+
                 txtPasajero.Text = "";
+
+            }
+            else
+            {
+                MessageBox.Show("Debe ingresar un nombre.",
+                                "Error",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Error);
             }
             Imprimir();
-            if (cola.Count < 19) {
+            if (colaFrontend.Count < 19) {
                 txtPasajero.Focus();
             } else
             {
@@ -190,8 +196,8 @@ namespace Integrador
         
         /**
          * Bueno, el disputado inciso D. Todo este procedimiento se podría
-         * reducir a tan solo a dos cosas: vaciar la cola y no imprimir.
-         * Vaciar la cola cumpliría con lo pedido por el inciso D.
+         * reducir a tan solo a dos cosas: vaciar la colaFrontend y no imprimir.
+         * Vaciar la colaFrontend cumpliría con lo pedido por el inciso D.
          * No imprimir permite cumplir con el punto 1 de la 2da parte del
          * integrador (que necesita recuperar de algún lado los datos para
          * grabarlos en el archivo).
@@ -206,7 +212,7 @@ namespace Integrador
             this.btnSubir.Enabled    = false;
             this.btnViajar.Enabled   = true;
             this.btnViajar.Focus();
-            cola.Clear();
+            colaFrontend.Clear();
             this.lblInformacion.Text = "Se ha vaciado la estructura." + Environment.NewLine +
                                        "Los únicos datos que persisten" + Environment.NewLine +
                                        "son los del control de usuario.";
@@ -258,25 +264,13 @@ namespace Integrador
             }
             else if (generado)
             {
-                List<string> registros = LeerArchivo();
                 var fecha = DateTime.Now;
                 string respaldo = "../../pasajeros." +
                                   fecha.Year.ToString() + '_' +
                                   fecha.Month.ToString("00") + '_' +
                                   fecha.Day.ToString("00") + ".bak";
-                File.WriteAllText(respaldo,
-                                  string.Join(Environment.NewLine,
-                                  registros));
+                File.Copy(archivo, respaldo);
             }
-        }
-        #endregion
-
-        #region ADENDA
-        // VER NOTA GENERAL.
-        private void lstPasajeros_Click(object sender, EventArgs e)
-        {
-            cola.Dequeue();
-            Imprimir();
         }
         #endregion
     }

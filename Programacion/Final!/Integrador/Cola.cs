@@ -4,16 +4,16 @@
     {
         Nodo _inicio;
         public int Contador = 0;
-        public void Encolar(Nodo unNodo)
+        public void Encolar(Nodo nodoIngreso)
         {
             if (_inicio==null)
             {
-                _inicio = unNodo;
+                _inicio = nodoIngreso;
             }
             else
             {
-                Nodo auxiliar = BuscarUltimo(_inicio);
-                auxiliar.Siguiente = unNodo;
+                Nodo nodoTemporal = BuscarUltimo(_inicio);
+                nodoTemporal.Siguiente = nodoIngreso;
             }
             Contador++;
         }
@@ -22,15 +22,15 @@
             _inicio = _inicio.Siguiente;
             Contador--;
         }
-        private Nodo BuscarUltimo(Nodo unNodo)
+        private Nodo BuscarUltimo(Nodo nodoReceptor)
         {
-            if (unNodo.Siguiente == null)
+            if (nodoReceptor.Siguiente == null)
             {
-                return unNodo;
+                return nodoReceptor;
             }
             else
             {
-                return BuscarUltimo(unNodo.Siguiente);
+                return BuscarUltimo(nodoReceptor.Siguiente);
             }
         }
         public bool Vacia()

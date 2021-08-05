@@ -48,16 +48,16 @@
   <ItemGroup>
     <Compile Include="Cola.cs" />
     <Compile Include="Nodo.cs" />
-    <Compile Include="Pasajeros.cs">
+    <Compile Include="Combi.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Pasajeros.Designer.cs">
-      <DependentUpon>Pasajeros.cs</DependentUpon>
+    <Compile Include="Combi.Designer.cs">
+      <DependentUpon>Combi.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Pasajeros.resx">
-      <DependentUpon>Pasajeros.cs</DependentUpon>
+    <EmbeddedResource Include="Combi.resx">
+      <DependentUpon>Combi.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
