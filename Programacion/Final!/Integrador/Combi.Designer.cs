@@ -237,7 +237,7 @@ namespace Integrador
             this.Name = "Combi";
             this.Text = "Servicio de combis";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmCombis_FormClosing);
-            this.Load += new System.EventHandler(this.Pasajeros_Load);
+            this.Load += new System.EventHandler(this.Combi_Load);
             ((System.ComponentModel.ISupportInitialize)(this.picCombi)).EndInit();
             this.grpVentanilla.ResumeLayout(false);
             this.grpVentanilla.PerformLayout();

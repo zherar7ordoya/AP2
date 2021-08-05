@@ -8,16 +8,33 @@ namespace Integrador
 {
     public partial class Combi : Form
     {
+
+        /**
+         * TODO:
+         * -) Botón subir: generar un string desde backend y mostrar en msgbox
+         *    usando recursión.
+         * -) Botón viajar: generar listado a grabar a partir de backend (usar 
+         *    el punto anterior): ¿hacer un string global para esto?
+         */
+
         #region PORTADA
         /// <summary>
+        /// Título:      Trabajo Práctico Integrador (UAI 2021 Programación I).
+        /// Descripción: Aplicación control de ingreso de pasajeros a una combi
+        /// Profesor:    Alejandro Hunt.
         /// 
-        /// Trabajo Práctico Integrador pedido por la 
-        /// Cátedra de Programación I (UAI) -2021-
-        /// El trabajo se ha enfocado a una mini-aplicación de escritorio
-        /// que supervisa el ingreso de pasajeros a una combi de transporte.
+        /// Autor:       Gerardo Tordoya
+        /// Fecha:       2021-07(JUL)-21
         /// 
-        /// Autor: Gerardo Tordoya
-        /// Fecha: 2021-07(JUL)-21
+        /// EDICIONES    ------------------------------------------------------
+        /// 
+        /// Fecha:       2021-08(AGO)-05
+        ///              Prolijado de nombres de clases
+        ///              Uso de estructura de datos interna
+        ///              Uso de File.Copy
+        ///              
+        /// Fecha:       XXXX-XX(XXX)-XX
+        ///              ...
         /// 
         /// </summary>
         #endregion
@@ -30,20 +47,21 @@ namespace Integrador
          *  -)  Para colaFrontend, para que esté disponible entre los distintos 
          *      procedimientos ya que, como se verá, traté de dividir el código
          *      de forma que sea lo más equilibrado y razonable posible.
-         *  -)  Finalmente, el booleano es para evitar que el cierre del form
+         *  -)  Finalmente, el booleano es para evitar que el cierre del Form
          *      intente hacer operaciones que dependían de anteriores. El
          *      cierre del form es imprevisible, así que mejor dejar flotando
          *      una condición sobre la cual apoyarse.
          */
-        public static string archivo = "../../pasajeros.txt";
-        public Queue<string> colaFrontend    = new Queue<string>();
-        public bool generado         = false;
-        Cola colaBackend = new Cola();
+        public static string archivo      = "../../pasajeros.txt";
+        public string pasajeros           = null;
+        public Queue<string> colaFrontend = new Queue<string>();
+        Cola colaBackend                  = new Cola();
+        public bool generado              = false;
         #endregion
 
         #region BOOT
         public Combi() { InitializeComponent(); }
-        private void Pasajeros_Load(object sender, EventArgs e)
+        private void Combi_Load(object sender, EventArgs e)
         {
             Random aleatorio = new Random();
             this.MaximizeBox = false;
@@ -110,21 +128,17 @@ namespace Integrador
             lstPasajeros.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
             this.lblEspera.Text = "En espera: " + colaFrontend.Count().ToString();
         }
-        
-        /**
-         * ¿POR QUÉ LEER ARCHIVO? Es una función que no se usa tanto...
-         * Si bien es cierto que no justifica hacer una función para una tarea
-         * que se llama a hacer una sola vez, sin embargo quise aprovechar el 
-         * código que ya había escrito para otro trabajo en esta misma materia.
-         */
-        public static List<string> LeerArchivo()
+        private void PasajerosAbordados()
         {
-            string cadena          = File.ReadAllText(archivo);
-            List<string> registros = cadena.Split(new[] {
-                Environment.NewLine
-            }, StringSplitOptions.None).ToList();
-            return registros;
+            if (colaBackend.Contador == 0) { return; }
+            else
+            {
+                pasajeros += colaBackend.Inicio.Nombre + Environment.NewLine;
+                colaBackend.Desencolar();
+                PasajerosAbordados();
+            }
         }
+
         #endregion
 
         #region BOTONES
@@ -160,18 +174,11 @@ namespace Integrador
         {
             if (txtPasajero.Text != "") {
                 lblInformacion.Text = null;
+                Nodo nodoTemporal = new Nodo();
                 colaFrontend.Enqueue(txtPasajero.Text);
-                
-                // TEMPORAL!
-                // No se supone que debo operar sobre el control.
-                // Debo operar sobre el Queue.
-                Nodo   nodoTemporal = new Nodo();
                 nodoTemporal.Nombre = colaFrontend.ElementAt(colaFrontend.Count()-1);
                 colaBackend.Encolar(nodoTemporal);
-                
-
                 txtPasajero.Text = "";
-
             }
             else
             {
@@ -181,9 +188,8 @@ namespace Integrador
                                 MessageBoxIcon.Error);
             }
             Imprimir();
-            if (colaFrontend.Count < 19) {
-                txtPasajero.Focus();
-            } else
+            if (colaFrontend.Count < 19) { txtPasajero.Focus(); }
+            else
             {
                 this.txtPasajero.Enabled = false;
                 this.btnAnotar.Enabled   = false;
@@ -205,7 +211,7 @@ namespace Integrador
          */
         private void btnSubir_Click(object sender, EventArgs e)
         {
-            var horario = DateTime.Now;
+            var horario              = DateTime.Now;
             this.lblPartida.Text     = "Partida: " + 
                                        horario.Hour.ToString("00") + ':' + 
                                        horario.Minute.ToString("00");
@@ -213,11 +219,16 @@ namespace Integrador
             this.btnViajar.Enabled   = true;
             this.btnViajar.Focus();
             colaFrontend.Clear();
-            this.lblInformacion.Text = "Se ha vaciado la estructura." + Environment.NewLine +
-                                       "Los únicos datos que persisten" + Environment.NewLine +
-                                       "son los del control de usuario.";
+            Imprimir();
+            this.lblInformacion.Text = "Status:" + Environment.NewLine +
+                                       "Cola frontal vacía." + Environment.NewLine +
+                                       "Cola interna retiene los datos.";
+            PasajerosAbordados();
+            MessageBox.Show("Pasajeros a bordo:" + Environment.NewLine + pasajeros,
+                            "Información",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Information);
         }
-        
         /**
          * Bueno, aquí está lo explicado en el botón SUBIR. Así que las
          * operaciones allí van de la mano con las de aquí:
@@ -227,22 +238,18 @@ namespace Integrador
          */
         private void btnViajar_Click(object sender, EventArgs e)
         {
-            string cadena          = null;
             this.btnViajar.Enabled = false;
             MessageBox.Show("Archivo de registro generado." + Environment.NewLine +
                             "Se hará un backup del mismo" + Environment.NewLine +
                             "cuando cierre esta aplicación.", 
                             "Información", 
                             MessageBoxButtons.OK, MessageBoxIcon.Information);
-            foreach (ListViewItem item in lstPasajeros.Items)
-            {
-                cadena += item.Text + Environment.NewLine;
-            }
             // El archivo de registro, a diferencia del de respaldo (backup) va
             // a ser de agregado, y por eso el uso de AppendAllText. Ver notas
             // en el evento de cierre del form.
-            File.AppendAllText(archivo, string.Join(Environment.NewLine, cadena));
+            File.AppendAllText(archivo, string.Join(Environment.NewLine, pasajeros));
             generado = true;
+            pasajeros = null;
             InicializarSesion();
         }
         #endregion
@@ -269,7 +276,7 @@ namespace Integrador
                                   fecha.Year.ToString() + '_' +
                                   fecha.Month.ToString("00") + '_' +
                                   fecha.Day.ToString("00") + ".bak";
-                File.Copy(archivo, respaldo);
+                File.Copy(archivo, respaldo, true);
             }
         }
         #endregion
