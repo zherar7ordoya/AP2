@@ -86,6 +86,7 @@ namespace Integrador
             this.txtPasajero.Name = "txtPasajero";
             this.txtPasajero.Size = new System.Drawing.Size(227, 20);
             this.txtPasajero.TabIndex = 3;
+            this.txtPasajero.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPasajero_KeyDown);
             // 
             // btnAnotar
             // 
@@ -93,7 +94,7 @@ namespace Integrador
             this.btnAnotar.Name = "btnAnotar";
             this.btnAnotar.Size = new System.Drawing.Size(104, 23);
             this.btnAnotar.TabIndex = 4;
-            this.btnAnotar.Text = "Anotar";
+            this.btnAnotar.Text = "Anotar (Enter)";
             this.btnAnotar.UseVisualStyleBackColor = true;
             this.btnAnotar.Click += new System.EventHandler(this.btnAnotar_Click);
             // 
@@ -112,7 +113,7 @@ namespace Integrador
             this.btnSubir.Name = "btnSubir";
             this.btnSubir.Size = new System.Drawing.Size(104, 23);
             this.btnSubir.TabIndex = 6;
-            this.btnSubir.Text = "Subir a la combi";
+            this.btnSubir.Text = "Abordar";
             this.btnSubir.UseVisualStyleBackColor = true;
             this.btnSubir.Click += new System.EventHandler(this.btnSubir_Click);
             // 
@@ -122,7 +123,7 @@ namespace Integrador
             this.btnViajar.Name = "btnViajar";
             this.btnViajar.Size = new System.Drawing.Size(104, 23);
             this.btnViajar.TabIndex = 7;
-            this.btnViajar.Text = "Iniciar el viaje";
+            this.btnViajar.Text = "Arrancar";
             this.btnViajar.UseVisualStyleBackColor = true;
             this.btnViajar.Click += new System.EventHandler(this.btnViajar_Click);
             // 
@@ -213,6 +214,7 @@ namespace Integrador
             this.btnEliminar.TabIndex = 5;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Visible = false;
             this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // Combi
@@ -236,8 +238,8 @@ namespace Integrador
             this.Controls.Add(this.picCombi);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Combi";
-            this.Text = "Servicio de combis";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmCombis_FormClosing);
+            this.Text = "Servicio de combis (ESC para salir)";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Combi_FormClosing);
             this.Load += new System.EventHandler(this.Combi_Load);
             ((System.ComponentModel.ISupportInitialize)(this.picCombi)).EndInit();
             this.grpVentanilla.ResumeLayout(false);
