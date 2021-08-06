@@ -1,24 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Reflection.Emit;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Integrador
 {
     public partial class Combi : Form
     {
-
-        /**
-         * TODO:
-         * -) Botón subir: generar un string desde backend y mostrar en msgbox
-         *    usando recursión.
-         * -) Botón viajar: generar listado a grabar a partir de backend (usar 
-         *    el punto anterior): ¿hacer un string global para esto?
-         */
-
         #region PORTADA
         /// <summary>
+        /// 
         /// Título:      Trabajo Práctico Integrador (UAI 2021 Programación I).
         /// Descripción: Aplicación control de ingreso de pasajeros a una combi
         /// Profesor:    Alejandro Hunt.
@@ -35,6 +30,12 @@ namespace Integrador
         ///              
         /// Fecha:       XXXX-XX(XXX)-XX
         ///              ...
+        ///              
+        /// PENDIENTE    ------------------------------------------------------
+        ///              Procesar por lotes
+        ///              Cambio de combi y chofer
+        ///              Visibilizar pasajeros a bordo
+        ///              Recuperar datos de archivo para control
         /// 
         /// </summary>
         #endregion
@@ -42,15 +43,11 @@ namespace Integrador
         #region GLOBALES
         /**
          * ¿POR QUÉ?
-         *  -)  Para archivo, para ubicar un lugar cómodo para definir un 
-         *      archivo de salida.
-         *  -)  Para colaFrontend, para que esté disponible entre los distintos 
-         *      procedimientos ya que, como se verá, traté de dividir el código
-         *      de forma que sea lo más equilibrado y razonable posible.
-         *  -)  Finalmente, el booleano es para evitar que el cierre del Form
-         *      intente hacer operaciones que dependían de anteriores. El
-         *      cierre del form es imprevisible, así que mejor dejar flotando
-         *      una condición sobre la cual apoyarse.
+         *  ARCHIVO: para tener un lugar dónde definir un archivo de salida.
+         *  PASAJEROS: para disponer de esos datos sin pasajes entre funciones.
+         *  COLAFRONTEND: por ser la forma más sencilla de alimentar al ListView
+         *  COLABACKEND: ¿por qué no?
+         *  GENERADO: para evitar que el cierre del Form haga operaciones dependientes
          */
         public static string archivo      = "../../pasajeros.txt";
         public string pasajeros           = null;
@@ -59,7 +56,7 @@ namespace Integrador
         public bool generado              = false;
         #endregion
 
-        #region BOOT
+        #region INICIO
         public Combi() { InitializeComponent(); }
         private void Combi_Load(object sender, EventArgs e)
         {
@@ -69,7 +66,7 @@ namespace Integrador
             this.lblUnidad.Text = lblUnidad.Text + "1972";
             this.lblChofer.Text = lblChofer.Text + "Gerardo Tordoya";
             this.lblKilometraje.Text = lblKilometraje.Text + aleatorio.Next(50, 500);
-            InicializarSesion();    // Ver nota en FUNCIONES.
+            InicializarSesion();                            // Ver nota en FUNCIONES.
         }
         #endregion
 
@@ -77,22 +74,17 @@ namespace Integrador
         /**
          * InicializarSesión hace operaciones propias del inicio de la
          * aplicación. Sin embargo, hay algunas que deben actualizarse cuando
-         * le damos la posibilidad a la aplicación de trabajar por ciclos (es
-         * decir, terminadas las operaciones, poder reiniciar la secuencia).
+         * le damos la posibilidad a la aplicación de reiniciar la secuencia.
          * Por eso, ahí en el "booteo", se hacen las operaciones que no son ya
-         * necesarias de cambiar y aquí las que ante cada ciclo lo necesitan.
+         * necesarias de cambiar, y aquí, las que ante cada ciclo lo necesitan.
          * 
-         * NOTA: Esto se hizo solo para diferenciar un "booteo" que consta de
-         *       operaciones que deben mantenerse y de otras que no. Es decir,
-         *       es una aplicación que una vez que termina sus operaciones
-         *       reinicia para volver a hacerlas. En una aplicación real, esos
-         *       datos (chofer, unidad, etc.) deberían cambiar porque,
-         *       obviamente, se trata de otra combi para otro viaje con otro
-         *       chofer.
+         * NOTA: En una aplicación real, esos datos (chofer, unidad, etc.) 
+         *       deberían cambiar porque, obviamente, se trata de otra combi 
+         *       para otro viaje con otro chofer.
          */
         private void InicializarSesion()
         {
-            var horario = DateTime.Now;
+            var horario              = DateTime.Now;
             this.lblInformacion.Text = "Si no hay pasajeros en espera" + Environment.NewLine +
                                        "y la combi está vacía," + Environment.NewLine +
                                        "vaya a la terminal de Puerto Madero.";
@@ -101,17 +93,18 @@ namespace Integrador
                                        horario.Minute.ToString("00");
             this.lblPartida.Text     = "Partida: ";
             this.lblEspera.Text      = "En espera: " + colaFrontend.Count().ToString();
-            this.txtPasajero.Enabled = true;    // Ver nota en CLEAR.
-            this.btnAnotar.Enabled   = true;    // Ver nota en CLEAR.
+            this.txtPasajero.Enabled = true;              // Ver nota en CLEAR.
+            this.btnAnotar.Enabled   = true;              // Ver nota en CLEAR.
             this.btnSubir.Enabled    = false;
             this.btnViajar.Enabled   = false;
-            this.lstPasajeros.Clear();          // ¿Por qué? Necesario para reincio de ciclo.
+            this.lstPasajeros.Clear();                    // Por el reincio.
             this.txtPasajero.Focus();
         }
 
         /**
-         * ¿POR QUÉ IMPRIMIR? Para evitar redundancia y errores ya que, como se
-         * ve, el tratamiento del ListView es medio artesanal.
+         * ¿POR QUÉ IMPRIMIR?
+         * Para evitar redundancia y errores ya que, como se ve, el tratamiento
+         * del ListView es medio artesanal.
          */
         public void Imprimir()
         {
@@ -119,6 +112,7 @@ namespace Integrador
             lstPasajeros.View = View.Details;
             lstPasajeros.Columns.Add("PASAJEROS");
             ListViewItem item;
+            // Para esta cola uso FOREACH, para la otra, recursión.
             foreach (string pasajero in colaFrontend)
             {
                 item = new ListViewItem(pasajero);
@@ -128,20 +122,48 @@ namespace Integrador
             lstPasajeros.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
             this.lblEspera.Text = "En espera: " + colaFrontend.Count().ToString();
         }
-        private void PasajerosAbordados()
+
+        /**
+         * ¿POR QUÉ?
+         * Siguiendo el principio KISS y DRY, es una forma de recuperar los
+         * datos de la cola en la variable al mismo tiempo de vaciarla.
+         * Al terminar, ambos componentes quedan listos: la variable completa y
+         * la cola vacía.
+         */
+        private void DesdeColaHaciaCadena()
         {
             if (colaBackend.Contador == 0) { return; }
             else
             {
                 pasajeros += colaBackend.Inicio.Nombre + Environment.NewLine;
                 colaBackend.Desencolar();
-                PasajerosAbordados();
+                DesdeColaHaciaCadena();
             }
         }
-
+        // Sí, lo sé, no hice una condición de salida. Pendiente.
+        private async void Titilar()
+        {
+            while (true)
+            {
+                await Task.Delay(500);
+                lblPartida.BackColor = lblPartida.BackColor == Color.LightBlue ?
+                                                               Color.Yellow :
+                                                               Color.LightBlue;
+            }
+        }
         #endregion
 
         #region BOTONES
+        /**
+         * En general, en esta primera edición, la estrategia es trabajar con
+         * ambas colas en paralelo hasta que ya no sea necesario.
+         * Repito lo expuesto en GLOBALES: la cola incorporada de C# es una
+         * sencilla de alimentar al control de usuario, y por eso queda. La 
+         * cola implementada es... poner la carne al asador para el examen.
+         */
+
+        // ¿POR QUÉ DESHABILITADO?
+        // Porque el profesor no pidió esto, solo lo puse para pruebas.
         private void btnEliminar_Click(object sender, EventArgs e)
         {
             if (colaFrontend.Count()!=0)
@@ -157,28 +179,21 @@ namespace Integrador
                                 MessageBoxButtons.OK,
                                 MessageBoxIcon.Error);
             }
-            
         }
         /**
          * ¿POR QUÉ NO ANIDAR LOS IF?
-         * Porque en el pasado no tuve buena experiencia anidando. Siempre me 
-         * ha parecido más fácil de desbichificar (debuguear) una secuencia de
-         * condicionales que un anidamiento.
-         * Es algo parecido a lo que pasa con los WHILE combinados: en 
-         * situaciones que no afectan a la lógica del programa, pueden saltar
-         * por cuestiones específicas del lenguaje que pueden hacer fallar tu
-         * algoritmo (y de hecho, lo hacen).
-         * Es menos elegante, lo sé, pero yo sigo el principio romano en esto.
+         * Porque es más fácil de desbichificar (debuguear) una secuencia de
+         * condicionales que un anidamiento (Principio KISS).
          */
         private void btnAnotar_Click(object sender, EventArgs e)
         {
-            if (txtPasajero.Text != "") {
+            if (txtPasajero.Text != String.Empty) {
                 lblInformacion.Text = null;
-                Nodo nodoTemporal = new Nodo();
+                Nodo nodoTemporal   = new Nodo();
                 colaFrontend.Enqueue(txtPasajero.Text);
                 nodoTemporal.Nombre = colaFrontend.ElementAt(colaFrontend.Count()-1);
                 colaBackend.Encolar(nodoTemporal);
-                txtPasajero.Text = "";
+                txtPasajero.Text    = String.Empty;
             }
             else
             {
@@ -199,22 +214,13 @@ namespace Integrador
                 this.btnSubir.Focus();
             }
         }
-        
-        /**
-         * Bueno, el disputado inciso D. Todo este procedimiento se podría
-         * reducir a tan solo a dos cosas: vaciar la colaFrontend y no imprimir.
-         * Vaciar la colaFrontend cumpliría con lo pedido por el inciso D.
-         * No imprimir permite cumplir con el punto 1 de la 2da parte del
-         * integrador (que necesita recuperar de algún lado los datos para
-         * grabarlos en el archivo).
-         * Todo el resto del código son para cuestiones propias del formulario.
-         */
         private void btnSubir_Click(object sender, EventArgs e)
         {
             var horario              = DateTime.Now;
             this.lblPartida.Text     = "Partida: " + 
                                        horario.Hour.ToString("00") + ':' + 
                                        horario.Minute.ToString("00");
+            Titilar(); // ¿Qué es esto? Nada, un detalle ganso que quise poner.
             this.btnSubir.Enabled    = false;
             this.btnViajar.Enabled   = true;
             this.btnViajar.Focus();
@@ -223,19 +229,14 @@ namespace Integrador
             this.lblInformacion.Text = "Status:" + Environment.NewLine +
                                        "Cola frontal vacía." + Environment.NewLine +
                                        "Cola interna retiene los datos.";
-            PasajerosAbordados();
+            // Para recorrer la cola nativa, usé FOREACH. Para recorrer la cola
+            // implementada, uso un llamado a una función recursiva.
+            DesdeColaHaciaCadena();
             MessageBox.Show("Pasajeros a bordo:" + Environment.NewLine + pasajeros,
                             "Información",
                             MessageBoxButtons.OK,
                             MessageBoxIcon.Information);
         }
-        /**
-         * Bueno, aquí está lo explicado en el botón SUBIR. Así que las
-         * operaciones allí van de la mano con las de aquí:
-         *  -)  En una cadena, recupero los datos del control
-         *  -)  Uso esa cadena para grabar los datos al archivo
-         *  -)  Genero el booleano explicado en las notas de los globales
-         */
         private void btnViajar_Click(object sender, EventArgs e)
         {
             this.btnViajar.Enabled = false;
@@ -244,9 +245,6 @@ namespace Integrador
                             "cuando cierre esta aplicación.", 
                             "Información", 
                             MessageBoxButtons.OK, MessageBoxIcon.Information);
-            // El archivo de registro, a diferencia del de respaldo (backup) va
-            // a ser de agregado, y por eso el uso de AppendAllText. Ver notas
-            // en el evento de cierre del form.
             File.AppendAllText(archivo, string.Join(Environment.NewLine, pasajeros));
             generado = true;
             pasajeros = null;
@@ -254,12 +252,7 @@ namespace Integrador
         }
         #endregion
 
-        #region FINALE
-        /**
-         * Recupero lo grabado en el archivo y grabo esos datos en un único
-         * archivo (por eso el uso de WriteAllText), es decir, no hay 
-         * agregación: es un respaldo único.
-         */
+        #region CIERRE
         private void frmCombis_FormClosing(object sender, FormClosingEventArgs e)
         {
             if(MessageBox.Show("¿Salir?",
