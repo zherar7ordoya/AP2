@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -184,12 +185,18 @@ namespace Integrador
                                 MessageBoxIcon.Error);
             }
         }
+
         /** ¿POR QUÉ NO ANIDAR LOS IF? Porque es más fácil el debug de una
          *  secuencia de condicionales que de un anidamiento (Principio KISS).
+         *  ¿Y qué del REGEX? Bueno, es cierto. Pero hasta ahora, el profesor
+         *  no objetó validaciones. Pienso que no está demás.
          */
         private void btnAnotar_Click(object sender, EventArgs e)
         {
-            if (txtPasajero.Text != String.Empty)
+            if (
+                txtPasajero.Text != string.Empty && 
+                Regex.Match(txtPasajero.Text, "^[A-Za-zÑñÁáÉéÍíÓóÚúü ,.'-]+$").Success
+                )
             {
                 lblInformacion.Text = null;
                 Nodo nodoTemporal = new Nodo();
@@ -259,6 +266,8 @@ namespace Integrador
         #endregion
 
         #region TECLADO
+        // ¿Y esto? Bueno, el evento KeyPress se considera estándar en
+        // cualquier aplicación de escritorio. Es más bien una formalidad.
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
             if (keyData == Keys.Escape)
