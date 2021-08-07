@@ -113,7 +113,7 @@ namespace Integrador
             this.btnSubir.Name = "btnSubir";
             this.btnSubir.Size = new System.Drawing.Size(104, 23);
             this.btnSubir.TabIndex = 6;
-            this.btnSubir.Text = "Abordar";
+            this.btnSubir.Text = "Subir a la Combi";
             this.btnSubir.UseVisualStyleBackColor = true;
             this.btnSubir.Click += new System.EventHandler(this.btnSubir_Click);
             // 
@@ -123,7 +123,7 @@ namespace Integrador
             this.btnViajar.Name = "btnViajar";
             this.btnViajar.Size = new System.Drawing.Size(104, 23);
             this.btnViajar.TabIndex = 7;
-            this.btnViajar.Text = "Arrancar";
+            this.btnViajar.Text = "Emprender Viaje";
             this.btnViajar.UseVisualStyleBackColor = true;
             this.btnViajar.Click += new System.EventHandler(this.btnViajar_Click);
             // 

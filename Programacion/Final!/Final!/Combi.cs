@@ -199,15 +199,15 @@ namespace Integrador
                 )
             {
                 lblInformacion.Text = null;
-                Nodo nodoTemporal = new Nodo();
+                Nodo nodoTemporal   = new Nodo();
                 colaFrontend.Enqueue(txtPasajero.Text);
                 nodoTemporal.Nombre = colaFrontend.ElementAt(colaFrontend.Count() - 1);
                 colaBackend.Encolar(nodoTemporal);
-                txtPasajero.Text = String.Empty;
+                txtPasajero.Text    = String.Empty;
             }
             else
             {
-                MessageBox.Show("Debe ingresar un nombre.",
+                MessageBox.Show("Debe ingresar un nombre válido.",
                                 "Error",
                                 MessageBoxButtons.OK,
                                 MessageBoxIcon.Error);
@@ -217,8 +217,8 @@ namespace Integrador
             else
             {
                 this.txtPasajero.Enabled = false;
-                this.btnAnotar.Enabled = false;
-                this.btnSubir.Enabled = true;
+                this.btnAnotar.Enabled   = false;
+                this.btnSubir.Enabled    = true;
                 this.lblInformacion.Text = "Ha alcancado la capacidad máxima." + Environment.NewLine +
                                            "Pida a los pasajeros que suban.";
                 this.btnSubir.Focus();
@@ -259,7 +259,7 @@ namespace Integrador
                             "Información", 
                             MessageBoxButtons.OK, MessageBoxIcon.Information);
             File.AppendAllText(archivo, string.Join(Environment.NewLine, pasajeros));
-            generado = true;
+            generado  = true;
             pasajeros = null;
             InicializarSesion();
         }
